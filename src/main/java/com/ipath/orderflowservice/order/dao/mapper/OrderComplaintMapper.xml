@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ipath.orderflowservice.order.dao.OrderComplaintMapper" >
+  <resultMap id="BaseResultMap" type="com.ipath.orderflowservice.order.dao.bean.OrderComplaint" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="order_id" property="orderId" jdbcType="BIGINT" />
+    <result column="type_id" property="typeId" jdbcType="INTEGER" />
+    <result column="feedback" property="feedback" jdbcType="VARCHAR" />
+    <result column="reply" property="reply" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="acceptor_id" property="acceptorId" jdbcType="BIGINT" />
+    <result column="close_user_id" property="closeUserId" jdbcType="BIGINT" />
+    <result column="reply_type_id" property="replyTypeId" jdbcType="INTEGER" />
+    <result column="customer_service_remark" property="customerServiceRemark" jdbcType="VARCHAR" />
+    <result column="level" property="level" jdbcType="INTEGER" />
+    <result column="accept_time" property="acceptTime" jdbcType="TIMESTAMP" />
+    <result column="close_time" property="closeTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="complaint_labels" property="complaintLabels" jdbcType="VARCHAR"/>
+    <result column="degree" property="degree" jdbcType="INTEGER" />
+    <result column="source" property="source" jdbcType="INTEGER" />
+    <result column="reason" property="reason" jdbcType="VARCHAR" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, order_id, type_id, feedback, reply, state, acceptor_id, close_user_id, reply_type_id, 
+    customer_service_remark, level, accept_time, close_time, create_time, update_time, 
+    complaint_labels, degree, source, reason, remarks
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from public.order_complaint
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from public.order_complaint
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ipath.orderflowservice.order.dao.bean.OrderComplaint" >
+    insert into public.order_complaint (id, order_id, type_id, 
+      feedback, reply, state, 
+      acceptor_id, close_user_id, reply_type_id, 
+      customer_service_remark, level, accept_time, 
+      close_time, create_time, update_time, 
+      complaint_labels, degree, source, 
+      reason, remarks)
+    values (#{id,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, #{typeId,jdbcType=INTEGER}, 
+      #{feedback,jdbcType=VARCHAR}, #{reply,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, 
+      #{acceptorId,jdbcType=BIGINT}, #{closeUserId,jdbcType=BIGINT}, #{replyTypeId,jdbcType=INTEGER}, 
+      #{customerServiceRemark,jdbcType=VARCHAR}, #{level,jdbcType=INTEGER}, #{acceptTime,jdbcType=TIMESTAMP}, 
+      #{closeTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{complaintLabels,typeHandler=com.ipath.dao.utils.handler.JSONTypeHandler}, #{degree,jdbcType=INTEGER}, #{source,jdbcType=INTEGER},
+      #{reason,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ipath.orderflowservice.order.dao.bean.OrderComplaint" >
+    insert into public.order_complaint
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="typeId != null" >
+        type_id,
+      </if>
+      <if test="feedback != null" >
+        feedback,
+      </if>
+      <if test="reply != null" >
+        reply,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="acceptorId != null" >
+        acceptor_id,
+      </if>
+      <if test="closeUserId != null" >
+        close_user_id,
+      </if>
+      <if test="replyTypeId != null" >
+        reply_type_id,
+      </if>
+      <if test="customerServiceRemark != null" >
+        customer_service_remark,
+      </if>
+      <if test="level != null" >
+        level,
+      </if>
+      <if test="acceptTime != null" >
+        accept_time,
+      </if>
+      <if test="closeTime != null" >
+        close_time,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="complaintLabels != null" >
+        complaint_labels,
+      </if>
+      <if test="degree != null" >
+        degree,
+      </if>
+      <if test="source != null" >
+        source,
+      </if>
+      <if test="reason != null" >
+        reason,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="typeId != null" >
+        #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="feedback != null" >
+        #{feedback,jdbcType=VARCHAR},
+      </if>
+      <if test="reply != null" >
+        #{reply,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="acceptorId != null" >
+        #{acceptorId,jdbcType=BIGINT},
+      </if>
+      <if test="closeUserId != null" >
+        #{closeUserId,jdbcType=BIGINT},
+      </if>
+      <if test="replyTypeId != null" >
+        #{replyTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="customerServiceRemark != null" >
+        #{customerServiceRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="acceptTime != null" >
+        #{acceptTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="closeTime != null" >
+        #{closeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="complaintLabels != null" >
+        #{complaintLabels,typeHandler=com.ipath.dao.utils.handler.JSONTypeHandler},
+      </if>
+      <if test="degree != null" >
+        #{degree,jdbcType=INTEGER},
+      </if>
+      <if test="source != null" >
+        #{source,jdbcType=INTEGER},
+      </if>
+      <if test="reason != null" >
+        #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ipath.orderflowservice.order.dao.bean.OrderComplaint" >
+    update public.order_complaint
+    <set >
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="typeId != null" >
+        type_id = #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="feedback != null" >
+        feedback = #{feedback,jdbcType=VARCHAR},
+      </if>
+      <if test="reply != null" >
+        reply = #{reply,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="acceptorId != null" >
+        acceptor_id = #{acceptorId,jdbcType=BIGINT},
+      </if>
+      <if test="closeUserId != null" >
+        close_user_id = #{closeUserId,jdbcType=BIGINT},
+      </if>
+      <if test="replyTypeId != null" >
+        reply_type_id = #{replyTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="customerServiceRemark != null" >
+        customer_service_remark = #{customerServiceRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        level = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="acceptTime != null" >
+        accept_time = #{acceptTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="closeTime != null" >
+        close_time = #{closeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="complaintLabels != null" >
+        complaint_labels = #{complaintLabels,typeHandler=com.ipath.dao.utils.handler.JSONTypeHandler},
+      </if>
+      <if test="degree != null" >
+        degree = #{degree,jdbcType=INTEGER},
+      </if>
+      <if test="source != null" >
+        source = #{source,jdbcType=INTEGER},
+      </if>
+      <if test="reason != null" >
+        reason = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ipath.orderflowservice.order.dao.bean.OrderComplaint" >
+    update public.order_complaint
+    set order_id = #{orderId,jdbcType=BIGINT},
+      type_id = #{typeId,jdbcType=INTEGER},
+      feedback = #{feedback,jdbcType=VARCHAR},
+      reply = #{reply,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER},
+      acceptor_id = #{acceptorId,jdbcType=BIGINT},
+      close_user_id = #{closeUserId,jdbcType=BIGINT},
+      reply_type_id = #{replyTypeId,jdbcType=INTEGER},
+      customer_service_remark = #{customerServiceRemark,jdbcType=VARCHAR},
+      level = #{level,jdbcType=INTEGER},
+      accept_time = #{acceptTime,jdbcType=TIMESTAMP},
+      close_time = #{closeTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      complaint_labels = #{complaintLabels,typeHandler=com.ipath.dao.utils.handler.JSONTypeHandler},
+      degree = #{degree,jdbcType=INTEGER},
+      source = #{source,jdbcType=INTEGER},
+      reason = #{reason,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <!-- 以下手工添加 -->
+  <select id="selectByOrderId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from public.order_complaint
+    where order_id = #{orderId,jdbcType=BIGINT}
+    limit 1
+  </select>
+
+  <select id="selectCntByOrderId" resultType="java.lang.Integer" parameterType="java.lang.Long" >
+    select 
+    count(1)
+    from public.order_complaint
+    where order_id = #{orderId,jdbcType=BIGINT}
+  </select>
+
+</mapper>

@@ -1,0 +1,626 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ipath.orderflowservice.order.dao.OrderSourceMapper" >
+  <resultMap id="BaseResultMap" type="com.ipath.orderflowservice.order.dao.bean.OrderSource" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="order_id" property="orderId" jdbcType="BIGINT" />
+    <result column="source_code" property="sourceCode" jdbcType="VARCHAR" />
+    <result column="source_name_cn" property="sourceNameCn" jdbcType="VARCHAR" />
+    <result column="source_name_en" property="sourceNameEn" jdbcType="VARCHAR" />
+    <result column="core_order_id" property="coreOrderId" jdbcType="VARCHAR" />
+    <result column="estimate_price" property="estimatePrice" jdbcType="NUMERIC" />
+    <result column="amount" property="amount" jdbcType="NUMERIC" />
+    <result column="fee_detail" property="feeDetail" typeHandler="com.ipath.dao.utils.handler.JSONTypeHandler" />
+    <result column="driver_order_taking_time" property="driverOrderTakingTime" jdbcType="TIMESTAMP" />
+    <result column="driver_arrival_time" property="driverArrivalTime" jdbcType="TIMESTAMP" />
+    <result column="travel_begin_time" property="travelBeginTime" jdbcType="TIMESTAMP" />
+    <result column="travel_end_time" property="travelEndTime" jdbcType="TIMESTAMP" />
+    <result column="pay_time" property="payTime" jdbcType="TIMESTAMP" />
+    <result column="driver_cancel_time" property="driverCancelTime" jdbcType="TIMESTAMP" />
+    <result column="is_change_dest" property="isChangeDest" jdbcType="BIT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="driver_name" property="driverName" jdbcType="VARCHAR" />
+    <result column="driver_phone" property="driverPhone" jdbcType="VARCHAR" />
+    <result column="driver_phone_virtual" property="driverPhoneVirtual" jdbcType="VARCHAR" />
+    <result column="vehicle_model" property="vehicleModel" jdbcType="VARCHAR" />
+    <result column="vehicle_color" property="vehicleColor" jdbcType="VARCHAR" />
+    <result column="vehicle_no" property="vehicleNo" jdbcType="VARCHAR" />
+    <result column="driver_level" property="driverLevel" jdbcType="VARCHAR" />
+    <result column="driver_avatar" property="driverAvatar" jdbcType="VARCHAR" />
+    <result column="travel_distance" property="travelDistance" jdbcType="NUMERIC" />
+    <result column="take_distance" property="takeDistance" jdbcType="INTEGER" />
+    <result column="take_time" property="takeTime" jdbcType="INTEGER" />
+    <result column="state" property="state" jdbcType="SMALLINT" />
+    <result column="actual_dest_location" property="actualDestLocation" jdbcType="VARCHAR" />
+    <result column="actual_pickup_location" property="actualPickupLocation" jdbcType="VARCHAR" />
+    <result column="car_level" property="carLevel" jdbcType="INTEGER" />
+    <result column="estimate_distance" property="estimateDistance" jdbcType="INTEGER" />
+    <result column="estimate_time" property="estimateTime" jdbcType="INTEGER" />
+    <result column="actual_dest_lat" property="actualDestLat" jdbcType="VARCHAR" />
+    <result column="actual_dest_lng" property="actualDestLng" jdbcType="VARCHAR" />
+    <result column="actual_pickup_lat" property="actualPickupLat" jdbcType="VARCHAR" />
+    <result column="actual_pickup_lng" property="actualPickupLng" jdbcType="VARCHAR" />
+    <result column="order_time" property="orderTime" jdbcType="TIMESTAMP" />
+    <result column="duration" property="duration" jdbcType="NUMERIC" />
+    <result column="user_bear_amount" property="userBearAmount" jdbcType="NUMERIC" />
+    <result column="company_bear_amount" property="companyBearAmount" jdbcType="NUMERIC" />
+      <result column="raw_car_type_code" jdbcType="VARCHAR" property="rawCarTypeCode" />
+      <result column="sp_car_type_code" jdbcType="VARCHAR" property="spCarTypeCode" />
+      <result column="ipath_estimate_price" property="ipathEstimatePrice" jdbcType="NUMERIC" />
+      <result column="platform_estimate_price" property="platformEstimatePrice" jdbcType="NUMERIC" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, order_id, source_code, source_name_cn, source_name_en, core_order_id, 
+    estimate_price, amount, fee_detail, driver_order_taking_time, driver_arrival_time, 
+    travel_begin_time, travel_end_time, pay_time, driver_cancel_time, is_change_dest, 
+    create_time, update_time, driver_name, driver_phone, driver_phone_virtual, vehicle_model, 
+    vehicle_color, vehicle_no, driver_level, driver_avatar, travel_distance,take_distance,take_time, state, actual_dest_location,
+    actual_pickup_location, car_level, estimate_distance, estimate_time, actual_dest_lat, actual_dest_lng,
+    actual_pickup_lat, actual_pickup_lng, order_time,duration,user_bear_amount,company_bear_amount, raw_car_type_code, sp_car_type_code
+    , ipath_estimate_price, platform_estimate_price
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from public.order_source
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from public.order_source
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ipath.orderflowservice.order.dao.bean.OrderSource" >
+    insert into public.order_source (id, user_id, order_id, 
+      source_code, source_name_cn, source_name_en, 
+      core_order_id, estimate_price, amount, 
+      fee_detail, driver_order_taking_time, driver_arrival_time, 
+      travel_begin_time, travel_end_time, pay_time, 
+      driver_cancel_time, is_change_dest, create_time, 
+      update_time, driver_name, driver_phone, 
+      driver_phone_virtual, vehicle_model, vehicle_color, 
+      vehicle_no, driver_level, driver_avatar, 
+      travel_distance, state, actual_dest_location, 
+      actual_pickup_location, car_level, estimate_distance, 
+      actual_dest_lat, actual_dest_lng, actual_pickup_lat, 
+      actual_pickup_lng, order_time, raw_car_type_code, sp_car_type_code ,duration , ipath_estimate_price, platform_estimate_price)
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, 
+      #{sourceCode,jdbcType=VARCHAR}, #{sourceNameCn,jdbcType=VARCHAR}, #{sourceNameEn,jdbcType=VARCHAR}, 
+      #{coreOrderId,jdbcType=VARCHAR}, #{estimatePrice,jdbcType=NUMERIC}, #{amount,jdbcType=NUMERIC}, 
+      #{feeDetail,typeHandler=com.ipath.dao.utils.handler.JSONTypeHandler}, #{driverOrderTakingTime,jdbcType=TIMESTAMP}, #{driverArrivalTime,jdbcType=TIMESTAMP},
+      #{travelBeginTime,jdbcType=TIMESTAMP}, #{travelEndTime,jdbcType=TIMESTAMP}, #{payTime,jdbcType=TIMESTAMP}, 
+      #{driverCancelTime,jdbcType=TIMESTAMP}, #{isChangeDest,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{driverName,jdbcType=VARCHAR}, #{driverPhone,jdbcType=VARCHAR}, 
+      #{driverPhoneVirtual,jdbcType=VARCHAR}, #{vehicleModel,jdbcType=VARCHAR}, #{vehicleColor,jdbcType=VARCHAR}, 
+      #{vehicleNo,jdbcType=VARCHAR}, #{driverLevel,jdbcType=VARCHAR}, #{driverAvatar,jdbcType=VARCHAR}, 
+      #{travelDistance,jdbcType=NUMERIC}, #{state,jdbcType=SMALLINT}, #{actualDestLocation,jdbcType=VARCHAR}, 
+      #{actualPickupLocation,jdbcType=VARCHAR}, #{carLevel,jdbcType=INTEGER}, #{estimateDistance,jdbcType=INTEGER}, 
+      #{actualDestLat,jdbcType=VARCHAR}, #{actualDestLng,jdbcType=VARCHAR}, #{actualPickupLat,jdbcType=VARCHAR}, 
+      #{actualPickupLng,jdbcType=VARCHAR}, #{orderTime,jdbcType=TIMESTAMP},#{rawCarTypeCode,jdbcType=VARCHAR},
+      #{spCarTypeCode,jdbcType=VARCHAR} , #{duration,jdbcType=NUMERIC}
+      ,#{ipathEstimatePrice,jdbcType=NUMERIC}, #{platformEstimatePrice,jdbcType=NUMERIC}
+           )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ipath.orderflowservice.order.dao.bean.OrderSource" >
+    insert into public.order_source
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="sourceCode != null" >
+        source_code,
+      </if>
+      <if test="sourceNameCn != null" >
+        source_name_cn,
+      </if>
+      <if test="sourceNameEn != null" >
+        source_name_en,
+      </if>
+      <if test="coreOrderId != null" >
+        core_order_id,
+      </if>
+      <if test="estimatePrice != null" >
+        estimate_price,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="feeDetail != null" >
+        fee_detail,
+      </if>
+      <if test="driverOrderTakingTime != null" >
+        driver_order_taking_time,
+      </if>
+      <if test="driverArrivalTime != null" >
+        driver_arrival_time,
+      </if>
+      <if test="travelBeginTime != null" >
+        travel_begin_time,
+      </if>
+      <if test="travelEndTime != null" >
+        travel_end_time,
+      </if>
+      <if test="payTime != null" >
+        pay_time,
+      </if>
+      <if test="driverCancelTime != null" >
+        driver_cancel_time,
+      </if>
+      <if test="isChangeDest != null" >
+        is_change_dest,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="driverName != null" >
+        driver_name,
+      </if>
+      <if test="driverPhone != null" >
+        driver_phone,
+      </if>
+      <if test="driverPhoneVirtual != null" >
+        driver_phone_virtual,
+      </if>
+      <if test="vehicleModel != null" >
+        vehicle_model,
+      </if>
+      <if test="vehicleColor != null" >
+        vehicle_color,
+      </if>
+      <if test="vehicleNo != null" >
+        vehicle_no,
+      </if>
+      <if test="driverLevel != null" >
+        driver_level,
+      </if>
+      <if test="driverAvatar != null" >
+        driver_avatar,
+      </if>
+      <if test="travelDistance != null" >
+        travel_distance,
+      </if>
+      <if test="takeDistance != null" >
+        take_distance,
+      </if>
+      <if test="takeTime != null" >
+        take_time,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="actualDestLocation != null" >
+        actual_dest_location,
+      </if>
+      <if test="actualPickupLocation != null" >
+        actual_pickup_location,
+      </if>
+      <if test="carLevel != null" >
+        car_level,
+      </if>
+      <if test="estimateDistance != null" >
+        estimate_distance,
+      </if>
+      <if test="estimateTime != null" >
+        estimate_time,
+      </if>
+      <if test="actualDestLat != null" >
+        actual_dest_lat,
+      </if>
+      <if test="actualDestLng != null" >
+        actual_dest_lng,
+      </if>
+      <if test="actualPickupLat != null" >
+        actual_pickup_lat,
+      </if>
+      <if test="actualPickupLng != null" >
+        actual_pickup_lng,
+      </if>
+      <if test="orderTime != null" >
+        order_time,
+      </if>
+        <if test="rawCarTypeCode != null">
+            raw_car_type_code,
+        </if>
+        <if test="spCarTypeCode != null">
+            sp_car_type_code,
+        </if>
+        <if test="duration != null">
+            duration,
+        </if>
+        <if test="ipathEstimatePrice != null" >
+            ipath_estimate_price,
+        </if>
+        <if test="platformEstimatePrice != null" >
+            platform_estimate_price,
+        </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="sourceCode != null" >
+        #{sourceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceNameCn != null" >
+        #{sourceNameCn,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceNameEn != null" >
+        #{sourceNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="coreOrderId != null" >
+        #{coreOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="estimatePrice != null" >
+        #{estimatePrice,jdbcType=NUMERIC},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=NUMERIC},
+      </if>
+      <if test="feeDetail != null" >
+        #{feeDetail,typeHandler=com.ipath.dao.utils.handler.JSONTypeHandler},
+      </if>
+      <if test="driverOrderTakingTime != null" >
+        #{driverOrderTakingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="driverArrivalTime != null" >
+        #{driverArrivalTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="travelBeginTime != null" >
+        #{travelBeginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="travelEndTime != null" >
+        #{travelEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payTime != null" >
+        #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="driverCancelTime != null" >
+        #{driverCancelTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isChangeDest != null" >
+        #{isChangeDest,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="driverName != null" >
+        #{driverName,jdbcType=VARCHAR},
+      </if>
+      <if test="driverPhone != null" >
+        #{driverPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="driverPhoneVirtual != null" >
+        #{driverPhoneVirtual,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleModel != null" >
+        #{vehicleModel,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleColor != null" >
+        #{vehicleColor,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleNo != null" >
+        #{vehicleNo,jdbcType=VARCHAR},
+      </if>
+      <if test="driverLevel != null" >
+        #{driverLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="driverAvatar != null" >
+        #{driverAvatar,jdbcType=VARCHAR},
+      </if>
+      <if test="travelDistance != null" >
+        #{travelDistance,jdbcType=NUMERIC},
+      </if>
+      <if test="takeDistance != null" >
+        #{takeDistance,jdbcType=INTEGER},
+      </if>
+      <if test="takeTime != null" >
+        #{takeTime,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=SMALLINT},
+      </if>
+      <if test="actualDestLocation != null" >
+        #{actualDestLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="actualPickupLocation != null" >
+        #{actualPickupLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="carLevel != null" >
+        #{carLevel,jdbcType=INTEGER},
+      </if>
+      <if test="estimateDistance != null" >
+        #{estimateDistance,jdbcType=INTEGER},
+      </if>
+      <if test="estimateTime != null" >
+        #{estimateTime,jdbcType=INTEGER},
+      </if>
+      <if test="actualDestLat != null" >
+        #{actualDestLat,jdbcType=VARCHAR},
+      </if>
+      <if test="actualDestLng != null" >
+        #{actualDestLng,jdbcType=VARCHAR},
+      </if>
+      <if test="actualPickupLat != null" >
+        #{actualPickupLat,jdbcType=VARCHAR},
+      </if>
+      <if test="actualPickupLng != null" >
+        #{actualPickupLng,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTime != null" >
+        #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+        <if test="rawCarTypeCode != null">
+            #{rawCarTypeCode,jdbcType=VARCHAR},
+        </if>
+        <if test="spCarTypeCode != null">
+            #{spCarTypeCode,jdbcType=VARCHAR},
+        </if>
+        <if test="duration != null">
+            #{duration,jdbcType=NUMERIC},
+        </if>
+        <if test="ipathEstimatePrice != null" >
+            #{ipathEstimatePrice,jdbcType=NUMERIC},
+        </if>
+        <if test="platformEstimatePrice != null" >
+            #{platformEstimatePrice,jdbcType=NUMERIC},
+        </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ipath.orderflowservice.order.dao.bean.OrderSource" >
+    update public.order_source
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="sourceCode != null" >
+        source_code = #{sourceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceNameCn != null" >
+        source_name_cn = #{sourceNameCn,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceNameEn != null" >
+        source_name_en = #{sourceNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="coreOrderId != null" >
+        core_order_id = #{coreOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="estimatePrice != null" >
+        estimate_price = #{estimatePrice,jdbcType=NUMERIC},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=NUMERIC},
+      </if>
+      <if test="feeDetail != null" >
+        fee_detail = #{feeDetail,typeHandler=com.ipath.dao.utils.handler.JSONTypeHandler},
+      </if>
+      <if test="driverOrderTakingTime != null" >
+        driver_order_taking_time = #{driverOrderTakingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="driverArrivalTime != null" >
+        driver_arrival_time = #{driverArrivalTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="travelBeginTime != null" >
+        travel_begin_time = #{travelBeginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="travelEndTime != null" >
+        travel_end_time = #{travelEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payTime != null" >
+        pay_time = #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="driverCancelTime != null" >
+        driver_cancel_time = #{driverCancelTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isChangeDest != null" >
+        is_change_dest = #{isChangeDest,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="driverName != null" >
+        driver_name = #{driverName,jdbcType=VARCHAR},
+      </if>
+      <if test="driverPhone != null" >
+        driver_phone = #{driverPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="driverPhoneVirtual != null" >
+        driver_phone_virtual = #{driverPhoneVirtual,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleModel != null" >
+        vehicle_model = #{vehicleModel,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleColor != null" >
+        vehicle_color = #{vehicleColor,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleNo != null" >
+        vehicle_no = #{vehicleNo,jdbcType=VARCHAR},
+      </if>
+      <if test="driverLevel != null" >
+        driver_level = #{driverLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="driverAvatar != null" >
+        driver_avatar = #{driverAvatar,jdbcType=VARCHAR},
+      </if>
+      <if test="travelDistance != null" >
+        travel_distance = #{travelDistance,jdbcType=NUMERIC},
+      </if>
+      <if test="takeDistance != null" >
+        take_distance = #{takeDistance,jdbcType=INTEGER},
+      </if>
+      <if test="takeTime!= null" >
+        take_time = #{takeTime,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=SMALLINT},
+      </if>
+      <if test="actualDestLocation != null" >
+        actual_dest_location = #{actualDestLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="actualPickupLocation != null" >
+        actual_pickup_location = #{actualPickupLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="carLevel != null" >
+        car_level = #{carLevel,jdbcType=INTEGER},
+      </if>
+      <if test="estimateDistance != null" >
+        estimate_distance = #{estimateDistance,jdbcType=INTEGER},
+      </if>
+      <if test="actualDestLat != null" >
+        actual_dest_lat = #{actualDestLat,jdbcType=VARCHAR},
+      </if>
+      <if test="actualDestLng != null" >
+        actual_dest_lng = #{actualDestLng,jdbcType=VARCHAR},
+      </if>
+      <if test="actualPickupLat != null" >
+        actual_pickup_lat = #{actualPickupLat,jdbcType=VARCHAR},
+      </if>
+      <if test="actualPickupLng != null" >
+        actual_pickup_lng = #{actualPickupLng,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTime != null" >
+        order_time = #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userBearAmount != null" >
+        user_bear_amount = #{userBearAmount,jdbcType=NUMERIC},
+      </if>
+      <if test="companyBearAmount != null" >
+        company_bear_amount = #{companyBearAmount,jdbcType=NUMERIC},
+      </if>
+        <if test="rawCarTypeCode != null">
+            raw_car_type_code = #{rawCarTypeCode,jdbcType=VARCHAR},
+        </if>
+        <if test="spCarTypeCode != null">
+            sp_car_type_code = #{spCarTypeCode,jdbcType=VARCHAR},
+        </if>
+        <if test="duration != null">
+            duration = #{duration,jdbcType=NUMERIC},
+        </if>
+        <if test="ipathEstimatePrice != null" >
+            ipath_estimate_price = #{ipathEstimatePrice,jdbcType=NUMERIC},
+        </if>
+        <if test="platformEstimatePrice != null" >
+            platform_estimate_price = #{platformEstimatePrice,jdbcType=NUMERIC},
+        </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ipath.orderflowservice.order.dao.bean.OrderSource" >
+    update public.order_source
+    set user_id = #{userId,jdbcType=BIGINT},
+      order_id = #{orderId,jdbcType=BIGINT},
+      source_code = #{sourceCode,jdbcType=VARCHAR},
+      source_name_cn = #{sourceNameCn,jdbcType=VARCHAR},
+      source_name_en = #{sourceNameEn,jdbcType=VARCHAR},
+      core_order_id = #{coreOrderId,jdbcType=VARCHAR},
+      estimate_price = #{estimatePrice,jdbcType=NUMERIC},
+      amount = #{amount,jdbcType=NUMERIC},
+      user_bear_amount = #{userBearAmount,jdbcType=NUMERIC},
+      company_bear_amount = #{companyBearAmount,jdbcType=NUMERIC},
+      fee_detail = #{feeDetail,typeHandler=com.ipath.dao.utils.handler.JSONTypeHandler},
+      driver_order_taking_time = #{driverOrderTakingTime,jdbcType=TIMESTAMP},
+      driver_arrival_time = #{driverArrivalTime,jdbcType=TIMESTAMP},
+      travel_begin_time = #{travelBeginTime,jdbcType=TIMESTAMP},
+      travel_end_time = #{travelEndTime,jdbcType=TIMESTAMP},
+      pay_time = #{payTime,jdbcType=TIMESTAMP},
+      driver_cancel_time = #{driverCancelTime,jdbcType=TIMESTAMP},
+      is_change_dest = #{isChangeDest,jdbcType=BIT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      driver_name = #{driverName,jdbcType=VARCHAR},
+      driver_phone = #{driverPhone,jdbcType=VARCHAR},
+      driver_phone_virtual = #{driverPhoneVirtual,jdbcType=VARCHAR},
+      vehicle_model = #{vehicleModel,jdbcType=VARCHAR},
+      vehicle_color = #{vehicleColor,jdbcType=VARCHAR},
+      vehicle_no = #{vehicleNo,jdbcType=VARCHAR},
+      driver_level = #{driverLevel,jdbcType=VARCHAR},
+      driver_avatar = #{driverAvatar,jdbcType=VARCHAR},
+      travel_distance = #{travelDistance,jdbcType=NUMERIC},
+      state = #{state,jdbcType=SMALLINT},
+      actual_dest_location = #{actualDestLocation,jdbcType=VARCHAR},
+      actual_pickup_location = #{actualPickupLocation,jdbcType=VARCHAR},
+      car_level = #{carLevel,jdbcType=INTEGER},
+      estimate_distance = #{estimateDistance,jdbcType=INTEGER},
+      actual_dest_lat = #{actualDestLat,jdbcType=VARCHAR},
+      actual_dest_lng = #{actualDestLng,jdbcType=VARCHAR},
+      actual_pickup_lat = #{actualPickupLat,jdbcType=VARCHAR},
+      actual_pickup_lng = #{actualPickupLng,jdbcType=VARCHAR},
+      order_time = #{orderTime,jdbcType=TIMESTAMP},
+      raw_car_type_code = #{rawCarTypeCode,jdbcType=VARCHAR},
+      sp_car_type_code = #{spCarTypeCode,jdbcType=VARCHAR},
+      duration = #{duration,jdbcType=NUMERIC}
+      ,ipath_estimate_price = #{ipathEstimatePrice,jdbcType=NUMERIC}
+      ,platform_estimate_price = #{platformEstimatePrice,jdbcType=NUMERIC}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <!-- 以下手工添加 -->
+  <!-- 状态为7表示取消状态，一个订单只能有一个非7状态的子订单 -->
+  <select id="selectByOrderId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from public.order_source
+    where order_id = #{orderId,jdbcType=BIGINT}
+    <!-- and state != 7 -->
+    limit 1
+  </select>
+  <!-- 取最近一条，任意状态 -->
+  <select id="selectLatestByOrderId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from public.order_source
+    where order_id = #{orderId,jdbcType=BIGINT}
+    order by id desc
+    limit 1
+  </select>
+  <!-- 根据中台订单号取一条 -->
+  <select id="selectByICarDcOrderId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from public.order_source
+    where core_order_id = #{coreOrderId,jdbcType=VARCHAR}
+    limit 1
+  </select>
+
+
+  <select id="selectListByOrderId" parameterType="java.util.List" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from public.order_source
+    where  order_id in
+    <foreach collection="list" item="orderId" open="(" separator="," close=")">
+      #{orderId}
+    </foreach>
+  </select>
+
+  <update id="rePlaceUpdateStateByOrderId" parameterType="com.ipath.orderflowservice.order.dao.bean.OrderSource" >
+    update public.order_source
+    set  state = #{state,jdbcType=SMALLINT}
+    where id = #{id,jdbcType=BIGINT} and state != 7
+  </update>
+
+</mapper>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ipath.orderflowservice.order.dao.AdminMapper" >
+  <resultMap id="BaseResultMap" type="com.ipath.orderflowservice.order.dao.bean.Admin" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="company_id" property="companyId" jdbcType="BIGINT" />
+    <result column="company_user_id" property="companyUserId" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="pwd" property="pwd" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="is_delete" property="isDelete" jdbcType="BIT" />
+    <result column="activity_state" property="activityState" jdbcType="INTEGER" />
+    <result column="createor" property="createor" jdbcType="BIGINT" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="updater" property="updater" jdbcType="BIGINT" />
+    <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, company_id, company_user_id, name, pwd, phone, state, is_delete, activity_state, 
+    createor, created_time, updater, updated_time
+  </sql>
+
+  <!-- 根据公司查询用户 -->
+  <select id="selectByCompanyId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+      top 1
+    <include refid="Base_Column_List" />
+    from admin
+    where company_id = #{companyId,jdbcType=BIGINT}
+    order by created_time
+    ;
+  </select>
+
+  <resultMap id="PreDepartApplyVo" type="com.ipath.orderflowservice.order.dao.vo.PreDepartApplyVo">
+    <result column="apply_reason" property="applyReason" javaType="String" />
+  </resultMap>
+
+  <select id="selectPreDepartApplyById" resultMap="PreDepartApplyVo" parameterType="java.lang.Long" >
+    select
+      apply.apply_reason
+    from pre_depart_apply apply
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+</mapper>

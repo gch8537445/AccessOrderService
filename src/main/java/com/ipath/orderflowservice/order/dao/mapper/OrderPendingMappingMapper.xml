@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ipath.orderflowservice.order.dao.OrderPendingMappingMapper" >
+  <resultMap id="BaseResultMap" type="com.ipath.orderflowservice.order.dao.bean.OrderPendingMapping" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="company_id" property="companyId" jdbcType="BIGINT" />
+    <result column="order_id" property="orderId" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="pending_state" property="pendingState" jdbcType="BIT" />
+    <result column="createor" property="createor" jdbcType="BIGINT" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="updater" property="updater" jdbcType="BIGINT" />
+    <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+    <result column="passenger_phone" property="passengerPhone" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, company_id, order_id, user_id, pending_state, createor, created_time, updater, 
+    updated_time, passenger_phone
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from public.order_pending_mapping
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from public.order_pending_mapping
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ipath.orderflowservice.order.dao.bean.OrderPendingMapping" >
+    insert into public.order_pending_mapping (id, company_id, order_id, 
+      user_id, pending_state, createor, 
+      created_time, updater, updated_time, 
+      passenger_phone)
+    values (#{id,jdbcType=BIGINT}, #{companyId,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, 
+      #{userId,jdbcType=BIGINT}, #{pendingState,jdbcType=BIT}, #{createor,jdbcType=BIGINT}, 
+      #{createdTime,jdbcType=TIMESTAMP}, #{updater,jdbcType=BIGINT}, #{updatedTime,jdbcType=TIMESTAMP}, 
+      #{passengerPhone,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ipath.orderflowservice.order.dao.bean.OrderPendingMapping" >
+    insert into public.order_pending_mapping
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="pendingState != null" >
+        pending_state,
+      </if>
+      <if test="createor != null" >
+        createor,
+      </if>
+      <if test="createdTime != null" >
+        created_time,
+      </if>
+      <if test="updater != null" >
+        updater,
+      </if>
+      <if test="updatedTime != null" >
+        updated_time,
+      </if>
+      <if test="passengerPhone != null" >
+        passenger_phone,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="pendingState != null" >
+        #{pendingState,jdbcType=BIT},
+      </if>
+      <if test="createor != null" >
+        #{createor,jdbcType=BIGINT},
+      </if>
+      <if test="createdTime != null" >
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updater != null" >
+        #{updater,jdbcType=BIGINT},
+      </if>
+      <if test="updatedTime != null" >
+        #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="passengerPhone != null" >
+        #{passengerPhone,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ipath.orderflowservice.order.dao.bean.OrderPendingMapping" >
+    update public.order_pending_mapping
+    <set >
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="pendingState != null" >
+        pending_state = #{pendingState,jdbcType=BIT},
+      </if>
+      <if test="createor != null" >
+        createor = #{createor,jdbcType=BIGINT},
+      </if>
+      <if test="createdTime != null" >
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updater != null" >
+        updater = #{updater,jdbcType=BIGINT},
+      </if>
+      <if test="updatedTime != null" >
+        updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="passengerPhone != null" >
+        passenger_phone = #{passengerPhone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ipath.orderflowservice.order.dao.bean.OrderPendingMapping" >
+    update public.order_pending_mapping
+    set company_id = #{companyId,jdbcType=BIGINT},
+      order_id = #{orderId,jdbcType=BIGINT},
+      user_id = #{userId,jdbcType=BIGINT},
+      pending_state = #{pendingState,jdbcType=BIT},
+      createor = #{createor,jdbcType=BIGINT},
+      created_time = #{createdTime,jdbcType=TIMESTAMP},
+      updater = #{updater,jdbcType=BIGINT},
+      updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+      passenger_phone = #{passengerPhone,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from public.order_pending_mapping
+    where user_id = #{userId,jdbcType=BIGINT}
+  </select>
+</mapper>

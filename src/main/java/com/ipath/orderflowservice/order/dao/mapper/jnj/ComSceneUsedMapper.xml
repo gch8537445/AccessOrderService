@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ipath.orderflowservice.order.dao.ComSceneUsedMapper" >
+  <resultMap id="BaseResultMap" type="com.ipath.orderflowservice.order.dao.bean.ComSceneUsed" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="company_id" property="companyId" jdbcType="BIGINT" />
+    <result column="scene_id" property="sceneId" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="amount" property="amount" jdbcType="NUMERIC" />
+    <result column="createor" property="createor" jdbcType="BIGINT" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="updater" property="updater" jdbcType="BIGINT" />
+    <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="BIT" />
+    <result column="occupied_amount" property="occupiedAmount" jdbcType="NUMERIC" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, company_id, scene_id, user_id, amount, createor, created_time, updater, updated_time, 
+    is_delete, occupied_amount
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from com_scene_used
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from com_scene_used
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ipath.orderflowservice.order.dao.bean.ComSceneUsed" >
+    insert into com_scene_used (id, company_id, scene_id,
+      user_id, amount, createor, 
+      created_time, updater, updated_time, 
+      is_delete, occupied_amount)
+    values (#{id,jdbcType=BIGINT}, #{companyId,jdbcType=BIGINT}, #{sceneId,jdbcType=BIGINT}, 
+      #{userId,jdbcType=BIGINT}, #{amount,jdbcType=NUMERIC}, #{createor,jdbcType=BIGINT}, 
+      #{createdTime,jdbcType=TIMESTAMP}, #{updater,jdbcType=BIGINT}, #{updatedTime,jdbcType=TIMESTAMP}, 
+      #{isDelete,jdbcType=BIT}, #{occupiedAmount,jdbcType=NUMERIC})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ipath.orderflowservice.order.dao.bean.ComSceneUsed" >
+    insert into com_scene_used
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+      <if test="sceneId != null" >
+        scene_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="createor != null" >
+        createor,
+      </if>
+      <if test="createdTime != null" >
+        created_time,
+      </if>
+      <if test="updater != null" >
+        updater,
+      </if>
+      <if test="updatedTime != null" >
+        updated_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="occupiedAmount != null" >
+        occupied_amount,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="sceneId != null" >
+        #{sceneId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=NUMERIC},
+      </if>
+      <if test="createor != null" >
+        #{createor,jdbcType=BIGINT},
+      </if>
+      <if test="createdTime != null" >
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updater != null" >
+        #{updater,jdbcType=BIGINT},
+      </if>
+      <if test="updatedTime != null" >
+        #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="occupiedAmount != null" >
+        #{occupiedAmount,jdbcType=NUMERIC},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ipath.orderflowservice.order.dao.bean.ComSceneUsed" >
+    update com_scene_used
+    <set >
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="sceneId != null" >
+        scene_id = #{sceneId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=NUMERIC},
+      </if>
+      <if test="createor != null" >
+        createor = #{createor,jdbcType=BIGINT},
+      </if>
+      <if test="createdTime != null" >
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updater != null" >
+        updater = #{updater,jdbcType=BIGINT},
+      </if>
+      <if test="updatedTime != null" >
+        updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="occupiedAmount != null" >
+        occupied_amount = #{occupiedAmount,jdbcType=NUMERIC},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ipath.orderflowservice.order.dao.bean.ComSceneUsed" >
+    update com_scene_used
+    set company_id = #{companyId,jdbcType=BIGINT},
+      scene_id = #{sceneId,jdbcType=BIGINT},
+      user_id = #{userId,jdbcType=BIGINT},
+      amount = #{amount,jdbcType=NUMERIC},
+      createor = #{createor,jdbcType=BIGINT},
+      created_time = #{createdTime,jdbcType=TIMESTAMP},
+      updater = #{updater,jdbcType=BIGINT},
+      updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=BIT},
+      occupied_amount = #{occupiedAmount,jdbcType=NUMERIC}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectSceneUsedBySceneId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from com_scene_used
+    where scene_id = #{sceneId,jdbcType=BIGINT}
+  </select>
+
+  <update id="updateByPrimaryKeys" parameterType="java.util.List" >
+    update com_scene_used
+    set occupied_amount = 0
+    where 1=1
+    <if test="sceneIds != null" >
+      and scene_id in
+      <foreach collection="sceneIds" item="sceneId" open="(" separator="," close=")">
+        #{sceneId}
+      </foreach>
+    </if>
+  </update>
+</mapper>

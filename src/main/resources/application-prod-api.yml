@@ -1,0 +1,125 @@
+# 中台生产环境
+icar:
+  url: https://ipathcar.imtpath.net
+  appid: app2854554918
+  secret: kD3vtexPXvf4OMuhUnFb1A6Es51N5JU0w8Wu0fWUr38s3637dyF54ntXQ554i918
+
+# 支付中心
+ipay:
+  configId: prodsgnewicar
+  key: 56868158-5058-4EF9-BCAE-049CC41D4BE1
+
+rocketmq:
+  topic:
+    socket-order-info: socket-order-info-v20-api
+    order-info: order-info-api
+    order-notify: order-notify-api
+    cds-notify: cds-notify-api   # 通知客户服务
+    workflow-notify: workflow-notify-api
+    order-status-chg: order-status-chg-api # 订单状态变更通知
+  tags:
+    socket-order-info: order-info
+    location-request: location-request
+    location-result: location-result
+    detail-request: detail-request
+    detail-result: detail-result
+    order-notify: order-notify  # 通知configure服务
+    order-notify-cnpc: order-notify-cnpc  # 通知石油商旅
+    order-notify-h5: order-callback  # H5订单回传
+    after-approval-notify: after-approval-notify # 行后审批提交
+    approval-result-notify: approval-result-notify # 接收审批结果
+    pay-refund-notify: pay-refund-notify # 退款通知
+    pay-result-notify: pay-result-notify # 接收个人支付结果
+    coupon-consume-notify: coupon-consume-notify # 通知coupon相关服务
+    extra-notify: extra-notify # 通知extra相关服务
+    bill-notify: bill-notify # 通知bill相关服务
+    order-notify-third: order-notify-third  # 通知第三方
+    report-order: report-order
+    report-approval: report-approval
+    report-bill: report-bill
+    process-notify: process-notify # 通知bill服务
+    complaint-notify: complaint-notify
+    report-appendplaceorder: report-appendplaceorder
+    order-reject-pay: pay-success
+    abnormal-rule: abnormal-rule  # 合规预警
+    workflow-order: order
+    process: order-process-tag
+  producer:
+    group: order-group-api
+    send-message-timeout: 10000
+  consumer:
+    group: order-group-api
+  report:
+    topic: order-chg-to-report-api
+    tag: order-status-chg-info
+  settle:
+    topic: order-chg-to-report-api
+    tag: order-settle-info
+  cancel:
+    topic: order-chg-to-report-api
+    tag: order-cancel-info
+  append:
+    topic: order-chg-to-report-api
+    tag: order-append-info
+  paid:
+    topic: order-chg-to-report-api
+    tag: order-paid-info
+  changeDest:
+    topic: order-chg-to-report-api
+    tag: order-change-dest-info
+  complaint:
+    topic: order-chg-to-report-api
+    tag: order-complaint-info
+  completion:
+    topic: order-chg-to-report-api
+    tag: order-completion-info
+  log: # 日志服务
+    topic: log-notify-api
+    tag: log-info
+    consumer-group: log-group-api
+  orderService: # 自产自消
+    topicDispatch: topic-dispatch-api # 极速派单
+    tagPlaceOrder: tag-place-order # 延时下单
+    group: order-servcie-group-api
+  orderStatusChg:
+    topic: order-status-notify-api
+    tag: order-status-info
+    group: mq-group-api
+
+ipath:
+  specialCustomer: 302269344182469
+  carLevelName: 舒适
+
+mobileUrl: "https://prd-stdv2-vone.imtpath.net"
+
+notifyUrl:
+  notifyPay: https://prd-ka-gateway.imtpath.net/api/v2/partner/order/notifyPay
+  notifyPayRefund: https://prd-ka-gateway.imtpath.net/api/v2/partner/order/notifyRefund
+
+#平台/司机取消重新派单 开关
+rePlaceOrderAfterCoreCancelSwitch: true
+
+log:
+  enabled: true
+  level: 0
+  url: https://prd-admin-api.imtpath.net/stage-api/log/interface/save
+
+serviceMessage:
+  # 腾讯云推文模板id
+  tencent:
+    companyId: 12526820426
+    # 流程操作通知
+    processOperationNotificationTemplateId: 7wnZI-heaG_8vqBKBNRFHmRhgXjmsPuiwI8WtVKiEI0
+  wpp:
+    companyId: 12595850013
+    # 流程操作通知
+    processOperationNotificationTemplateId: b5KFvBQ57aewwbxtlcq-5IwFkaiuSjW0cmLx_9EambU
+
+
+# 赛诺菲 同步个人会议的企业id
+sync:
+  meeting:
+    companyId: 12589855239
+
+company:
+  merk: 12600927080

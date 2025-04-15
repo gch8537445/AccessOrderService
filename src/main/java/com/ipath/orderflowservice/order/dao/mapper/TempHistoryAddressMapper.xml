@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ipath.orderflowservice.order.dao.TempHistoryAddressMapper">
+  <resultMap id="BaseResultMap" type="com.ipath.orderflowservice.order.dao.bean.TempHistoryAddress">
+    <result column="userid" jdbcType="BIGINT" property="userid" />
+    <result column="locationname" jdbcType="VARCHAR" property="locationname" />
+    <result column="location" jdbcType="VARCHAR" property="location" />
+    <result column="citycode" jdbcType="INTEGER" property="citycode" />
+    <result column="cityname" jdbcType="VARCHAR" property="cityname" />
+    <result column="lng" jdbcType="DOUBLE" property="lng" />
+    <result column="lat" jdbcType="DOUBLE" property="lat" />
+    <result column="poi" jdbcType="VARCHAR" property="poi" />
+    <result column="r_num" jdbcType="BIGINT" property="rNum" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    userid, locationname, location, citycode, cityname, lng, lat, poi, r_num
+  </sql>
+  <insert id="insert" parameterType="com.ipath.orderflowservice.order.dao.bean.TempHistoryAddress">
+    insert into public.temp_history_address (userid, locationname, location, 
+      citycode, cityname, lng, 
+      lat, poi, r_num)
+    values (#{userid,jdbcType=BIGINT}, #{locationname,jdbcType=VARCHAR}, #{location,jdbcType=VARCHAR}, 
+      #{citycode,jdbcType=INTEGER}, #{cityname,jdbcType=VARCHAR}, #{lng,jdbcType=DOUBLE}, 
+      #{lat,jdbcType=DOUBLE}, #{poi,jdbcType=VARCHAR}, #{rNum,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ipath.orderflowservice.order.dao.bean.TempHistoryAddress">
+    insert into public.temp_history_address
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="locationname != null">
+        locationname,
+      </if>
+      <if test="location != null">
+        location,
+      </if>
+      <if test="citycode != null">
+        citycode,
+      </if>
+      <if test="cityname != null">
+        cityname,
+      </if>
+      <if test="lng != null">
+        lng,
+      </if>
+      <if test="lat != null">
+        lat,
+      </if>
+      <if test="poi != null">
+        poi,
+      </if>
+      <if test="rNum != null">
+        r_num,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="locationname != null">
+        #{locationname,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null">
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="citycode != null">
+        #{citycode,jdbcType=INTEGER},
+      </if>
+      <if test="cityname != null">
+        #{cityname,jdbcType=VARCHAR},
+      </if>
+      <if test="lng != null">
+        #{lng,jdbcType=DOUBLE},
+      </if>
+      <if test="lat != null">
+        #{lat,jdbcType=DOUBLE},
+      </if>
+      <if test="poi != null">
+        #{poi,jdbcType=VARCHAR},
+      </if>
+      <if test="rNum != null">
+        #{rNum,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from public.temp_history_address
+  </select>
+</mapper>

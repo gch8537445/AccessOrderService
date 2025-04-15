@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <!-- <classPathEntry location="src/main/webapp/WEB-INF/lib/st_cmp_fk.jar"/>
+    <classPathEntry location="src/main/webapp/WEB-INF/lib/postgresql-9.4-1201-jdbc41.jar"/> -->
+    <context id="MBG" targetRuntime="MyBatis3"  defaultModelType="flat">
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+        <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">  
+            <property name="searchString" value="Example$" />
+            <property name="replaceString" value="Criteria" />
+        </plugin>
+        <commentGenerator>  
+            <property name="suppressAllComments" value="true" />
+            <property name="suppressDate" value="true"/>  
+        </commentGenerator>
+          
+        <jdbcConnection driverClass="org.postgresql.Driver"
+            connectionURL="jdbc:postgresql://172.16.5.202:15432/ipath-0021"
+            userId="ipath-0021"
+            password="$DCL!0pcbwq@wt5e" />
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals"  value="false"/>
+        </javaTypeResolver>
+
+        <!--
+            将原mapper.xml文件改名，
+            修改以下package路径，tableName, domainObjectName
+            生成后，手工比较新老xml和java，保留手工添加的代码。
+            insertSelective可能需要添加  useGeneratedKeys="true" keyProperty="Idname"
+        -->
+        <javaModelGenerator targetPackage="com.ipath.orderflowservice.order.dao.bean" targetProject="src/main/java" />
+        <sqlMapGenerator targetPackage="com.ipath.orderflowservice.order.dao.mapper" targetProject="src/main/java" />
+        <javaClientGenerator targetPackage="com.ipath.orderflowservice.order.dao" targetProject="src/main/java" type="XMLMAPPER" />
+
+        <table schema="public" tableName="user_base"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"
+               domainObjectName="UserBase" >
+        </table>
+        <!--
+                        <table schema="public" tableName="temp_history_address"
+                                enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"
+                                domainObjectName="TempHistoryAddress" >
+                        </table>
+
+                                <table schema="public" tableName="amgen_po"
+                                       enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"
+                                       domainObjectName="AmgenPo" >
+                                </table>
+
+                                        <table schema="public" tableName="order_apply"
+                                               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"
+                                               domainObjectName="OrderApply" >
+                                        </table>
+
+                                        <table schema="public" tableName="order_apply_history"
+                                               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"
+                                               domainObjectName="OrderApplyHistory" >
+                                        </table>
+
+                                        <table schema="public" tableName="user_base"
+                                               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"
+                                               domainObjectName="UserBase" >
+                                        </table>
+
+                                        <table schema="public" tableName="user_dept"
+                                               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"
+                                               domainObjectName="UserDept" >
+                                        </table>
+                                -->
+<!--        <table schema="public" tableName="company_callback_config"-->
+<!--               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"-->
+<!--               domainObjectName="CompanyCallbackConfig" >-->
+<!--        </table>-->
+
+<!--        <table schema="public" tableName="com_scene_used"-->
+<!--               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"-->
+<!--               domainObjectName="ComSceneUsed" >-->
+<!--        </table>-->
+
+<!--        <table schema="public" tableName="com_scene_para"-->
+<!--               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"-->
+<!--               domainObjectName="ComScenePara" >-->
+<!--        </table>-->
+
+<!--        <table schema="public" tableName="company_setting"-->
+<!--               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"-->
+<!--               domainObjectName="CompanySetting" >-->
+<!--        </table>-->
+
+<!--        <table schema="public" tableName="order_personal_payment"-->
+<!--               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"-->
+<!--               domainObjectName="OrderPersonalPayment" >-->
+<!--        </table>-->
+<!--        <table schema="public" tableName="company_amap_auth_config"-->
+<!--               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"-->
+<!--               domainObjectName="CompanyAmapAuthConfig" >-->
+<!--        </table>-->
+<!--
+        <table schema="public" tableName="order_change_dest_log"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"
+               domainObjectName="OrderChangeDestLog" >
+        </table>
+
+        <table schema="public" tableName="user_dept_account"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"
+               domainObjectName="UserDeptAccount" >
+        </table>
+
+        <table schema="public" tableName="com_scene_used"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"
+               domainObjectName="ComSceneUsed" >
+        </table>
+
+        <table schema="public" tableName="order_complaint"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"
+               domainObjectName="OrderComplaint" >
+        </table>
+
+        <table schema="public" tableName="order_coupon"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"
+               domainObjectName="OrderCoupon" >
+        </table>
+
+        <table schema="public" tableName="order_extra_service"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"
+               domainObjectName="OrderExtraService" >
+        </table>
+
+        <table schema="public" tableName="order_feedback"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"
+               domainObjectName="OrderFeedback" >
+        </table>
+
+        <table schema="public" tableName="order_keeper"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"
+               domainObjectName="OrderKeeper" >
+        </table>
+
+        <table schema="public" tableName="order_keeper_log"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"
+               domainObjectName="OrderKeeperLog" >
+        </table>
+
+        <table schema="public" tableName="order_payment"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"
+               domainObjectName="OrderPayment" >
+        </table>
+
+        <table schema="public" tableName="company_base"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"
+               domainObjectName="CompanyBase" >
+        </table>
+
+        <table schema="public" tableName="department"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"
+               domainObjectName="Department" >
+        </table>
+
+        <table schema="public" tableName="department_base"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"
+               domainObjectName="DepartmentBase" >
+        </table>
+
+        <table schema="public" tableName="user_base"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"
+               domainObjectName="UserBase" >
+        </table>
+
+        <table schema="public" tableName="department"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"
+               domainObjectName="Department" >
+        </table>
+
+        <table schema="public" tableName="admin"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"
+               domainObjectName="Admin" >
+        </table>
+
+        <table schema="public" tableName="user_coupon"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"
+               domainObjectName="UserCoupon" >
+        </table>
+
+        <table schema="public" tableName="user_dept"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"
+               domainObjectName="UserDept" >
+        </table>
+
+        <table schema="public" tableName="user_dept_account"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"
+               domainObjectName="UserDeptAccount" >
+        </table>
+
+        <table schema="public" tableName="user_pay"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"
+               domainObjectName="UserPay" >
+        </table>
+
+        <table schema="public" tableName="user_pay_order"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"
+               domainObjectName="UserPayOrder" >
+        </table>
+
+        <table schema="public" tableName="user_order"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"
+               domainObjectName="UserOrder" >
+        </table>
+-->
+    </context>
+</generatorConfiguration>

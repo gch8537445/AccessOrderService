@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ipath.orderflowservice.order.dao.CityMappingMapper" >
+  <resultMap id="BaseResultMap" type="com.ipath.orderflowservice.order.dao.bean.CityMapping" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="company_id" property="companyId" jdbcType="BIGINT" />
+    <result column="our_city_id" property="ourCityId" jdbcType="VARCHAR" />
+    <result column="our_city_name" property="ourCityName" jdbcType="VARCHAR" />
+    <result column="partner_city_id" property="partnerCityId" jdbcType="VARCHAR" />
+    <result column="partner_city_name" property="partnerCityName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, company_id, our_city_id, our_city_name, partner_city_id, partner_city_name
+  </sql>
+
+  <select id="selectByCompanyId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from city_mapping
+    where company_id = #{companyId,jdbcType=BIGINT}
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from city_mapping
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from city_mapping
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ipath.orderflowservice.order.dao.bean.CityMapping" >
+    insert into city_mapping (id, company_id, our_city_id,
+      our_city_name, partner_city_id, partner_city_name
+      )
+    values (#{id,jdbcType=BIGINT}, #{companyId,jdbcType=BIGINT}, #{ourCityId,jdbcType=VARCHAR}, 
+      #{ourCityName,jdbcType=VARCHAR}, #{partnerCityId,jdbcType=VARCHAR}, #{partnerCityName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ipath.orderflowservice.order.dao.bean.CityMapping" >
+    insert into city_mapping
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+      <if test="ourCityId != null" >
+        our_city_id,
+      </if>
+      <if test="ourCityName != null" >
+        our_city_name,
+      </if>
+      <if test="partnerCityId != null" >
+        partner_city_id,
+      </if>
+      <if test="partnerCityName != null" >
+        partner_city_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="ourCityId != null" >
+        #{ourCityId,jdbcType=VARCHAR},
+      </if>
+      <if test="ourCityName != null" >
+        #{ourCityName,jdbcType=VARCHAR},
+      </if>
+      <if test="partnerCityId != null" >
+        #{partnerCityId,jdbcType=VARCHAR},
+      </if>
+      <if test="partnerCityName != null" >
+        #{partnerCityName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ipath.orderflowservice.order.dao.bean.CityMapping" >
+    update city_mapping
+    <set >
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="ourCityId != null" >
+        our_city_id = #{ourCityId,jdbcType=VARCHAR},
+      </if>
+      <if test="ourCityName != null" >
+        our_city_name = #{ourCityName,jdbcType=VARCHAR},
+      </if>
+      <if test="partnerCityId != null" >
+        partner_city_id = #{partnerCityId,jdbcType=VARCHAR},
+      </if>
+      <if test="partnerCityName != null" >
+        partner_city_name = #{partnerCityName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ipath.orderflowservice.order.dao.bean.CityMapping" >
+    update city_mapping
+    set company_id = #{companyId,jdbcType=BIGINT},
+      our_city_id = #{ourCityId,jdbcType=VARCHAR},
+      our_city_name = #{ourCityName,jdbcType=VARCHAR},
+      partner_city_id = #{partnerCityId,jdbcType=VARCHAR},
+      partner_city_name = #{partnerCityName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

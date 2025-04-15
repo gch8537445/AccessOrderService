@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ipath.orderflowservice.order.dao.OrderChangeDestLogMapper" >
+  <resultMap id="BaseResultMap" type="com.ipath.orderflowservice.order.dao.bean.OrderChangeDestLog" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="order_source_id" property="orderSourceId" jdbcType="BIGINT" />
+    <result column="old_city_code" property="oldCityCode" jdbcType="VARCHAR" />
+    <result column="old_city_name" property="oldCityName" jdbcType="VARCHAR" />
+    <result column="old_location" property="oldLocation" jdbcType="VARCHAR" />
+    <result column="old_location_name" property="oldLocationName" jdbcType="VARCHAR" />
+    <result column="old_lat" property="oldLat" jdbcType="VARCHAR" />
+    <result column="old_lng" property="oldLng" jdbcType="VARCHAR" />
+    <result column="car_location" property="carLocation" jdbcType="VARCHAR" />
+    <result column="car_location_name" property="carLocationName" jdbcType="VARCHAR" />
+    <result column="car_lat" property="carLat" jdbcType="VARCHAR" />
+    <result column="car_lng" property="carLng" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="order_id" property="orderId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, order_source_id, old_city_code, old_city_name, old_location, old_location_name, 
+    old_lat, old_lng, car_location, car_location_name, car_lat, car_lng, create_time, 
+    order_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from order_change_dest_log
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from order_change_dest_log
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ipath.orderflowservice.order.dao.bean.OrderChangeDestLog" >
+    insert into order_change_dest_log (id, order_source_id, old_city_code,
+      old_city_name, old_location, old_location_name, 
+      old_lat, old_lng, car_location, 
+      car_location_name, car_lat, car_lng, 
+      create_time, order_id)
+    values (#{id,jdbcType=BIGINT}, #{orderSourceId,jdbcType=BIGINT}, #{oldCityCode,jdbcType=VARCHAR}, 
+      #{oldCityName,jdbcType=VARCHAR}, #{oldLocation,jdbcType=VARCHAR}, #{oldLocationName,jdbcType=VARCHAR}, 
+      #{oldLat,jdbcType=VARCHAR}, #{oldLng,jdbcType=VARCHAR}, #{carLocation,jdbcType=VARCHAR}, 
+      #{carLocationName,jdbcType=VARCHAR}, #{carLat,jdbcType=VARCHAR}, #{carLng,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{orderId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ipath.orderflowservice.order.dao.bean.OrderChangeDestLog" >
+    insert into order_change_dest_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderSourceId != null" >
+        order_source_id,
+      </if>
+      <if test="oldCityCode != null" >
+        old_city_code,
+      </if>
+      <if test="oldCityName != null" >
+        old_city_name,
+      </if>
+      <if test="oldLocation != null" >
+        old_location,
+      </if>
+      <if test="oldLocationName != null" >
+        old_location_name,
+      </if>
+      <if test="oldLat != null" >
+        old_lat,
+      </if>
+      <if test="oldLng != null" >
+        old_lng,
+      </if>
+      <if test="carLocation != null" >
+        car_location,
+      </if>
+      <if test="carLocationName != null" >
+        car_location_name,
+      </if>
+      <if test="carLat != null" >
+        car_lat,
+      </if>
+      <if test="carLng != null" >
+        car_lng,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderSourceId != null" >
+        #{orderSourceId,jdbcType=BIGINT},
+      </if>
+      <if test="oldCityCode != null" >
+        #{oldCityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="oldCityName != null" >
+        #{oldCityName,jdbcType=VARCHAR},
+      </if>
+      <if test="oldLocation != null" >
+        #{oldLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="oldLocationName != null" >
+        #{oldLocationName,jdbcType=VARCHAR},
+      </if>
+      <if test="oldLat != null" >
+        #{oldLat,jdbcType=VARCHAR},
+      </if>
+      <if test="oldLng != null" >
+        #{oldLng,jdbcType=VARCHAR},
+      </if>
+      <if test="carLocation != null" >
+        #{carLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="carLocationName != null" >
+        #{carLocationName,jdbcType=VARCHAR},
+      </if>
+      <if test="carLat != null" >
+        #{carLat,jdbcType=VARCHAR},
+      </if>
+      <if test="carLng != null" >
+        #{carLng,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ipath.orderflowservice.order.dao.bean.OrderChangeDestLog" >
+    update order_change_dest_log
+    <set >
+      <if test="orderSourceId != null" >
+        order_source_id = #{orderSourceId,jdbcType=BIGINT},
+      </if>
+      <if test="oldCityCode != null" >
+        old_city_code = #{oldCityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="oldCityName != null" >
+        old_city_name = #{oldCityName,jdbcType=VARCHAR},
+      </if>
+      <if test="oldLocation != null" >
+        old_location = #{oldLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="oldLocationName != null" >
+        old_location_name = #{oldLocationName,jdbcType=VARCHAR},
+      </if>
+      <if test="oldLat != null" >
+        old_lat = #{oldLat,jdbcType=VARCHAR},
+      </if>
+      <if test="oldLng != null" >
+        old_lng = #{oldLng,jdbcType=VARCHAR},
+      </if>
+      <if test="carLocation != null" >
+        car_location = #{carLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="carLocationName != null" >
+        car_location_name = #{carLocationName,jdbcType=VARCHAR},
+      </if>
+      <if test="carLat != null" >
+        car_lat = #{carLat,jdbcType=VARCHAR},
+      </if>
+      <if test="carLng != null" >
+        car_lng = #{carLng,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ipath.orderflowservice.order.dao.bean.OrderChangeDestLog" >
+    update order_change_dest_log
+    set order_source_id = #{orderSourceId,jdbcType=BIGINT},
+      old_city_code = #{oldCityCode,jdbcType=VARCHAR},
+      old_city_name = #{oldCityName,jdbcType=VARCHAR},
+      old_location = #{oldLocation,jdbcType=VARCHAR},
+      old_location_name = #{oldLocationName,jdbcType=VARCHAR},
+      old_lat = #{oldLat,jdbcType=VARCHAR},
+      old_lng = #{oldLng,jdbcType=VARCHAR},
+      car_location = #{carLocation,jdbcType=VARCHAR},
+      car_location_name = #{carLocationName,jdbcType=VARCHAR},
+      car_lat = #{carLat,jdbcType=VARCHAR},
+      car_lng = #{carLng,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      order_id = #{orderId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <!-- 以下手工添加 -->
+  <select id="selectByOrderId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+      top 1
+    <include refid="Base_Column_List" />
+    from order_change_dest_log
+    where order_id = #{orderId,jdbcType=BIGINT}
+    ;
+  </select>
+
+</mapper>

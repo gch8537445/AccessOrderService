@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ipath.orderflowservice.order.dao.OrderApplyMapper" >
+  <resultMap id="BaseResultMap" type="com.ipath.orderflowservice.order.dao.bean.OrderApply" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="order_id" property="orderId" jdbcType="BIGINT" />
+    <result column="state" property="state" jdbcType="SMALLINT" />
+    <result column="approver_user_ids" property="approverUserIds" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="amount" property="amount" jdbcType="NUMERIC" />
+    <result column="warning" property="warning" jdbcType="BIT" />
+    <result column="warning_remind" property="warningRemind" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, order_id, state, approver_user_ids, create_time, user_id, amount, 
+    warning, warning_remind
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from order_apply
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from order_apply
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ipath.orderflowservice.order.dao.bean.OrderApply" >
+    insert into order_apply (id, order_id, state,
+      approver_user_ids, create_time, 
+      user_id, amount, warning, 
+      warning_remind)
+    values (#{id,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, #{state,jdbcType=SMALLINT}, 
+      #{approverUserIds,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{userId,jdbcType=BIGINT}, #{amount,jdbcType=NUMERIC}, #{warning,jdbcType=BIT}, 
+      #{warningRemind,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ipath.orderflowservice.order.dao.bean.OrderApply" >
+    insert into order_apply
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="approverUserIds != null" >
+        approver_user_ids,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="warning != null" >
+        warning,
+      </if>
+      <if test="warningRemind != null" >
+        warning_remind,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=SMALLINT},
+      </if>
+      <if test="approverUserIds != null" >
+        #{approverUserIds,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=NUMERIC},
+      </if>
+      <if test="warning != null" >
+        #{warning,jdbcType=BIT},
+      </if>
+      <if test="warningRemind != null" >
+        #{warningRemind,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ipath.orderflowservice.order.dao.bean.OrderApply" >
+    update order_apply
+    <set >
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=SMALLINT},
+      </if>
+      <if test="approverUserIds != null" >
+        approver_user_ids = #{approverUserIds,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=NUMERIC},
+      </if>
+      <if test="warning != null" >
+        warning = #{warning,jdbcType=BIT},
+      </if>
+      <if test="warningRemind != null" >
+        warning_remind = #{warningRemind,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ipath.orderflowservice.order.dao.bean.OrderApply" >
+    update order_apply
+    set order_id = #{orderId,jdbcType=BIGINT},
+      state = #{state,jdbcType=SMALLINT},
+      approver_user_ids = #{approverUserIds,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      user_id = #{userId,jdbcType=BIGINT},
+      amount = #{amount,jdbcType=NUMERIC},
+      warning = #{warning,jdbcType=BIT},
+      warning_remind = #{warningRemind,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <!-- 以下手工添加 -->
+  <!-- 查询某用户待审核订单数量 -->
+  <select id="selectWaitApproveOrderCount" parameterType="java.lang.String" resultType="java.lang.Integer">
+    select 
+      count(1)
+    from order_apply
+    where
+      <!--自动审批配置需求 更新:  审批人为自己忽略待审批数据-->
+      cast(user_id as varchar) <![CDATA[<>]]> #{approverUserId,jdbcType=VARCHAR}
+
+      AND EXISTS (
+          SELECT 1
+          FROM STRING_SPLIT(approver_user_ids, ',') AS split_ids
+          WHERE split_ids.value = #{approverUserId,jdbcType=VARCHAR}
+      )  
+      and state = 1
+  </select>
+
+  <resultMap id="OrderApplyListVo" type="com.ipath.orderflowservice.order.dao.vo.OrderApplyListVo">
+    <result column="apply_id" property="applyId" javaType="String" />
+    <result column="order_id" property="orderId" javaType="String" />
+    <result column="is_upgrade" property="isUpgrade" javaType="Boolean" />
+    <result column="amount" property="amount" jdbcType="NUMERIC" />
+    <result column="depart_city_code" property="cityCode" jdbcType="VARCHAR" />
+    <result column="depart_city_name" property="cityName" jdbcType="VARCHAR" />
+    <result column="source_code" property="sourceCode" jdbcType="VARCHAR" />
+    <result column="car_sources" property="carSource" jdbcType="VARCHAR" />
+    <result column="name_cn" property="userNameCn" jdbcType="VARCHAR" />
+    <result column="name_en" property="userNameEn" jdbcType="VARCHAR" />
+    <result column="depart_time" property="departTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="pickup_location_name" property="pickupLocationName" jdbcType="VARCHAR" />
+    <result column="dest_location_name" property="destLocationName" jdbcType="VARCHAR" />
+    <result column="travel_distance" property="distance" jdbcType="NUMERIC" />
+    <result column="warning_remind" property="warningRemind" jdbcType="VARCHAR" />
+    <result column="state" property="orderState" jdbcType="SMALLINT" />
+    <result column="car_level" property="carLevel" jdbcType="INTEGER" />
+    <result column="service_type" property="serviceType" jdbcType="SMALLINT" />
+    <result column="source_name_cn" property="sourceNameCn" jdbcType="VARCHAR" />
+    <result column="is_abnormal" property="isAbnormal" javaType="Boolean" />
+    <result column="custom_info" property="customInfo" jdbcType="VARCHAR" />
+    <result column="pre_depart_apply_id" property="rulePreDepartApplyId" jdbcType="VARCHAR" />
+    <result column="scene_code" property="sceneCode" jdbcType="VARCHAR" />
+    <result column="scene_name_cn" property="sceneNameCn" jdbcType="VARCHAR" />
+    <result column="use_car_reason" property="useCarReason" jdbcType="VARCHAR" />
+  </resultMap>
+  <!-- 审批人查询自己名下待自己审批的申请，查询参数userId传审批人id -->
+  <select id="selectOrderApplyList" resultMap="OrderApplyListVo" parameterType="com.ipath.orderflowservice.order.dao.param.QueryOrderCriteria" >
+    select 
+      oa.id as apply_id,
+      oa.order_id,
+      oa.amount,
+      oa.warning,
+      oa.warning_remind,
+      ob.is_upgrade,
+      ob.state,
+      ob.depart_city_code,
+      ob.depart_city_name,
+      os.source_code,
+      ob.car_sources,
+      ob.create_time,
+      ob.depart_time,
+      ob.pickup_location_name,
+      ob.dest_location_name,
+      ob.is_abnormal,
+      ob.custom_info,
+      ob.service_type,
+      ub.name_cn,
+      ub.name_en,
+      os.car_level,
+      os.source_name_cn,
+      os.travel_distance,
+      DATEDIFF(minute, os.travel_begin_time, os.travel_end_time) as duration,
+      oa.pre_depart_apply_id as rule_pre_depart_apply_id,
+      cs.code scene_code,
+      ob.scene_name_cn,
+      ob.use_car_reason
+    from order_apply oa
+    left join order_base ob on ob.id=oa.order_id
+    left join order_source os on os.order_id=oa.order_id
+    left join user_base ub on ub.id=oa.user_id
+    left join com_scene cs on cs.id = ob.scene_id
+    where 1=1
+    <!--自动审批配置需求 更新:  审批人为自己忽略待审批数据-->
+    and cast(oa.user_id as varchar) <![CDATA[<>]]> #{approverUserId,jdbcType=VARCHAR}
+    <if test="approverUserId != null" >
+        AND EXISTS (
+        SELECT 1
+        FROM STRING_SPLIT(approver_user_ids, ',') AS split_ids
+        WHERE split_ids.value = #{approverUserId,jdbcType=VARCHAR}
+        )
+    </if>
+    <if test="beginDate != null" >
+      and ob.create_time >= #{beginDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="endDate != null" >
+      and ob.create_time <![CDATA[<=]]> #{endDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="stateList != null" >
+      and oa.state in 
+      <foreach collection="stateList" item="state" open="(" separator="," close=")">
+        #{state}
+      </foreach>
+    </if>
+    order by ob.id desc
+  </select>
+
+  <select id="selectOrderApplyCnt" resultType="java.lang.Integer" parameterType="com.ipath.orderflowservice.order.dao.param.QueryOrderCriteria" >
+    select 
+      count(1)
+    from order_apply oa
+    left join order_base ob on ob.id=oa.order_id
+    left join order_source os on os.order_id=oa.order_id
+    left join user_base ub on ub.id=oa.user_id
+    where 1=1
+      <!--自动审批配置需求 更新:  审批人为自己忽略待审批数据-->
+      and cast(oa.user_id as varchar) <![CDATA[<>]]>#{approverUserId,jdbcType=VARCHAR}
+    <if test="approverUserId != null" >
+        AND EXISTS (
+        SELECT 1
+        FROM STRING_SPLIT(approver_user_ids, ',') AS split_ids
+        WHERE split_ids.value = #{approverUserId,jdbcType=VARCHAR}
+        )
+    </if>
+    <if test="beginDate != null" >
+      and ob.create_time >= #{beginDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="endDate != null" >
+      and ob.create_time <![CDATA[<=]]> #{endDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="stateList != null" >
+      and oa.state in 
+      <foreach collection="stateList" item="state" open="(" separator="," close=")">
+        #{state}
+      </foreach>
+    </if>
+  </select>
+
+  <select id="selectByOrderId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+      top 1
+    <include refid="Base_Column_List" />
+    from order_apply
+    where order_id = #{orderId,jdbcType=BIGINT}
+    ;
+  </select>
+  <!-- 查询待审批订单 -->
+  <select id="selectPendingApproveList" resultMap="BaseResultMap" parameterType="com.ipath.orderflowservice.order.dao.param.QueryPendingApproval" >
+    with fact as (
+    select
+    max(id) as id,
+    order_id,
+    state
+    from order_apply_history
+    where state =1
+    group by order_id,state
+    )
+    select
+    oa.order_id ,
+    oah.state ,
+    oa.approver_user_ids ,
+    oa.user_id ,
+    oah.create_time
+    from order_apply oa
+    inner join user_base ub on ub.id=oa.user_id
+    inner join order_apply_history oah on oa.order_id = oah.order_id and oah.state =1
+    inner join fact on oah.order_id = fact.order_id
+    where oa.state =1
+    <if test=" endDate != null" >
+      and oah.create_time <![CDATA[<=]]> #{endDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="companyId != null" >
+      and ub.company_id = #{companyId,jdbcType=BIGINT}
+    </if>
+  </select>
+</mapper>

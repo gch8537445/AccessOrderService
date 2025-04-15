@@ -1,0 +1,933 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ipath.orderflowservice.order.dao.UserBaseMapper">
+  <resultMap id="BaseResultMap" type="com.ipath.orderflowservice.order.dao.bean.UserBase">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="company_id" jdbcType="BIGINT" property="companyId" />
+    <result column="name_cn" jdbcType="VARCHAR" property="nameCn" />
+    <result column="name_en" jdbcType="VARCHAR" property="nameEn" />
+    <result column="staff_code" jdbcType="VARCHAR" property="staffCode" />
+    <result column="social_app_user_id" jdbcType="VARCHAR" property="socialAppUserId" />
+    <result column="device_id" jdbcType="VARCHAR" property="deviceId" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="gender" jdbcType="SMALLINT" property="gender" />
+    <result column="job_title" jdbcType="VARCHAR" property="jobTitle" />
+    <result column="work_place" jdbcType="VARCHAR" property="workPlace" />
+    <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+    <result column="job_state" jdbcType="INTEGER" property="jobState" />
+    <result column="leave_date" jdbcType="TIMESTAMP" property="leaveDate" />
+    <result column="line_manager_social_app_user_id" jdbcType="VARCHAR" property="lineManagerSocialAppUserId" />
+    <result column="activity_state" jdbcType="SMALLINT" property="activityState" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="delete" jdbcType="BIT" property="delete" />
+    <result column="emergency_phone" jdbcType="VARCHAR" property="emergencyPhone" />
+    <result column="can_use_car" jdbcType="BIT" property="canUseCar" />
+    <result column="use_car_mode" jdbcType="SMALLINT" property="useCarMode" />
+    <result column="language" jdbcType="SMALLINT" property="language" />
+    <result column="line_manager_id" jdbcType="BIGINT" property="lineManagerId" />
+    <result column="social_app_type" jdbcType="INTEGER" property="socialAppType" />
+    <result column="line_manager_name" jdbcType="VARCHAR" property="lineManagerName" />
+    <result column="is_manager_changed" jdbcType="BIT" property="isManagerChanged" />
+    <result column="accept_agreement" jdbcType="BIT" property="acceptAgreement" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="accept_business_agreement" jdbcType="BIT" property="acceptBusinessAgreement" />
+    <result column="account_id" jdbcType="BIGINT" property="accountId" />
+    <result column="mobile_menu" jdbcType="VARCHAR" property="mobileMenu" />
+    <result column="personal_quota" jdbcType="NUMERIC" property="personalQuota" />
+    <result column="remain_quota" jdbcType="NUMERIC" property="remainQuota" />
+    <result column="backup_field_1" jdbcType="VARCHAR" property="backupField1" />
+    <result column="backup_field_2" jdbcType="VARCHAR" property="backupField2" />
+    <result column="backup_field_3" jdbcType="VARCHAR" property="backupField3" />
+    <result column="backup_field_4" jdbcType="VARCHAR" property="backupField4" />
+    <result column="backup_field_5" jdbcType="VARCHAR" property="backupField5" />
+    <result column="backup_field_6" jdbcType="VARCHAR" property="backupField6" />
+    <result column="backup_field_7" jdbcType="VARCHAR" property="backupField7" />
+    <result column="backup_field_8" jdbcType="VARCHAR" property="backupField8" />
+    <result column="backup_field_9" jdbcType="VARCHAR" property="backupField9" />
+    <result column="backup_field_10" jdbcType="VARCHAR" property="backupField10" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="user_code" jdbcType="VARCHAR" property="userCode" />
+    <result column="manager_code" jdbcType="VARCHAR" property="managerCode" />
+    <result column="low_carbon" jdbcType="BIT" property="lowCarbon" />
+    <result column="is_letter" jdbcType="BIT" property="isLetter" />
+    <result column="custom_info" jdbcType="VARCHAR" property="customInfo" />
+    <result column="is_privacy" jdbcType="BIT" property="isPrivacy" />
+    <result column="wx_entrustpay_id" jdbcType="VARCHAR" property="wxEntrustpayId" />
+    <result column="wx_entrustpay_state" jdbcType="SMALLINT" property="wxEntrustpayState" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, company_id, name_cn, name_en, staff_code, social_app_user_id, device_id, phone, 
+    email, gender, job_title, work_place, avatar, job_state, leave_date, line_manager_social_app_user_id, 
+    activity_state, create_time, update_time, delete, emergency_phone, can_use_car, use_car_mode, 
+    language, line_manager_id, social_app_type, line_manager_name, is_manager_changed, 
+    accept_agreement, remark, accept_business_agreement, account_id, mobile_menu, personal_quota,
+    remain_quota, backup_field_1, backup_field_2, backup_field_3, backup_field_4, backup_field_5,
+    backup_field_6, backup_field_7, backup_field_8, backup_field_9, backup_field_10,
+    user_id, user_code, manager_code, low_carbon, is_letter, custom_info, is_privacy,
+    wx_entrustpay_id, wx_entrustpay_state
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from public.user_base
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from public.user_base
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ipath.orderflowservice.order.dao.bean.UserBase">
+    insert into public.user_base (id, company_id, name_cn, 
+      name_en, staff_code, social_app_user_id, 
+      device_id, phone, email, 
+      gender, job_title, work_place, 
+      avatar, job_state, leave_date, 
+      line_manager_social_app_user_id, activity_state, 
+      create_time, update_time, delete, 
+      emergency_phone, can_use_car, use_car_mode, 
+      language, line_manager_id, social_app_type, 
+      line_manager_name, is_manager_changed, accept_agreement, 
+      remark, accept_business_agreement, account_id,
+      mobile_menu, personal_quota, remain_quota,
+      backup_field_1, backup_field_2, backup_field_3,
+      backup_field_4, backup_field_5, backup_field_6,
+      backup_field_7, backup_field_8, backup_field_9,
+      backup_field_10, user_id, user_code,
+      manager_code, low_carbon, is_letter,
+      custom_info, is_privacy, wx_entrustpay_id,
+      wx_entrustpay_state)
+    values (#{id,jdbcType=BIGINT}, #{companyId,jdbcType=BIGINT}, #{nameCn,jdbcType=VARCHAR}, 
+      #{nameEn,jdbcType=VARCHAR}, #{staffCode,jdbcType=VARCHAR}, #{socialAppUserId,jdbcType=VARCHAR}, 
+      #{deviceId,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{gender,jdbcType=SMALLINT}, #{jobTitle,jdbcType=VARCHAR}, #{workPlace,jdbcType=VARCHAR}, 
+      #{avatar,jdbcType=VARCHAR}, #{jobState,jdbcType=INTEGER}, #{leaveDate,jdbcType=TIMESTAMP}, 
+      #{lineManagerSocialAppUserId,jdbcType=VARCHAR}, #{activityState,jdbcType=SMALLINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{delete,jdbcType=BIT}, 
+      #{emergencyPhone,jdbcType=VARCHAR}, #{canUseCar,jdbcType=BIT}, #{useCarMode,jdbcType=SMALLINT}, 
+      #{language,jdbcType=SMALLINT}, #{lineManagerId,jdbcType=BIGINT}, #{socialAppType,jdbcType=INTEGER}, 
+      #{lineManagerName,jdbcType=VARCHAR}, #{isManagerChanged,jdbcType=BIT}, #{acceptAgreement,jdbcType=BIT}, 
+      #{remark,jdbcType=VARCHAR}, #{acceptBusinessAgreement,jdbcType=BIT}, #{accountId,jdbcType=BIGINT},
+      #{mobileMenu,jdbcType=VARCHAR}, #{personalQuota,jdbcType=NUMERIC}, #{remainQuota,jdbcType=NUMERIC},
+      #{backupField1,jdbcType=VARCHAR}, #{backupField2,jdbcType=VARCHAR}, #{backupField3,jdbcType=VARCHAR},
+      #{backupField4,jdbcType=VARCHAR}, #{backupField5,jdbcType=VARCHAR}, #{backupField6,jdbcType=VARCHAR},
+      #{backupField7,jdbcType=VARCHAR}, #{backupField8,jdbcType=VARCHAR}, #{backupField9,jdbcType=VARCHAR},
+      #{backupField10,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{userCode,jdbcType=VARCHAR},
+      #{managerCode,jdbcType=VARCHAR}, #{lowCarbon,jdbcType=BIT}, #{isLetter,jdbcType=BIT},
+      #{customInfo,jdbcType=VARCHAR}, #{isPrivacy,jdbcType=BIT}, #{wxEntrustpayId,jdbcType=VARCHAR},
+      #{wxEntrustpayState,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ipath.orderflowservice.order.dao.bean.UserBase">
+    insert into public.user_base
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="nameCn != null">
+        name_cn,
+      </if>
+      <if test="nameEn != null">
+        name_en,
+      </if>
+      <if test="staffCode != null">
+        staff_code,
+      </if>
+      <if test="socialAppUserId != null">
+        social_app_user_id,
+      </if>
+      <if test="deviceId != null">
+        device_id,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="jobTitle != null">
+        job_title,
+      </if>
+      <if test="workPlace != null">
+        work_place,
+      </if>
+      <if test="avatar != null">
+        avatar,
+      </if>
+      <if test="jobState != null">
+        job_state,
+      </if>
+      <if test="leaveDate != null">
+        leave_date,
+      </if>
+      <if test="lineManagerSocialAppUserId != null">
+        line_manager_social_app_user_id,
+      </if>
+      <if test="activityState != null">
+        activity_state,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="delete != null">
+        delete,
+      </if>
+      <if test="emergencyPhone != null">
+        emergency_phone,
+      </if>
+      <if test="canUseCar != null">
+        can_use_car,
+      </if>
+      <if test="useCarMode != null">
+        use_car_mode,
+      </if>
+      <if test="language != null">
+        language,
+      </if>
+      <if test="lineManagerId != null">
+        line_manager_id,
+      </if>
+      <if test="socialAppType != null">
+        social_app_type,
+      </if>
+      <if test="lineManagerName != null">
+        line_manager_name,
+      </if>
+      <if test="isManagerChanged != null">
+        is_manager_changed,
+      </if>
+      <if test="acceptAgreement != null">
+        accept_agreement,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="acceptBusinessAgreement != null">
+        accept_business_agreement,
+      </if>
+      <if test="accountId != null">
+        account_id,
+      </if>
+      <if test="mobileMenu != null">
+        mobile_menu,
+      </if>
+      <if test="personalQuota != null">
+        personal_quota,
+      </if>
+      <if test="remainQuota != null">
+        remain_quota,
+      </if>
+      <if test="backupField1 != null">
+        backup_field_1,
+      </if>
+      <if test="backupField2 != null">
+        backup_field_2,
+      </if>
+      <if test="backupField3 != null">
+        backup_field_3,
+      </if>
+      <if test="backupField4 != null">
+        backup_field_4,
+      </if>
+      <if test="backupField5 != null">
+        backup_field_5,
+      </if>
+      <if test="backupField6 != null">
+        backup_field_6,
+      </if>
+      <if test="backupField7 != null">
+        backup_field_7,
+      </if>
+      <if test="backupField8 != null">
+        backup_field_8,
+      </if>
+      <if test="backupField9 != null">
+        backup_field_9,
+      </if>
+      <if test="backupField10 != null">
+        backup_field_10,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userCode != null">
+        user_code,
+      </if>
+      <if test="managerCode != null">
+        manager_code,
+      </if>
+      <if test="lowCarbon != null">
+        low_carbon,
+      </if>
+      <if test="isLetter != null">
+        is_letter,
+      </if>
+      <if test="customInfo != null">
+        custom_info,
+      </if>
+      <if test="isPrivacy != null">
+        is_privacy,
+      </if>
+      <if test="wxEntrustpayId != null">
+        wx_entrustpay_id,
+      </if>
+      <if test="wxEntrustpayState != null">
+        wx_entrustpay_state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="nameCn != null">
+        #{nameCn,jdbcType=VARCHAR},
+      </if>
+      <if test="nameEn != null">
+        #{nameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="staffCode != null">
+        #{staffCode,jdbcType=VARCHAR},
+      </if>
+      <if test="socialAppUserId != null">
+        #{socialAppUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceId != null">
+        #{deviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=SMALLINT},
+      </if>
+      <if test="jobTitle != null">
+        #{jobTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="workPlace != null">
+        #{workPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null">
+        #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="jobState != null">
+        #{jobState,jdbcType=INTEGER},
+      </if>
+      <if test="leaveDate != null">
+        #{leaveDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lineManagerSocialAppUserId != null">
+        #{lineManagerSocialAppUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="activityState != null">
+        #{activityState,jdbcType=SMALLINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delete != null">
+        #{delete,jdbcType=BIT},
+      </if>
+      <if test="emergencyPhone != null">
+        #{emergencyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="canUseCar != null">
+        #{canUseCar,jdbcType=BIT},
+      </if>
+      <if test="useCarMode != null">
+        #{useCarMode,jdbcType=SMALLINT},
+      </if>
+      <if test="language != null">
+        #{language,jdbcType=SMALLINT},
+      </if>
+      <if test="lineManagerId != null">
+        #{lineManagerId,jdbcType=BIGINT},
+      </if>
+      <if test="socialAppType != null">
+        #{socialAppType,jdbcType=INTEGER},
+      </if>
+      <if test="lineManagerName != null">
+        #{lineManagerName,jdbcType=VARCHAR},
+      </if>
+      <if test="isManagerChanged != null">
+        #{isManagerChanged,jdbcType=BIT},
+      </if>
+      <if test="acceptAgreement != null">
+        #{acceptAgreement,jdbcType=BIT},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="acceptBusinessAgreement != null">
+        #{acceptBusinessAgreement,jdbcType=BIT},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=BIGINT},
+      </if>
+      <if test="mobileMenu != null">
+        #{mobileMenu,jdbcType=VARCHAR},
+      </if>
+      <if test="personalQuota != null">
+        #{personalQuota,jdbcType=NUMERIC},
+      </if>
+      <if test="remainQuota != null">
+        #{remainQuota,jdbcType=NUMERIC},
+      </if>
+      <if test="backupField1 != null">
+        #{backupField1,jdbcType=VARCHAR},
+      </if>
+      <if test="backupField2 != null">
+        #{backupField2,jdbcType=VARCHAR},
+      </if>
+      <if test="backupField3 != null">
+        #{backupField3,jdbcType=VARCHAR},
+      </if>
+      <if test="backupField4 != null">
+        #{backupField4,jdbcType=VARCHAR},
+      </if>
+      <if test="backupField5 != null">
+        #{backupField5,jdbcType=VARCHAR},
+      </if>
+      <if test="backupField6 != null">
+        #{backupField6,jdbcType=VARCHAR},
+      </if>
+      <if test="backupField7 != null">
+        #{backupField7,jdbcType=VARCHAR},
+      </if>
+      <if test="backupField8 != null">
+        #{backupField8,jdbcType=VARCHAR},
+      </if>
+      <if test="backupField9 != null">
+        #{backupField9,jdbcType=VARCHAR},
+      </if>
+      <if test="backupField10 != null">
+        #{backupField10,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userCode != null">
+        #{userCode,jdbcType=VARCHAR},
+      </if>
+      <if test="managerCode != null">
+        #{managerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="lowCarbon != null">
+        #{lowCarbon,jdbcType=BIT},
+      </if>
+      <if test="isLetter != null">
+        #{isLetter,jdbcType=BIT},
+      </if>
+      <if test="customInfo != null">
+        #{customInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="isPrivacy != null">
+        #{isPrivacy,jdbcType=BIT},
+      </if>
+      <if test="wxEntrustpayId != null">
+        #{wxEntrustpayId,jdbcType=VARCHAR},
+      </if>
+      <if test="wxEntrustpayState != null">
+        #{wxEntrustpayState,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ipath.orderflowservice.order.dao.bean.UserBase">
+    update public.user_base
+    <set>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="nameCn != null">
+        name_cn = #{nameCn,jdbcType=VARCHAR},
+      </if>
+      <if test="nameEn != null">
+        name_en = #{nameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="staffCode != null">
+        staff_code = #{staffCode,jdbcType=VARCHAR},
+      </if>
+      <if test="socialAppUserId != null">
+        social_app_user_id = #{socialAppUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceId != null">
+        device_id = #{deviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=SMALLINT},
+      </if>
+      <if test="jobTitle != null">
+        job_title = #{jobTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="workPlace != null">
+        work_place = #{workPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null">
+        avatar = #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="jobState != null">
+        job_state = #{jobState,jdbcType=INTEGER},
+      </if>
+      <if test="leaveDate != null">
+        leave_date = #{leaveDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lineManagerSocialAppUserId != null">
+        line_manager_social_app_user_id = #{lineManagerSocialAppUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="activityState != null">
+        activity_state = #{activityState,jdbcType=SMALLINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delete != null">
+        delete = #{delete,jdbcType=BIT},
+      </if>
+      <if test="emergencyPhone != null">
+        emergency_phone = #{emergencyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="canUseCar != null">
+        can_use_car = #{canUseCar,jdbcType=BIT},
+      </if>
+      <if test="useCarMode != null">
+        use_car_mode = #{useCarMode,jdbcType=SMALLINT},
+      </if>
+      <if test="language != null">
+        language = #{language,jdbcType=SMALLINT},
+      </if>
+      <if test="lineManagerId != null">
+        line_manager_id = #{lineManagerId,jdbcType=BIGINT},
+      </if>
+      <if test="socialAppType != null">
+        social_app_type = #{socialAppType,jdbcType=INTEGER},
+      </if>
+      <if test="lineManagerName != null">
+        line_manager_name = #{lineManagerName,jdbcType=VARCHAR},
+      </if>
+      <if test="isManagerChanged != null">
+        is_manager_changed = #{isManagerChanged,jdbcType=BIT},
+      </if>
+      <if test="acceptAgreement != null">
+        accept_agreement = #{acceptAgreement,jdbcType=BIT},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="acceptBusinessAgreement != null">
+        accept_business_agreement = #{acceptBusinessAgreement,jdbcType=BIT},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=BIGINT},
+      </if>
+      <if test="mobileMenu != null">
+        mobile_menu = #{mobileMenu,jdbcType=VARCHAR},
+      </if>
+      <if test="personalQuota != null">
+        personal_quota = #{personalQuota,jdbcType=NUMERIC},
+      </if>
+      <if test="remainQuota != null">
+        remain_quota = #{remainQuota,jdbcType=NUMERIC},
+      </if>
+      <if test="backupField1 != null">
+        backup_field_1 = #{backupField1,jdbcType=VARCHAR},
+      </if>
+      <if test="backupField2 != null">
+        backup_field_2 = #{backupField2,jdbcType=VARCHAR},
+      </if>
+      <if test="backupField3 != null">
+        backup_field_3 = #{backupField3,jdbcType=VARCHAR},
+      </if>
+      <if test="backupField4 != null">
+        backup_field_4 = #{backupField4,jdbcType=VARCHAR},
+      </if>
+      <if test="backupField5 != null">
+        backup_field_5 = #{backupField5,jdbcType=VARCHAR},
+      </if>
+      <if test="backupField6 != null">
+        backup_field_6 = #{backupField6,jdbcType=VARCHAR},
+      </if>
+      <if test="backupField7 != null">
+        backup_field_7 = #{backupField7,jdbcType=VARCHAR},
+      </if>
+      <if test="backupField8 != null">
+        backup_field_8 = #{backupField8,jdbcType=VARCHAR},
+      </if>
+      <if test="backupField9 != null">
+        backup_field_9 = #{backupField9,jdbcType=VARCHAR},
+      </if>
+      <if test="backupField10 != null">
+        backup_field_10 = #{backupField10,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userCode != null">
+        user_code = #{userCode,jdbcType=VARCHAR},
+      </if>
+      <if test="managerCode != null">
+        manager_code = #{managerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="lowCarbon != null">
+        low_carbon = #{lowCarbon,jdbcType=BIT},
+      </if>
+      <if test="isLetter != null">
+        is_letter = #{isLetter,jdbcType=BIT},
+      </if>
+      <if test="customInfo != null">
+        custom_info = #{customInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="isPrivacy != null">
+        is_privacy = #{isPrivacy,jdbcType=BIT},
+      </if>
+      <if test="wxEntrustpayId != null">
+        wx_entrustpay_id = #{wxEntrustpayId,jdbcType=VARCHAR},
+      </if>
+      <if test="wxEntrustpayState != null">
+        wx_entrustpay_state = #{wxEntrustpayState,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ipath.orderflowservice.order.dao.bean.UserBase">
+    update public.user_base
+    set company_id = #{companyId,jdbcType=BIGINT},
+      name_cn = #{nameCn,jdbcType=VARCHAR},
+      name_en = #{nameEn,jdbcType=VARCHAR},
+      staff_code = #{staffCode,jdbcType=VARCHAR},
+      social_app_user_id = #{socialAppUserId,jdbcType=VARCHAR},
+      device_id = #{deviceId,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=SMALLINT},
+      job_title = #{jobTitle,jdbcType=VARCHAR},
+      work_place = #{workPlace,jdbcType=VARCHAR},
+      avatar = #{avatar,jdbcType=VARCHAR},
+      job_state = #{jobState,jdbcType=INTEGER},
+      leave_date = #{leaveDate,jdbcType=TIMESTAMP},
+      line_manager_social_app_user_id = #{lineManagerSocialAppUserId,jdbcType=VARCHAR},
+      activity_state = #{activityState,jdbcType=SMALLINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      delete = #{delete,jdbcType=BIT},
+      emergency_phone = #{emergencyPhone,jdbcType=VARCHAR},
+      can_use_car = #{canUseCar,jdbcType=BIT},
+      use_car_mode = #{useCarMode,jdbcType=SMALLINT},
+      language = #{language,jdbcType=SMALLINT},
+      line_manager_id = #{lineManagerId,jdbcType=BIGINT},
+      social_app_type = #{socialAppType,jdbcType=INTEGER},
+      line_manager_name = #{lineManagerName,jdbcType=VARCHAR},
+      is_manager_changed = #{isManagerChanged,jdbcType=BIT},
+      accept_agreement = #{acceptAgreement,jdbcType=BIT},
+      remark = #{remark,jdbcType=VARCHAR},
+      accept_business_agreement = #{acceptBusinessAgreement,jdbcType=BIT},
+      account_id = #{accountId,jdbcType=BIGINT},
+      mobile_menu = #{mobileMenu,jdbcType=VARCHAR},
+      personal_quota = #{personalQuota,jdbcType=NUMERIC},
+      remain_quota = #{remainQuota,jdbcType=NUMERIC},
+      backup_field_1 = #{backupField1,jdbcType=VARCHAR},
+      backup_field_2 = #{backupField2,jdbcType=VARCHAR},
+      backup_field_3 = #{backupField3,jdbcType=VARCHAR},
+      backup_field_4 = #{backupField4,jdbcType=VARCHAR},
+      backup_field_5 = #{backupField5,jdbcType=VARCHAR},
+      backup_field_6 = #{backupField6,jdbcType=VARCHAR},
+      backup_field_7 = #{backupField7,jdbcType=VARCHAR},
+      backup_field_8 = #{backupField8,jdbcType=VARCHAR},
+      backup_field_9 = #{backupField9,jdbcType=VARCHAR},
+      backup_field_10 = #{backupField10,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      user_code = #{userCode,jdbcType=VARCHAR},
+      manager_code = #{managerCode,jdbcType=VARCHAR},
+      low_carbon = #{lowCarbon,jdbcType=BIT},
+      is_letter = #{isLetter,jdbcType=BIT},
+      custom_info = #{customInfo,jdbcType=VARCHAR},
+      is_privacy = #{isPrivacy,jdbcType=BIT},
+      wx_entrustpay_id = #{wxEntrustpayId,jdbcType=VARCHAR},
+      wx_entrustpay_state = #{wxEntrustpayState,jdbcType=SMALLINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <insert id="insertListSelective">
+    <foreach collection="list" index="index" item="item">
+      insert into public.user_base
+      <trim prefix="(" suffix=")" suffixOverrides=",">
+        <if test="item.id != null">
+          id,
+        </if>
+        <if test="item.companyId != null">
+          company_id,
+        </if>
+        <if test="item.nameCn != null">
+          name_cn,
+        </if>
+        <if test="item.nameEn != null">
+          name_en,
+        </if>
+        <if test="item.staffCode != null">
+          staff_code,
+        </if>
+        <if test="item.socialAppUserId != null">
+          social_app_user_id,
+        </if>
+        <if test="item.deviceId != null">
+          device_id,
+        </if>
+        <if test="item.phone != null">
+          phone,
+        </if>
+        <if test="item.email != null">
+          email,
+        </if>
+        <if test="item.gender != null">
+          gender,
+        </if>
+        <if test="item.jobTitle != null">
+          job_title,
+        </if>
+        <if test="item.workPlace != null">
+          work_place,
+        </if>
+        <if test="item.avatar != null">
+          avatar,
+        </if>
+        <if test="item.jobState != null">
+          job_state,
+        </if>
+        <if test="item.leaveDate != null">
+          leave_date,
+        </if>
+        <if test="item.lineManagerSocialAppUserId != null">
+          line_manager_social_app_user_id,
+        </if>
+        <if test="item.activityState != null">
+          activity_state,
+        </if>
+        <if test="item.createTime != null">
+          create_time,
+        </if>
+        <if test="item.updateTime != null">
+          update_time,
+        </if>
+        <if test="item.delete != null">
+          delete,
+        </if>
+        <if test="item.emergencyPhone != null">
+          emergency_phone,
+        </if>
+        <if test="item.canUseCar != null">
+          can_use_car,
+        </if>
+        <if test="item.useCarMode != null">
+          use_car_mode,
+        </if>
+        <if test="item.language != null">
+          language,
+        </if>
+        <if test="item.lineManagerId != null">
+          line_manager_id,
+        </if>
+        <if test="item.socialAppType != null">
+          social_app_type,
+        </if>
+        <if test="item.lineManagerName != null">
+          line_manager_name,
+        </if>
+        <if test="item.acceptAgreement != null">
+          accept_agreement,
+        </if>
+        <if test="item.acceptBusinessAgreement != null">
+          accept_business_agreement,
+        </if>
+      </trim>
+      <trim prefix="values (" suffix=")" suffixOverrides=",">
+        <if test="item.id != null">
+          #{item.id,jdbcType=BIGINT},
+        </if>
+        <if test="item.companyId != null">
+          #{item.companyId,jdbcType=BIGINT},
+        </if>
+        <if test="item.nameCn != null">
+          #{item.nameCn,jdbcType=VARCHAR},
+        </if>
+        <if test="item.nameEn != null">
+          #{item.nameEn,jdbcType=VARCHAR},
+        </if>
+        <if test="item.staffCode != null">
+          #{item.staffCode,jdbcType=VARCHAR},
+        </if>
+        <if test="item.socialAppUserId != null">
+          #{item.socialAppUserId,jdbcType=VARCHAR},
+        </if>
+        <if test="item.deviceId != null">
+          #{item.deviceId,jdbcType=VARCHAR},
+        </if>
+        <if test="item.phone != null">
+          #{item.phone,jdbcType=VARCHAR},
+        </if>
+        <if test="item.email != null">
+          #{item.email,jdbcType=VARCHAR},
+        </if>
+        <if test="item.gender != null">
+          #{item.gender,jdbcType=SMALLINT},
+        </if>
+        <if test="item.jobTitle != null">
+          #{item.jobTitle,jdbcType=VARCHAR},
+        </if>
+        <if test="item.workPlace != null">
+          #{item.workPlace,jdbcType=VARCHAR},
+        </if>
+        <if test="item.avatar != null">
+          #{item.avatar,jdbcType=VARCHAR},
+        </if>
+        <if test="item.jobState != null">
+          #{item.jobState,jdbcType=INTEGER},
+        </if>
+        <if test="item.leaveDate != null">
+          #{item.leaveDate,jdbcType=TIMESTAMP},
+        </if>
+        <if test="item.lineManagerSocialAppUserId != null">
+          #{item.lineManagerSocialAppUserId,jdbcType=VARCHAR},
+        </if>
+        <if test="item.activityState != null">
+          #{item.activityState,jdbcType=SMALLINT},
+        </if>
+        <if test="item.createTime != null">
+          #{item.createTime,jdbcType=TIMESTAMP},
+        </if>
+        <if test="item.updateTime != null">
+          #{item.updateTime,jdbcType=TIMESTAMP},
+        </if>
+        <if test="item.delete != null">
+          #{item.delete,jdbcType=BIT},
+        </if>
+        <if test="item.emergencyPhone != null">
+          #{item.emergencyPhone,jdbcType=VARCHAR},
+        </if>
+        <if test="item.canUseCar != null">
+          #{item.canUseCar,jdbcType=BIT},
+        </if>
+        <if test="item.useCarMode != null">
+          #{item.useCarMode,jdbcType=SMALLINT},
+        </if>
+        <if test="item.language != null">
+          #{item.language,jdbcType=SMALLINT},
+        </if>
+        <if test="item.lineManagerId != null">
+          #{item.lineManagerId,jdbcType=BIGINT},
+        </if>
+        <if test="item.socialAppType != null">
+          #{item.socialAppType,jdbcType=INTEGER},
+        </if>
+        <if test="item.lineManagerName != null">
+          #{item.lineManagerName,jdbcType=VARCHAR},
+        </if>
+        <if test="item.acceptAgreement != null">
+          #{item.acceptAgreement,jdbcType=BIT},
+        </if>
+        <if test="item.acceptBusinessAgreement != null">
+          #{item.acceptBusinessAgreement,jdbcType=BIT},
+        </if>
+      </trim>
+      ;
+    </foreach>
+  </insert>
+  <update id="updateListByPrimaryKey">
+    <foreach collection="list" index="index" item="item">
+      update public.user_base
+      set company_id = #{item.companyId,jdbcType=BIGINT},
+        name_cn = #{item.nameCn,jdbcType=VARCHAR},
+        name_en = #{item.nameEn,jdbcType=VARCHAR},
+        staff_code = #{item.staffCode,jdbcType=VARCHAR},
+        social_app_user_id = #{item.socialAppUserId,jdbcType=VARCHAR},
+        device_id = #{item.deviceId,jdbcType=VARCHAR},
+        phone = #{item.phone,jdbcType=VARCHAR},
+        email = #{item.email,jdbcType=VARCHAR},
+        gender = #{item.gender,jdbcType=SMALLINT},
+        job_title = #{item.jobTitle,jdbcType=VARCHAR},
+        work_place = #{item.workPlace,jdbcType=VARCHAR},
+        avatar = #{item.avatar,jdbcType=VARCHAR},
+        job_state = #{item.jobState,jdbcType=INTEGER},
+        leave_date = #{item.leaveDate,jdbcType=TIMESTAMP},
+        line_manager_social_app_user_id = #{item.lineManagerSocialAppUserId,jdbcType=VARCHAR},
+        activity_state = #{item.activityState,jdbcType=SMALLINT},
+        create_time = #{item.createTime,jdbcType=TIMESTAMP},
+        update_time = #{item.updateTime,jdbcType=TIMESTAMP},
+        delete = #{item.delete,jdbcType=BIT},
+        emergency_phone = #{item.emergencyPhone,jdbcType=VARCHAR},
+        can_use_car = #{item.canUseCar,jdbcType=BIT},
+        use_car_mode = #{item.useCarMode,jdbcType=SMALLINT},
+        language = #{item.language,jdbcType=SMALLINT},
+        accept_agreement = #{item.acceptAgreement,jdbcType=BIT},
+        line_manager_id = #{item.lineManagerId,jdbcType=BIGINT},
+        social_app_type = #{item.socialAppType,jdbcType=INTEGER},
+        line_manager_name = #{item.lineManagerName,jdbcType=VARCHAR}
+      where id = #{item.id,jdbcType=BIGINT};
+    </foreach>
+  </update>
+
+  <!-- 以下手工添加 -->
+  <select id="selectBySocialAppUserId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from public.user_base
+    where social_app_user_id = #{socialAppUserId,jdbcType=VARCHAR}
+    order by id desc
+    limit 1
+  </select>
+
+  <select id="selectByUserIds" parameterType="java.util.List" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from  public.user_base ub
+    where ub.id in
+    <foreach close=")" collection="userIdList" item="userId" open="(" separator=",">
+      #{userId}
+    </foreach>
+  </select>
+
+  <select id="selectByStaffCodes" parameterType="java.util.List" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from  public.user_base ub
+    where ub.staff_code in
+    <foreach close=")" collection="staffCodeList" item="staffCode" open="(" separator=",">
+      #{staffCode}
+    </foreach>
+  </select>
+
+  <update id="updateByPrimaryKeys" parameterType="java.util.List">
+    update public.user_base
+    set remain_quota = personal_quota
+    where 1=1
+    <if test="companyIds != null">
+      and company_id in
+      <foreach close=")" collection="companyIds" item="companyId" open="(" separator=",">
+        #{companyId}
+      </foreach>
+    </if>
+  </update>
+</mapper>

@@ -1,0 +1,1280 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ipath.orderflowservice.order.dao.OrderBaseMapper" >
+  <resultMap id="BaseResultMap" type="com.ipath.orderflowservice.order.dao.bean.OrderBase" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="company_id" property="companyId" jdbcType="BIGINT" />
+    <result column="account_id" property="accountId" jdbcType="BIGINT" />
+    <result column="scene_id" property="sceneId" jdbcType="BIGINT" />
+    <result column="project_id" property="projectId" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="service_type" property="serviceType" jdbcType="SMALLINT" />
+    <result column="car_sources" property="carSources" jdbcType="VARCHAR" />
+    <result column="depart_city_code" property="departCityCode" jdbcType="VARCHAR" />
+    <result column="depart_city_name" property="departCityName" jdbcType="VARCHAR" />
+    <result column="pickup_location" property="pickupLocation" jdbcType="VARCHAR" />
+    <result column="pickup_location_name" property="pickupLocationName" jdbcType="VARCHAR" />
+    <result column="depart_lat" property="departLat" jdbcType="VARCHAR" />
+    <result column="depart_lng" property="departLng" jdbcType="VARCHAR" />
+    <result column="dest_city_code" property="destCityCode" jdbcType="VARCHAR" />
+    <result column="dest_city_name" property="destCityName" jdbcType="VARCHAR" />
+    <result column="dest_location" property="destLocation" jdbcType="VARCHAR" />
+    <result column="dest_location_name" property="destLocationName" jdbcType="VARCHAR" />
+    <result column="dest_lat" property="destLat" jdbcType="VARCHAR" />
+    <result column="dest_lng" property="destLng" jdbcType="VARCHAR" />
+    <result column="passenger_name" property="passengerName" jdbcType="VARCHAR" />
+    <result column="passenger_phone" property="passengerPhone" jdbcType="VARCHAR" />
+    <result column="depart_time" property="departTime" jdbcType="TIMESTAMP" />
+    <result column="flight_number" property="flightNumber" jdbcType="VARCHAR" />
+    <result column="flight_depart_time" property="flightDepartTime" jdbcType="VARCHAR" />
+    <result column="flight_delay_time" property="flightDelayTime" jdbcType="VARCHAR" />
+    <result column="depart_airport_code" property="departAirportCode" jdbcType="VARCHAR" />
+    <result column="arrival_airport_code" property="arrivalAirportCode" jdbcType="VARCHAR" />
+    <result column="is_send_passenger_sms" property="isSendPassengerSms" jdbcType="BIT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="state" property="state" jdbcType="SMALLINT" />
+    <result column="use_car_reason" property="useCarReason" jdbcType="VARCHAR" />
+    <result column="is_need_approve" property="isNeedApprove" jdbcType="BIT" />
+    <result column="scene_publish_id" property="scenePublishId" jdbcType="BIGINT" />
+    <result column="scene_name_cn" property="sceneNameCn" jdbcType="VARCHAR" />
+    <result column="scene_name_en" property="sceneNameEn" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="allow_change_dest" property="allowChangeDest" jdbcType="BIT" />
+    <result column="work_flow_id" property="workFlowId" jdbcType="BIGINT" />
+    <result column="user_phone" property="userPhone" jdbcType="VARCHAR" />
+    <result column="depart_poi" property="departPoi" jdbcType="VARCHAR" />
+    <result column="dest_poi" property="destPoi" jdbcType="VARCHAR" />
+    <result column="cancel_reason" jdbcType="VARCHAR" property="cancelReason" />
+    <result column="cancel_time" jdbcType="TIMESTAMP" property="cancelTime" />
+    <result column="custom_info" jdbcType="VARCHAR" property="customInfo" />
+    <result column="pre_depart_apply_id" jdbcType="BIGINT" property="preDepartApplyId" />
+    <result column="is_upgrade" jdbcType="BIT" property="isUpgrade" />
+    <result column="is_proxy" jdbcType="BIT" property="isProxy" />
+    <result column="is_abnormal" jdbcType="BIT" property="isAbnormal" />
+    <result column="abnormal_status" jdbcType="SMALLINT" property="abnormalStatus" />
+    <result column="is_relay" jdbcType="BIT" property="isRelay" />
+    <result column="is_prepay" jdbcType="BIT" property="isPrepay" />
+    <result column="partner_order_id" jdbcType="VARCHAR" property="partnerOrderId" />
+    <result column="is_user_pay" jdbcType="BIT" property="isUserPay" />
+    <result column="is_not_user_pay_reason" jdbcType="VARCHAR" property="isNotUserPayReason" />
+    <result column="passenger_phone_virtual" jdbcType="VARCHAR" property="passengerPhoneVirtual" />
+    <result column="user_phone_virtual" jdbcType="VARCHAR" property="userPhoneVirtual" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, company_id, account_id, scene_id, project_id, user_id, service_type, car_sources, 
+    depart_city_code, depart_city_name, pickup_location, pickup_location_name, depart_lat, 
+    depart_lng, dest_city_code, dest_city_name, dest_location, dest_location_name, dest_lat, 
+    dest_lng, passenger_name, passenger_phone, depart_time, flight_number, flight_depart_time, 
+    flight_delay_time, depart_airport_code, arrival_airport_code, is_send_passenger_sms, 
+    create_time, update_time, state, use_car_reason, is_need_approve, scene_publish_id, 
+    scene_name_cn, scene_name_en, remark, allow_change_dest, work_flow_id, user_phone, depart_poi,
+dest_poi, cancel_reason, cancel_time, custom_info,pre_depart_apply_id,is_upgrade,is_prepay,is_proxy,is_relay,
+partner_order_id,is_abnormal,abnormal_status,is_user_pay,is_not_user_pay_reason,passenger_phone_virtual,user_phone_virtual
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from public.order_base
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from public.order_base
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ipath.orderflowservice.order.dao.bean.OrderBase" >
+    insert into public.order_base (id, company_id, account_id, 
+      scene_id, project_id, user_id, 
+      service_type, car_sources, depart_city_code, 
+      depart_city_name, pickup_location, pickup_location_name, 
+      depart_lat, depart_lng, dest_city_code, 
+      dest_city_name, dest_location, dest_location_name, 
+      dest_lat, dest_lng, passenger_name, 
+      passenger_phone, depart_time, flight_number, 
+      flight_depart_time, flight_delay_time, depart_airport_code, 
+      arrival_airport_code, is_send_passenger_sms, create_time, 
+      update_time, state, use_car_reason, 
+      is_need_approve, scene_publish_id, scene_name_cn, 
+      scene_name_en, remark, allow_change_dest, 
+      work_flow_id, user_phone, depart_poi, 
+      dest_poi, cancel_reason, cancel_time,
+      custom_info,pre_depart_apply_id,is_upgrade,is_prepay,partner_order_id,passenger_phone_virtual,user_phone_virtual)
+    values (#{id,jdbcType=BIGINT}, #{companyId,jdbcType=BIGINT}, #{accountId,jdbcType=BIGINT}, 
+      #{sceneId,jdbcType=BIGINT}, #{projectId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
+      #{serviceType,jdbcType=SMALLINT}, #{carSources,jdbcType=VARCHAR}, #{departCityCode,jdbcType=VARCHAR}, 
+      #{departCityName,jdbcType=VARCHAR}, #{pickupLocation,jdbcType=VARCHAR}, #{pickupLocationName,jdbcType=VARCHAR}, 
+      #{departLat,jdbcType=VARCHAR}, #{departLng,jdbcType=VARCHAR}, #{destCityCode,jdbcType=VARCHAR}, 
+      #{destCityName,jdbcType=VARCHAR}, #{destLocation,jdbcType=VARCHAR}, #{destLocationName,jdbcType=VARCHAR}, 
+      #{destLat,jdbcType=VARCHAR}, #{destLng,jdbcType=VARCHAR}, #{passengerName,jdbcType=VARCHAR}, 
+      #{passengerPhone,jdbcType=VARCHAR}, #{departTime,jdbcType=TIMESTAMP}, #{flightNumber,jdbcType=VARCHAR}, 
+      #{flightDepartTime,jdbcType=VARCHAR}, #{flightDelayTime,jdbcType=VARCHAR}, #{departAirportCode,jdbcType=VARCHAR}, 
+      #{arrivalAirportCode,jdbcType=VARCHAR}, #{isSendPassengerSms,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{state,jdbcType=SMALLINT}, #{useCarReason,jdbcType=VARCHAR}, 
+      #{isNeedApprove,jdbcType=BIT}, #{scenePublishId,jdbcType=BIGINT}, #{sceneNameCn,jdbcType=VARCHAR}, 
+      #{sceneNameEn,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{allowChangeDest,jdbcType=BIT}, 
+      #{workFlowId,jdbcType=BIGINT}, #{userPhone,jdbcType=VARCHAR}, #{departPoi,jdbcType=VARCHAR}, 
+      #{destPoi,jdbcType=VARCHAR}, #{cancelReason,jdbcType=VARCHAR}, #{cancelTime,jdbcType=TIMESTAMP},
+      #{customInfo,jdbcType=VARCHAR},#{preDepartApplyId,jdbcType=BIGINT},#{isUpgrade,jdbcType=BIT},
+            #{isPrepay,jdbcType=BIT},#{partnerOrderId,jdbcType=VARCHAR},#{passengerPhoneVirtual,jdbcType=VARCHAR},#{userPhoneVirtual,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ipath.orderflowservice.order.dao.bean.OrderBase" >
+      insert into public.order_base
+      <trim prefix="(" suffix=")" suffixOverrides=",">
+          <if test="id != null">
+              id,
+          </if>
+          <if test="companyId != null">
+              company_id,
+          </if>
+          <if test="accountId != null">
+              account_id,
+          </if>
+          <if test="sceneId != null">
+              scene_id,
+          </if>
+          <if test="projectId != null">
+              project_id,
+          </if>
+          <if test="userId != null">
+              user_id,
+          </if>
+          <if test="serviceType != null">
+              service_type,
+          </if>
+          <if test="carSources != null">
+              car_sources,
+          </if>
+          <if test="departCityCode != null">
+              depart_city_code,
+          </if>
+          <if test="departCityName != null">
+              depart_city_name,
+          </if>
+          <if test="pickupLocation != null">
+              pickup_location,
+          </if>
+          <if test="pickupLocationName != null">
+              pickup_location_name,
+          </if>
+          <if test="departLat != null">
+              depart_lat,
+          </if>
+          <if test="departLng != null">
+              depart_lng,
+          </if>
+          <if test="destCityCode != null">
+              dest_city_code,
+          </if>
+          <if test="destCityName != null">
+              dest_city_name,
+          </if>
+          <if test="destLocation != null">
+              dest_location,
+          </if>
+          <if test="destLocationName != null">
+              dest_location_name,
+          </if>
+          <if test="destLat != null">
+              dest_lat,
+          </if>
+          <if test="destLng != null">
+              dest_lng,
+          </if>
+          <if test="passengerName != null">
+              passenger_name,
+          </if>
+          <if test="passengerPhone != null">
+              passenger_phone,
+          </if>
+          <if test="departTime != null">
+              depart_time,
+          </if>
+          <if test="flightNumber != null">
+              flight_number,
+          </if>
+          <if test="flightDepartTime != null">
+              flight_depart_time,
+          </if>
+          <if test="flightDelayTime != null">
+              flight_delay_time,
+          </if>
+          <if test="departAirportCode != null">
+              depart_airport_code,
+          </if>
+          <if test="arrivalAirportCode != null">
+              arrival_airport_code,
+          </if>
+          <if test="isSendPassengerSms != null">
+              is_send_passenger_sms,
+          </if>
+          <if test="createTime != null">
+              create_time,
+          </if>
+          <if test="updateTime != null">
+              update_time,
+          </if>
+          <if test="state != null">
+              state,
+          </if>
+          <if test="useCarReason != null">
+              use_car_reason,
+          </if>
+          <if test="isNeedApprove != null">
+              is_need_approve,
+          </if>
+          <if test="scenePublishId != null">
+              scene_publish_id,
+          </if>
+          <if test="sceneNameCn != null">
+              scene_name_cn,
+          </if>
+          <if test="sceneNameEn != null">
+              scene_name_en,
+          </if>
+          <if test="remark != null">
+              remark,
+          </if>
+          <if test="allowChangeDest != null">
+              allow_change_dest,
+          </if>
+          <if test="workFlowId != null">
+              work_flow_id,
+          </if>
+          <if test="userPhone != null">
+              user_phone,
+          </if>
+          <if test="departPoi != null">
+              depart_poi,
+          </if>
+          <if test="destPoi != null">
+              dest_poi,
+          </if>
+          <if test="cancelReason != null">
+              cancel_reason,
+          </if>
+          <if test="cancelTime != null">
+              cancel_time,
+          </if>
+          <if test="customInfo != null">
+              custom_info,
+          </if>
+          <if test="preDepartApplyId != null">
+              pre_depart_apply_id,
+          </if>
+          <if test="isUpgrade != null">
+              is_upgrade,
+          </if>
+          <if test="isPrepay != null">
+              is_prepay,
+          </if>
+          <if test="partnerOrderId != null">
+              partner_order_id,
+          </if>
+          <if test="preDepartApplyCode != null">
+              pre_depart_apply_code,
+          </if>
+          <if test="isUserPay != null">
+              is_user_pay,
+          </if>
+          <if test="isNotUserPayReason != null">
+              is_not_user_pay_reason,
+          </if>
+          <if test="passengerPhoneVirtual != null">
+              passenger_phone_virtual,
+          </if>
+          <if test="userPhoneVirtual != null">
+              user_phone_virtual,
+          </if>
+      </trim>
+      <trim prefix="values (" suffix=")" suffixOverrides=",">
+          <if test="id != null">
+              #{id,jdbcType=BIGINT},
+          </if>
+          <if test="companyId != null">
+              #{companyId,jdbcType=BIGINT},
+          </if>
+          <if test="accountId != null">
+              #{accountId,jdbcType=BIGINT},
+          </if>
+          <if test="sceneId != null">
+              #{sceneId,jdbcType=BIGINT},
+          </if>
+          <if test="projectId != null">
+              #{projectId,jdbcType=BIGINT},
+          </if>
+          <if test="userId != null">
+              #{userId,jdbcType=BIGINT},
+          </if>
+          <if test="serviceType != null">
+              #{serviceType,jdbcType=SMALLINT},
+          </if>
+          <if test="carSources != null">
+              #{carSources,jdbcType=VARCHAR},
+          </if>
+          <if test="departCityCode != null">
+              #{departCityCode,jdbcType=VARCHAR},
+          </if>
+          <if test="departCityName != null">
+              #{departCityName,jdbcType=VARCHAR},
+          </if>
+          <if test="pickupLocation != null">
+              #{pickupLocation,jdbcType=VARCHAR},
+          </if>
+          <if test="pickupLocationName != null">
+              #{pickupLocationName,jdbcType=VARCHAR},
+          </if>
+          <if test="departLat != null">
+              #{departLat,jdbcType=VARCHAR},
+          </if>
+          <if test="departLng != null">
+              #{departLng,jdbcType=VARCHAR},
+          </if>
+          <if test="destCityCode != null">
+              #{destCityCode,jdbcType=VARCHAR},
+          </if>
+          <if test="destCityName != null">
+              #{destCityName,jdbcType=VARCHAR},
+          </if>
+          <if test="destLocation != null">
+              #{destLocation,jdbcType=VARCHAR},
+          </if>
+          <if test="destLocationName != null">
+              #{destLocationName,jdbcType=VARCHAR},
+          </if>
+          <if test="destLat != null">
+              #{destLat,jdbcType=VARCHAR},
+          </if>
+          <if test="destLng != null">
+              #{destLng,jdbcType=VARCHAR},
+          </if>
+          <if test="passengerName != null">
+              #{passengerName,jdbcType=VARCHAR},
+          </if>
+          <if test="passengerPhone != null">
+              #{passengerPhone,jdbcType=VARCHAR},
+          </if>
+          <if test="departTime != null">
+              #{departTime,jdbcType=TIMESTAMP},
+          </if>
+          <if test="flightNumber != null">
+              #{flightNumber,jdbcType=VARCHAR},
+          </if>
+          <if test="flightDepartTime != null">
+              #{flightDepartTime,jdbcType=VARCHAR},
+          </if>
+          <if test="flightDelayTime != null">
+              #{flightDelayTime,jdbcType=VARCHAR},
+          </if>
+          <if test="departAirportCode != null">
+              #{departAirportCode,jdbcType=VARCHAR},
+          </if>
+          <if test="arrivalAirportCode != null">
+              #{arrivalAirportCode,jdbcType=VARCHAR},
+          </if>
+          <if test="isSendPassengerSms != null">
+              #{isSendPassengerSms,jdbcType=BIT},
+          </if>
+          <if test="createTime != null">
+              #{createTime,jdbcType=TIMESTAMP},
+          </if>
+          <if test="updateTime != null">
+              #{updateTime,jdbcType=TIMESTAMP},
+          </if>
+          <if test="state != null">
+              #{state,jdbcType=SMALLINT},
+          </if>
+          <if test="useCarReason != null">
+              #{useCarReason,jdbcType=VARCHAR},
+          </if>
+          <if test="isNeedApprove != null">
+              #{isNeedApprove,jdbcType=BIT},
+          </if>
+          <if test="scenePublishId != null">
+              #{scenePublishId,jdbcType=BIGINT},
+          </if>
+          <if test="sceneNameCn != null">
+              #{sceneNameCn,jdbcType=VARCHAR},
+          </if>
+          <if test="sceneNameEn != null">
+              #{sceneNameEn,jdbcType=VARCHAR},
+          </if>
+          <if test="remark != null">
+              #{remark,jdbcType=VARCHAR},
+          </if>
+          <if test="allowChangeDest != null">
+              #{allowChangeDest,jdbcType=BIT},
+          </if>
+          <if test="workFlowId != null">
+              #{workFlowId,jdbcType=BIGINT},
+          </if>
+          <if test="userPhone != null">
+              #{userPhone,jdbcType=VARCHAR},
+          </if>
+          <if test="departPoi != null">
+              #{departPoi,jdbcType=VARCHAR},
+          </if>
+          <if test="destPoi != null">
+              #{destPoi,jdbcType=VARCHAR},
+          </if>
+          <if test="cancelReason != null">
+              #{cancelReason,jdbcType=VARCHAR},
+          </if>
+          <if test="cancelTime != null">
+              #{cancelTime,jdbcType=TIMESTAMP},
+          </if>
+          <if test="customInfo != null">
+              #{customInfo,jdbcType=VARCHAR},
+          </if>
+          <if test="preDepartApplyId != null">
+              #{preDepartApplyId,jdbcType=BIGINT},
+          </if>
+          <if test="isUpgrade != null">
+              #{isUpgrade,jdbcType=BIT},
+          </if>
+          <if test="isPrepay != null">
+              #{isPrepay,jdbcType=BIT},
+          </if>
+          <if test="partnerOrderId != null">
+              #{partnerOrderId,jdbcType=VARCHAR},
+          </if>
+          <if test="preDepartApplyCode != null">
+              #{preDepartApplyCode,jdbcType=VARCHAR},
+          </if>
+          <if test="isUserPay != null">
+              #{isUserPay,jdbcType=BIT},
+          </if>
+          <if test="isNotUserPayReason != null">
+              #{isNotUserPayReason,jdbcType=VARCHAR},
+          </if>
+          <if test="passengerPhoneVirtual != null">
+              #{passengerPhoneVirtual,jdbcType=VARCHAR},
+          </if>
+          <if test="userPhoneVirtual != null">
+              #{userPhoneVirtual,jdbcType=VARCHAR},
+          </if>
+      </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ipath.orderflowservice.order.dao.bean.OrderBase" >
+      update public.order_base
+      <set>
+          <if test="companyId != null">
+              company_id = #{companyId,jdbcType=BIGINT},
+          </if>
+          <if test="accountId != null">
+              account_id = #{accountId,jdbcType=BIGINT},
+          </if>
+          <if test="sceneId != null">
+              scene_id = #{sceneId,jdbcType=BIGINT},
+          </if>
+          <if test="projectId != null">
+              project_id = #{projectId,jdbcType=BIGINT},
+          </if>
+          <if test="userId != null">
+              user_id = #{userId,jdbcType=BIGINT},
+          </if>
+          <if test="serviceType != null">
+              service_type = #{serviceType,jdbcType=SMALLINT},
+          </if>
+          <if test="carSources != null">
+              car_sources = #{carSources,jdbcType=VARCHAR},
+          </if>
+          <if test="departCityCode != null">
+              depart_city_code = #{departCityCode,jdbcType=VARCHAR},
+          </if>
+          <if test="departCityName != null">
+              depart_city_name = #{departCityName,jdbcType=VARCHAR},
+          </if>
+          <if test="pickupLocation != null">
+              pickup_location = #{pickupLocation,jdbcType=VARCHAR},
+          </if>
+          <if test="pickupLocationName != null">
+              pickup_location_name = #{pickupLocationName,jdbcType=VARCHAR},
+          </if>
+          <if test="departLat != null">
+              depart_lat = #{departLat,jdbcType=VARCHAR},
+          </if>
+          <if test="departLng != null">
+              depart_lng = #{departLng,jdbcType=VARCHAR},
+          </if>
+          <if test="destCityCode != null">
+              dest_city_code = #{destCityCode,jdbcType=VARCHAR},
+          </if>
+          <if test="destCityName != null">
+              dest_city_name = #{destCityName,jdbcType=VARCHAR},
+          </if>
+          <if test="destLocation != null">
+              dest_location = #{destLocation,jdbcType=VARCHAR},
+          </if>
+          <if test="destLocationName != null">
+              dest_location_name = #{destLocationName,jdbcType=VARCHAR},
+          </if>
+          <if test="destLat != null">
+              dest_lat = #{destLat,jdbcType=VARCHAR},
+          </if>
+          <if test="destLng != null">
+              dest_lng = #{destLng,jdbcType=VARCHAR},
+          </if>
+          <if test="passengerName != null">
+              passenger_name = #{passengerName,jdbcType=VARCHAR},
+          </if>
+          <if test="passengerPhone != null">
+              passenger_phone = #{passengerPhone,jdbcType=VARCHAR},
+          </if>
+          <if test="departTime != null">
+              depart_time = #{departTime,jdbcType=TIMESTAMP},
+          </if>
+          <if test="flightNumber != null">
+              flight_number = #{flightNumber,jdbcType=VARCHAR},
+          </if>
+          <if test="flightDepartTime != null">
+              flight_depart_time = #{flightDepartTime,jdbcType=VARCHAR},
+          </if>
+          <if test="flightDelayTime != null">
+              flight_delay_time = #{flightDelayTime,jdbcType=VARCHAR},
+          </if>
+          <if test="departAirportCode != null">
+              depart_airport_code = #{departAirportCode,jdbcType=VARCHAR},
+          </if>
+          <if test="arrivalAirportCode != null">
+              arrival_airport_code = #{arrivalAirportCode,jdbcType=VARCHAR},
+          </if>
+          <if test="isSendPassengerSms != null">
+              is_send_passenger_sms = #{isSendPassengerSms,jdbcType=BIT},
+          </if>
+          <if test="createTime != null">
+              create_time = #{createTime,jdbcType=TIMESTAMP},
+          </if>
+          <if test="updateTime != null">
+              update_time = #{updateTime,jdbcType=TIMESTAMP},
+          </if>
+          <if test="state != null">
+              state = #{state,jdbcType=SMALLINT},
+          </if>
+          <if test="payState != null">
+              pay_state = #{payState,jdbcType=SMALLINT},
+          </if>
+          <if test="useCarReason != null">
+              use_car_reason = #{useCarReason,jdbcType=VARCHAR},
+          </if>
+          <if test="isNeedApprove != null">
+              is_need_approve = #{isNeedApprove,jdbcType=BIT},
+          </if>
+          <if test="scenePublishId != null">
+              scene_publish_id = #{scenePublishId,jdbcType=BIGINT},
+          </if>
+          <if test="sceneNameCn != null">
+              scene_name_cn = #{sceneNameCn,jdbcType=VARCHAR},
+          </if>
+          <if test="sceneNameEn != null">
+              scene_name_en = #{sceneNameEn,jdbcType=VARCHAR},
+          </if>
+          <if test="remark != null">
+              remark = #{remark,jdbcType=VARCHAR},
+          </if>
+          <if test="allowChangeDest != null">
+              allow_change_dest = #{allowChangeDest,jdbcType=BIT},
+          </if>
+          <if test="workFlowId != null">
+              work_flow_id = #{workFlowId,jdbcType=BIGINT},
+          </if>
+          <if test="userPhone != null">
+              user_phone = #{userPhone,jdbcType=VARCHAR},
+          </if>
+          <if test="departPoi != null">
+              depart_poi = #{departPoi,jdbcType=VARCHAR},
+          </if>
+          <if test="destPoi != null">
+              dest_poi = #{destPoi,jdbcType=VARCHAR},
+          </if>
+          <if test="cancelReason != null">
+              cancel_reason = #{cancelReason,jdbcType=VARCHAR},
+          </if>
+          <if test="cancelTime != null">
+              cancel_time = #{cancelTime,jdbcType=TIMESTAMP},
+          </if>
+          <if test="customInfo != null">
+              custom_info = #{customInfo,jdbcType=VARCHAR},
+          </if>
+          <if test="isUpgrade != null">
+              is_upgrade = #{isUpgrade,jdbcType=BIT},
+          </if>
+          <if test="isPrepay != null">
+              is_prepay = #{isPrepay,jdbcType=BIT},
+          </if>
+          <if test="isProxy != null">
+              is_proxy = #{isProxy,jdbcType=BIT},
+          </if>
+          <if test="isRelay != null">
+              is_relay = #{isRelay,jdbcType=BIT},
+          </if>
+          <if test="isAbnormal != null">
+              is_abnormal = #{isAbnormal,jdbcType=BIT},
+          </if>
+          <if test="abnormalStatus != null">
+              abnormal_status = #{abnormalStatus,jdbcType=SMALLINT},
+          </if>
+          <if test="partnerOrderId != null">
+              partner_order_id = #{partnerOrderId,jdbcType=VARCHAR},
+          </if>
+          <if test="isUserPay != null">
+              is_user_pay = #{isUserPay,jdbcType=BIT},
+          </if>
+          <if test="isNotUserPayReason != null">
+              is_not_user_pay_reason = #{isNotUserPayReason,jdbcType=VARCHAR},
+          </if>
+          <if test="passengerPhoneVirtual != null">
+              passenger_phone_virtual = #{passengerPhoneVirtual,jdbcType=VARCHAR},
+          </if>
+          <if test="userPhoneVirtual != null">
+              user_phone_virtual = #{userPhoneVirtual,jdbcType=VARCHAR},
+          </if>
+      </set>
+      where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ipath.orderflowservice.order.dao.bean.OrderBase" >
+      update public.order_base
+      set company_id            = #{companyId,jdbcType=BIGINT},
+          account_id            = #{accountId,jdbcType=BIGINT},
+          scene_id              = #{sceneId,jdbcType=BIGINT},
+          project_id            = #{projectId,jdbcType=BIGINT},
+          user_id               = #{userId,jdbcType=BIGINT},
+          service_type          = #{serviceType,jdbcType=SMALLINT},
+          car_sources           = #{carSources,jdbcType=VARCHAR},
+          depart_city_code      = #{departCityCode,jdbcType=VARCHAR},
+          depart_city_name      = #{departCityName,jdbcType=VARCHAR},
+          pickup_location       = #{pickupLocation,jdbcType=VARCHAR},
+          pickup_location_name  = #{pickupLocationName,jdbcType=VARCHAR},
+          depart_lat            = #{departLat,jdbcType=VARCHAR},
+          depart_lng            = #{departLng,jdbcType=VARCHAR},
+          dest_city_code        = #{destCityCode,jdbcType=VARCHAR},
+          dest_city_name        = #{destCityName,jdbcType=VARCHAR},
+          dest_location         = #{destLocation,jdbcType=VARCHAR},
+          dest_location_name    = #{destLocationName,jdbcType=VARCHAR},
+          dest_lat              = #{destLat,jdbcType=VARCHAR},
+          dest_lng              = #{destLng,jdbcType=VARCHAR},
+          passenger_name        = #{passengerName,jdbcType=VARCHAR},
+          passenger_phone       = #{passengerPhone,jdbcType=VARCHAR},
+          depart_time           = #{departTime,jdbcType=TIMESTAMP},
+          flight_number         = #{flightNumber,jdbcType=VARCHAR},
+          flight_depart_time    = #{flightDepartTime,jdbcType=VARCHAR},
+          flight_delay_time     = #{flightDelayTime,jdbcType=VARCHAR},
+          depart_airport_code   = #{departAirportCode,jdbcType=VARCHAR},
+          arrival_airport_code  = #{arrivalAirportCode,jdbcType=VARCHAR},
+          is_send_passenger_sms = #{isSendPassengerSms,jdbcType=BIT},
+          create_time           = #{createTime,jdbcType=TIMESTAMP},
+          update_time           = #{updateTime,jdbcType=TIMESTAMP},
+          state                 = #{state,jdbcType=SMALLINT},
+          use_car_reason        = #{useCarReason,jdbcType=VARCHAR},
+          is_need_approve       = #{isNeedApprove,jdbcType=BIT},
+          scene_publish_id      = #{scenePublishId,jdbcType=BIGINT},
+          scene_name_cn         = #{sceneNameCn,jdbcType=VARCHAR},
+          scene_name_en         = #{sceneNameEn,jdbcType=VARCHAR},
+          remark                = #{remark,jdbcType=VARCHAR},
+          allow_change_dest     = #{allowChangeDest,jdbcType=BIT},
+          work_flow_id          = #{workFlowId,jdbcType=BIGINT},
+          user_phone            = #{userPhone,jdbcType=VARCHAR},
+          depart_poi            = #{departPoi,jdbcType=VARCHAR},
+          dest_poi              = #{destPoi,jdbcType=VARCHAR},
+          cancel_reason         = #{cancelReason,jdbcType=VARCHAR},
+          cancel_time           = #{cancelTime,jdbcType=TIMESTAMP},
+          custom_info           = #{customInfo,jdbcType=VARCHAR},
+          is_upgrade            = #{isUpgrade,jdbcType=BIT},
+          is_prepay             = #{isPrepay,jdbcType=BIT},
+          passenger_phone_virtual = #{passengerPhoneVirtual,jdbcType=VARCHAR},
+          user_phone_virtual = #{userPhoneVirtual,jdbcType=VARCHAR}
+      where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <!-- 以下手工添加，注意超大表的查询优化 -->
+  <select id="selectPreOrderCreateTime" resultMap="BaseResultMap" parameterType="com.ipath.orderflowservice.order.dao.bean.OrderBase" >
+    select
+      o.create_time
+    from public.order_base o
+    where 1 = 1 and o.state &lt;&gt; 7
+    <if test="userId != null" >
+      and o.user_id = #{userId,jdbcType=BIGINT}
+    </if>
+    <if test="id != null" >
+      and o.id &lt;&gt; #{id,jdbcType=BIGINT}
+    </if>
+    order by o.id desc
+    limit 1
+  </select>
+
+  <resultMap id="OrderListByMonthVo" type="com.ipath.orderflowservice.order.dao.vo.OrderListByMonthVo">
+    <result column="id" property="orderId" javaType="String" />
+    <result column="service_type" property="serviceType" jdbcType="SMALLINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="depart_time" property="departTime" jdbcType="TIMESTAMP" />
+    <result column="depart_city_name" property="departCityName" jdbcType="VARCHAR" />
+    <result column="pickup_location_name" property="pickupLocationName" jdbcType="VARCHAR" />
+    <result column="dest_location_name" property="destLocationName" jdbcType="VARCHAR" />
+    <result column="total_amount" property="totalAmount" jdbcType="NUMERIC" />
+    <result column="frozen_amount" property="frozenAmount" jdbcType="NUMERIC" />
+    <result column="user_allow_invoice_amount" property="userAllowInvoiceAmount" jdbcType="NUMERIC" />
+    <result column="user_paid_amount" property="userPaidAmount" jdbcType="NUMERIC" />
+    <result column="user_bear_amount" property="userBearAmount" jdbcType="NUMERIC" />
+  </resultMap>
+  <select id="selectOrdersByCreateDate" resultMap="OrderListByMonthVo" parameterType="com.ipath.dao.param.QueryOrderCriteria" >
+    select 
+      o.id,
+      o.service_type,
+      o.state as orderState,
+      o.pickup_location_name,
+      o.dest_location_name,
+      o.depart_time,
+      o.create_time,
+      o.depart_city_name,
+      oa.state as approvalState,
+      op.total_amount,
+      op.frozen_amount,
+      op.user_allow_invoice_amount,
+      op.user_paid_amount,
+      op.user_bear_amount
+    from public.order_base o
+    left join public.order_payment op on op.order_id = o.id
+    left join public.order_apply oa on oa.order_id = o.id
+    where 1 = 1
+    <if test="userId != null" >
+      and o.user_id = #{userId,jdbcType=BIGINT}
+    </if>
+    <if test="beginDate != null" >
+      and o.create_time >= #{beginDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="endDate != null" >
+      and o.create_time <![CDATA[<=]]> #{endDate,jdbcType=TIMESTAMP}
+    </if>
+    order by o.state asc, o.id desc
+  </select>
+
+  <resultMap id="OrderDetailVo" type="com.ipath.orderflowservice.order.dao.vo.OrderDetailVo" extends="BaseResultMap">
+    <result column="order_id" property="orderId" jdbcType="BIGINT" />
+    <result column="work_flow_id" property="workFlowId" jdbcType="BIGINT" />
+    <result column="scene_id" property="sceneId" jdbcType="BIGINT" />
+    <result column="total_amount" property="totalAmount" jdbcType="NUMERIC" />
+    <result column="core_order_id" property="coreOrderId" jdbcType="VARCHAR" />
+    <result column="travel_distance" property="travelDistance" jdbcType="NUMERIC" />
+    <result column="travel_begin_time" property="travelBeginTime" jdbcType="TIMESTAMP" />
+    <result column="travel_end_time" property="travelEndTime" jdbcType="TIMESTAMP" />
+    <result column="vehicle_model" property="vehicleModel" jdbcType="VARCHAR" />
+    <result column="vehicle_no" property="vehicleNo" jdbcType="VARCHAR" />
+    <result column="user_bear_amount" property="userBearAmount" jdbcType="NUMERIC" />
+    <result column="company_bear_amount" property="companyBearAmount" jdbcType="NUMERIC" />
+    <result column="name_cn" property="userNameCn" jdbcType="VARCHAR" />
+    <result column="custom_info" property="customInfo" jdbcType="VARCHAR" />
+    <result column="rule_pre_depart_apply_id" property="rulePreDepartApplyId" jdbcType="BIGINT" />
+    <result column="driver_avatar" property="driverAvatar" jdbcType="VARCHAR" />
+  </resultMap>
+  <select id="selectOrderDetail" resultMap="OrderDetailVo" parameterType="java.lang.Long" >
+    select 
+      o.*,
+      o.id as order_id,
+      (os.user_bear_amount+os.company_bear_amount) as total_amount,
+      os.core_order_id,
+      os.travel_distance,
+      os.travel_begin_time,
+      os.travel_end_time,
+      os.vehicle_no,
+      os.vehicle_model,
+      os.company_bear_amount,
+      os.user_bear_amount,
+      os.driver_avatar,
+      ub.name_cn,
+      oa.pre_depart_apply_id rule_pre_depart_apply_id
+    from public.order_base o
+    left join public.order_source os on os.order_id=o.id
+    left join public.user_base ub on ub.id=o.user_id
+    left join public.order_apply oa on o.id = oa.order_id
+    where o.id = #{id,jdbcType=BIGINT} limit 1
+  </select>
+
+  <resultMap id="OrderListWaitPayVo" type="com.ipath.orderflowservice.order.dao.vo.OrderListWaitPayVo">
+    <result column="order_id" property="id" jdbcType="BIGINT" />
+    <result column="state" property="approveState" jdbcType="SMALLINT" />
+    <result column="custom_info" property="customInfo" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="depart_city_name" property="cityName" jdbcType="VARCHAR" />
+    <result column="pickup_location_name" property="pickupLocationName" jdbcType="VARCHAR" />
+    <result column="dest_location_name" property="destLocationName" jdbcType="VARCHAR" />
+  </resultMap>
+  <select id="selectWaitPayOrders" parameterType="java.util.List" resultMap="OrderListWaitPayVo">
+    select
+    ob.id as order_id,
+    oa.state,
+    ob.create_time,
+    ob.pickup_location_name,
+    ob.dest_location_name,
+    ob.depart_city_name
+    from public.order_base ob
+    left join public.order_apply oa on ob.id = oa.order_id
+    where ob.id in
+    <foreach collection="orderIdList" item="orderId" open="(" separator="," close=")">
+      #{orderId}
+    </foreach>
+  </select>
+
+  <select id="selectWaitPayOrdersByUserId" parameterType="java.lang.Long" resultMap="OrderListWaitPayVo">
+    select
+    ob.id as order_id,
+    ob.create_time,
+    ob.pickup_location_name,
+    ob.dest_location_name,
+    ob.depart_city_name,
+    ob.custom_info,
+    ob.pay_state
+    from public.order_base ob
+    where ob.user_id = #{userId} and ob.pay_state = 1
+  </select>
+
+  <select id="selectPayOrdersByUserId" parameterType="com.ipath.orderflowservice.order.bean.param.QueryOrderListByMonth" resultMap="PaidOrderVo">
+    select
+    ob.id as order_id,
+    ob.create_time,
+    ob.pickup_location_name,
+    ob.dest_location_name,
+    ob.depart_city_name,
+    ob.pay_state,
+    ob.update_time,
+    ob.custom_info
+    from public.order_base ob
+    where ob.user_id = #{userId}  and ob.pay_state = 2
+    and  TO_CHAR(ob.update_time, 'YYYY-MM') = #{dateDuration}
+    order by ob.update_time desc
+  </select>
+
+    <select id="selectTotalAmount" parameterType="com.ipath.orderflowservice.order.bean.param.QueryOrderListByMonth" resultType="java.math.BigDecimal">
+    select
+    SUM(os.amount)
+    from public.order_base ob
+    left join order_source os on os.order_id = ob.id
+    where ob.user_id = #{userId}  and ob.pay_state = 2
+    and  TO_CHAR(ob.update_time, 'YYYY-MM') = #{dateDuration}
+  </select>
+
+  <resultMap id="PaidOrderVo" type="com.ipath.orderflowservice.order.dao.vo.PaidOrderVo">
+    <result column="order_id" property="id" jdbcType="BIGINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="pickup_location_name" property="pickupLocationName" jdbcType="VARCHAR" />
+    <result column="dest_location_name" property="destLocationName" jdbcType="VARCHAR" />
+    <result column="custom_info" property="customInfo" jdbcType="VARCHAR" />
+  </resultMap>
+  <select id="selectPaidOrdersByOrderIds" parameterType="java.util.List" resultMap="PaidOrderVo">
+    select
+    ob.id as order_id,
+    ob.create_time,
+    ob.pickup_location_name,
+    ob.dest_location_name
+    from  public.order_base ob
+    where ob.id in
+    <foreach collection="list" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </select>
+  <select id="selectPayedOrderCountByUserId" parameterType="com.ipath.orderflowservice.feignclient.dto.SelectPayedOrdersCount" resultMap="PaidOrderVo">
+    select
+    ob.id as order_id,
+    ob.create_time,
+    ob.pickup_location_name,
+    ob.dest_location_name
+    from public.order_base ob
+    where ob.user_id = #{userId,jdbcType=BIGINT} and ob.state = 6 and ob.create_time >= #{beginTime,jdbcType=TIMESTAMP} and ob.create_time <![CDATA[<=]]> #{endTime,jdbcType=TIMESTAMP}
+  </select>
+
+  <resultMap id="CompanyLimitMappingVo" type="com.ipath.orderflowservice.order.dao.vo.CompanyLimitMappingVo">
+    <result column="type_" property="type" jdbcType="SMALLINT" />
+    <result column="para_code" property="paraCode" jdbcType="VARCHAR" />
+  </resultMap>
+  <select id="selectLimitMappingByCompanyId" parameterType="java.lang.Long" resultMap="CompanyLimitMappingVo">
+    select
+      clsm.type_,
+      clsm.para_code
+    from  public.company_limit_scene_mapping clsm
+    where  clsm.company_id = #{companyId,jdbcType=BIGINT}
+  </select>
+
+  <select id="selectRunningOrderByUserId" parameterType="java.lang.Long" resultType="java.lang.Integer">
+    select
+      count(1)
+    from public.order_base
+    where user_id=#{userId,jdbcType=BIGINT}
+      and state <![CDATA[<]]> 5
+  </select>
+
+  <select id="selectByPartnerOrderId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from  public.order_base ob
+    where  ob.partner_order_id = #{partnerOrderId,jdbcType=VARCHAR}
+    limit 1
+  </select>
+
+  <select id="selectErrorStateOrderList" parameterType="java.lang.String" resultType="com.ipath.orderflowservice.order.dao.vo.OrderErrorState">
+      SELECT
+          id ,
+          core_order_id,
+          partner_order_id,
+          company_id,
+          user_id,
+          days,
+          hours,
+          depart_time,
+          create_time,
+          STATE,
+          service_type,
+          core_order_id
+      FROM
+      (
+          SELECT
+              ob.id,
+              ob.company_id,
+              ob.user_id,
+              round(cast(date_part('epoch', NOW() - ob.depart_time)/60/60 as numeric ),0) hours,
+              EXTRACT ( DAY FROM ( NOW( ) - ob.depart_time ) ) days,
+              ob.depart_time,
+              ob.create_time,
+              ob.STATE,
+              ob.service_type,
+              ob.partner_order_id,
+              os.core_order_id
+          FROM
+            order_base ob
+          LEFT JOIN order_source os ON os.order_id = ob.ID
+          WHERE
+            ob.STATE IN ( 1, 2, 3, 4 )
+            AND ( ob.service_type = 1 OR ob.service_type = 2 )
+      ) tb
+      WHERE
+        tb.hours &gt; 2 and tb.hours &lt; 1440
+      LIMIT 101
+  </select>
+
+  <select id="selectRunningOrderList" parameterType="java.lang.Long" resultType="com.ipath.orderflowservice.order.dao.vo.RunningOrdersVo">
+    select
+    ob.account_id as "accountId",
+    ob.company_id as "companyId",
+    ob.id as "partnerOrderId",
+    tom.new_order_id as "platformOrderId",
+    ob.state  as "status",
+    ob.service_type  as "serviceType",
+    os.source_code as "carSource",
+    coalesce(os.car_level,1) as "carType",
+    (case os.car_level
+    when 1 then '普通型'
+    when 2 then '舒适型'
+    when 3 then '商务型'
+    when 4 then '豪华型'
+    else '普通型' end) as "carTypeName",
+    ob.passenger_name as "passengerName",
+    ob.passenger_phone as "passengerPhone",
+    substring(ob.passenger_phone, length(ob.passenger_phone)-3, 4) as "phoneLastFour",
+    ob.depart_city_code  as "departCityCode",
+    ob.depart_city_name as "departCityName",
+    ob.depart_lat as "departLat",
+    ob.depart_lng as "departLng",
+    ob.pickup_location as "pickupLocation",
+    ob.pickup_location_name as "pickupLocationName",
+    ob.depart_time as "departTime",
+    ob.dest_city_code as "destCityCode",
+    ob.depart_city_name as "destCityName",
+    ob.dest_lat as "destLat",
+    ob.dest_lng as "destLng",
+    ob.dest_location as "destLocation",
+    ob.dest_location_name as "destLocationName",
+    ob.arrival_airport_code as "flightArrivalAirportCode",
+    null as "flightArrivalTime",
+    ob.depart_airport_code as "flightDepartAirportCode",
+    (case ob.service_type  when 6 then to_char(ob.flight_depart_time::timestamp, 'yyyy-MM-dd hh24:mi:ss' ) else '' end) as "flightDepartTime",
+    ob.flight_number  as "flightNumber",
+    os.driver_avatar as "driverAvatar",
+    os.driver_level as "driverLevel",
+    os.driver_name as "driverName",
+    os.driver_phone as "driverPhone",
+    os.driver_phone_virtual as "driverPhoneVirtual",
+    os.vehicle_color  as "vehicleColor",
+    os.vehicle_model as "vehicleModel",
+    os.vehicle_no as "vehicleNo",
+    false as "isChangeDest",
+    (case ob.state when 5 then os.duration  else 0 end) as "travelTime",
+    (case ob.state when 5 then os.travel_distance  else 0 end) as "travelTime",
+    os.driver_order_taking_time as "driverPickOrderTime",
+    os.driver_arrival_time as "driverArrivedTime",
+    os.travel_begin_time as "beginChargeTime",
+    os.travel_end_time as "finishTime",
+    os.amount,
+    os.fee_detail as "feeDetail"
+    from order_base ob
+    inner join order_source os on ob.id =os.order_id
+    left join temp_order_mapping tom on ob.remark =tom.old_order_id
+    where ob.state in(2,3,4)
+    <if test="companyId != null ">
+      and ob.company_id  = #{companyId,jdbcType=BIGINT}
+    </if>
+  </select>
+
+  <select id="selectWaitPayOrderCntByUserId" parameterType="java.lang.Long" resultType="java.lang.Integer">
+    select
+      count(1)
+    from public.order_base
+    where user_id=#{userId,jdbcType=BIGINT}
+      and pay_state =1
+  </select>
+
+  <resultMap id="OrderForReport" type="com.ipath.orderflowservice.order.dao.vo.OrderForReport">
+    <result column="service_type" property="serviceType" jdbcType="SMALLINT" />
+    <result column="account_id" property="accountId" jdbcType="BIGINT" />
+    <result column="partner_order_id" property="partnerOrderId" jdbcType="VARCHAR" />
+    <result column="depart_city_name" property="departCityName" jdbcType="VARCHAR" />
+    <result column="dest_city_name" property="destCityName" jdbcType="VARCHAR" />
+    <result column="is_prepay" property="isPrepay" jdbcType="BIT" />
+    <result column="is_upgrade" property="isUpgrade" jdbcType="BIT" />
+    <result column="project_id" property="projectId" jdbcType="BIGINT" />
+    <result column="project_name" property="projectName" jdbcType="VARCHAR" />
+    <result column="passenger_name" property="passengerName" jdbcType="VARCHAR" />
+    <result column="scene_id" property="sceneId" jdbcType="BIGINT" />
+    <result column="scene_publish_id" property="scenePublishId" jdbcType="BIGINT" />
+    <result column="code" property="sceneCode" jdbcType="VARCHAR" />
+    <result column="scene_name_cn" property="sceneName" jdbcType="VARCHAR" />
+    <result column="use_car_reason" property="useCarReason" jdbcType="VARCHAR" />
+    <result column="custom_info" property="customInfo" jdbcType="VARCHAR" />
+    <result column="name_cn" property="name" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="emergency_phone" property="emergencyPhone" jdbcType="VARCHAR" />
+    <result column="estimate_price" property="estimatePrice" jdbcType="NUMERIC" />
+    <result column="estimate_distance" property="estimateDistance" jdbcType="INTEGER" />
+    <result column="estimate_time" property="estimateTime" jdbcType="INTEGER" />
+    <result column="take_distance" property="takeDistance" jdbcType="INTEGER" />
+    <result column="take_time" property="takeTime" jdbcType="INTEGER" />
+    <result column="is_user_pay" jdbcType="BIT" property="isUserPay" />
+    <result column="is_not_user_pay_reason" jdbcType="VARCHAR" property="isNotUserPayReason" />
+    <result column="passenger_phone_virtual" jdbcType="VARCHAR" property="passengerPhoneVirtual"/>
+    <result column="user_phone_virtual" jdbcType="VARCHAR" property="userPhoneVirtual"/>
+      <result column="ipath_estimate_price" jdbcType="NUMERIC" property="ipathEstimatePrice"/>
+      <result column="platform_estimate_price" jdbcType="NUMERIC" property="platformEstimatePrice"/>
+  </resultMap>
+  <select id="selectOrderForReportById" resultMap="OrderForReport" parameterType="java.lang.Long" >
+    select
+      ob.service_type,
+      ob.account_id ,
+      ob.depart_city_name ,
+      ob.dest_city_name ,
+      ob.is_prepay ,
+      ob.project_id ,
+      ob.partner_order_id,
+      p.name_cn as project_name ,
+      ob.scene_id ,
+      cs.code ,
+      ob.scene_publish_id ,
+      ob.scene_name_cn ,
+      ob.custom_info ,
+      ob.is_upgrade  ,
+      ob.use_car_reason ,
+      ub.name_cn ,
+      ub.phone ,
+      ob.passenger_name,
+      ub.emergency_phone ,
+      os.estimate_price ,
+      os.estimate_distance ,
+      os.estimate_time ,
+      os.take_distance ,
+      os.take_time ,
+      ob.is_user_pay ,
+      ob.is_not_user_pay_reason ,
+      ob.passenger_phone_virtual ,
+      ob.user_phone_virtual,
+      os.ipath_estimate_price ,
+      os.platform_estimate_price
+    from order_base ob
+    left join order_source os on os.order_id =ob.id 
+    left join user_base ub on ob.user_id =ub.id
+    left join com_scene cs on cs.id =ob.scene_id
+    left join project p  on p.id =ob.project_id 
+    where ob.id =#{orderId,jdbcType=BIGINT}
+  </select>
+
+
+  <select id="getCompanyCountByCreateTime" resultType="com.ipath.orderflowservice.order.bean.vo.CompanyOrderCountVo">
+    SELECT company_id companyId,
+    COUNT(1) count
+    FROM order_base
+    <where>
+      <if test="companyIds != null and companyIds.size > 0 ">
+        <foreach collection="companyIds" open="and company_id in (" close=")" item="item" separator=",">
+          #{item}
+        </foreach>
+      </if>
+      <if test="begin != null">
+        and create_time >= #{begin,jdbcType=TIMESTAMP}
+      </if>
+      <if test="end != null">
+        and create_time &lt;= #{end,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+    GROUP BY company_id
+  </select>
+
+  <select id="getCompanyStateCountByCreateTime" resultType="com.ipath.orderflowservice.order.bean.vo.CompanyOrderCountVo">
+    SELECT
+    company_id companyId,
+    STATE state,
+    COUNT ( 1 ) count
+    FROM
+    order_base
+    <where>
+      <if test="companyIds != null and companyIds.size > 0 ">
+        <foreach collection="companyIds" open="and company_id in (" close=")" item="item" separator=",">
+          #{item}
+        </foreach>
+      </if>
+      <if test="begin != null">
+        and create_time >= #{begin,jdbcType=TIMESTAMP}
+      </if>
+      <if test="end != null">
+        and create_time &lt;= #{end,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+    GROUP BY company_id , STATE
+  </select>
+
+  <select id="getCompanyCountByApprovalTime" resultType="com.ipath.orderflowservice.order.bean.vo.CompanyOrderCountVo">
+    SELECT
+    company_id companyId,
+    count(1) count
+    FROM
+    order_base ob
+    LEFT JOIN order_apply_history oah ON ob.ID = oah.order_id
+    <where>
+        AND oah."state" = 2
+      <if test="companyIds != null and companyIds.size > 0 ">
+        <foreach collection="companyIds" open="and ob.company_id in (" close=")" item="item" separator=",">
+          #{item}
+        </foreach>
+      </if>
+      <if test="begin != null">
+        and oah.create_time >= #{begin,jdbcType=TIMESTAMP}
+      </if>
+      <if test="end != null">
+        and oah.create_time &lt;= #{end,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+    GROUP BY ob.company_id
+  </select>
+
+  <select id="checkStatementOfAccountByOrderTime" resultType="int">
+    select count(1)
+    from order_base ob LEFT JOIN order_source os ON ob.ID = os.order_id
+    <where>
+      AND (ob."state" &lt; 7 OR (ob."state" = 7 AND os.amount > 0))
+      <if test="companyId != null">
+        and company_id = #{companyId,jdbcType=BIGINT}
+      </if>
+      and depart_time::date between #{beginDate,jdbcType=TIMESTAMP} and #{endDate,jdbcType=TIMESTAMP}
+    </where>
+  </select>
+
+    <select id="checkStatementOfAccountByTravelEndTime" resultType="int">
+        select count(1)
+        from order_base ob LEFT JOIN order_source os ON ob.ID = os.order_id
+        <where>
+            AND (ob."state" &lt; 7 OR (ob."state" = 7 AND os.amount > 0))
+            <if test="companyId != null">
+                and company_id = #{companyId,jdbcType=BIGINT}
+            </if>
+            <if test="beginDate != null">
+                and (travel_end_time::date >= #{beginDate}::date OR cancel_time::date >= #{beginDate}::date)
+            </if>
+            <if test="endDate != null">
+                and (travel_end_time::date &lt;= #{endDate,jdbcType=TIMESTAMP}::date OR cancel_time::date &lt;=#{endDate}::date)
+            </if>
+
+        </where>
+    </select>
+
+
+    <select id="checkStatementOfAccountByApprovalTime" resultType="int">
+<!--    select count(1)-->
+<!--    from order_base ob-->
+<!--    left join order_apply_history oah on ob.id = oah.order_id-->
+<!--    <where>-->
+<!--      and oah."state" = 2-->
+<!--      <if test="companyId != null">-->
+<!--        and company_id = #{companyId,jdbcType=BIGINT}-->
+<!--      </if>-->
+<!--      and oah.create_time::date between #{beginDate,jdbcType=TIMESTAMP} and #{endDate,jdbcType=TIMESTAMP}-->
+<!--    </where>-->
+        SELECT COUNT (1)
+        FROM
+        (
+        SELECT
+        oah.order_id,
+        oah.create_time,
+        oah.STATE,
+        ROW_NUMBER () OVER ( PARTITION BY oah.order_id ORDER BY oah.create_time DESC ) AS rn
+        FROM
+        order_apply_history oah
+        LEFT JOIN order_apply oa ON oa.order_id = oah.order_id
+        LEFT JOIN order_base ob ON ob.ID = oah.order_id
+        WHERE
+        oa.STATE = 2
+        <if test="companyId != null">
+                and ob.company_id = #{companyId,jdbcType=BIGINT}
+        </if>
+        ) tb
+        WHERE
+        tb.rn = 1
+        AND tb.create_time::date between #{beginDate,jdbcType=TIMESTAMP} and #{endDate,jdbcType=TIMESTAMP};
+  </select>
+
+    <select id="getSameDriverAndPassengerCount" resultType="int">
+        select count(1) from order_summary os 
+        where os.status =5 
+        and user_id = #{userId,jdbcType=BIGINT} 
+        and vehicle_no =#{vehicleNo,jdbcType=VARCHAR}
+        and order_time::date &gt;= (CURRENT_DATE -  #{days,jdbcType=INTEGER})
+        and company_id =#{companyId,jdbcType=BIGINT};
+    </select>
+
+  <select id="getPassengerCount" resultType="int">
+      SELECT count(1)
+      FROM order_base ob
+               LEFT JOIN order_source os ON ob.ID = os.order_id
+      where ob.company_id = #{companyId,jdbcType=BIGINT}
+        and ob.state in (5, 6)
+        and ob.user_phone = #{userPhone,jdbcType=VARCHAR}
+        and ob.depart_time::date >= (CURRENT_DATE - #{days,jdbcType=INTEGER})
+  </select>
+
+    <update id="updateUserPay" parameterType="com.ipath.orderflowservice.order.dao.bean.OrderBase" >
+      update public.order_base
+      set is_user_pay = #{isUserPay,jdbcType=BIT},
+          is_not_user_pay_reason = #{isNotUserPayReason,jdbcType=VARCHAR}
+      where id = #{id,jdbcType=BIGINT}
+  </update>
+
+
+    <update id="rePlaceUpdateStateByOrderId" parameterType="com.ipath.orderflowservice.order.dao.bean.OrderBase" >
+        update public.order_base
+        set  state = #{state,jdbcType=SMALLINT}
+        where id = #{id,jdbcType=BIGINT} and state != 7
+    </update>
+
+  <select id="checkStatementOfAccountByTravelBeginTime" resultType="int">
+      select count(1)
+      from order_base ob LEFT JOIN order_source os ON ob.ID = os.order_id
+      <where>
+          AND (ob."state" &lt; 7 OR (ob."state" = 7 AND os.amount > 0))
+          <if test="companyId != null">
+              and company_id = #{companyId,jdbcType=BIGINT}
+          </if>
+          and travel_begin_time::date between #{beginDate,jdbcType=TIMESTAMP} and #{endDate,jdbcType=TIMESTAMP}
+      </where>
+  </select>
+
+ <update id="updatePhoneVirtual">
+     update order_base
+     set user_phone_virtual = #{userPhoneVirtual,jdbcType=VARCHAR},
+         passenger_phone_virtual = #{passengerPhoneVirtual,jdbcType=VARCHAR}
+     where id = #{id,jdbcType=BIGINT}
+ </update>
+
+</mapper>

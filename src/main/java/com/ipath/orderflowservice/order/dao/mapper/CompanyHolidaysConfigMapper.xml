@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ipath.orderflowservice.order.dao.CompanyHolidaysConfigMapper">
+  <resultMap id="BaseResultMap" type="com.ipath.orderflowservice.order.dao.bean.CompanyHolidaysConfig">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="company_id" jdbcType="BIGINT" property="companyId" />
+    <result column="date" jdbcType="DATE" property="date" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="year" jdbcType="VARCHAR" property="year" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, company_id, date, name, year
+  </sql>
+
+  <select id="selectCompanyHolidaysConfig" parameterType="com.ipath.orderflowservice.order.dao.bean.CompanyHolidaysConfig" resultMap="BaseResultMap">
+    select
+      <include refid="Base_Column_List" />
+    from public.company_holidays_config
+    <where>
+      <if test="companyId != null">
+        and company_id = #{companyId,jdbcType=BIGINT}
+      </if>
+      <if test="date != null">
+        and date = #{date,jdbcType=DATE}
+      </if>
+      <if test="name != null">
+        and name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="year != null">
+        and year = #{year,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+</mapper>

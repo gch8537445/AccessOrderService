@@ -1,0 +1,46 @@
+# 中台测试模拟叫车环境
+icar:
+  url: http://ipathapisdev.i-mtpath.net/test
+  # url: http://1.116.185.16:3000  中台桩接口
+  appid: app0908150611
+  secret: Mc7p9v02E43WQUQT5pjn9wBgQ21dCKS4uoNh2AsgJ0JVHd7E8ji3Ft5HnUx061i1
+
+# 支付中心
+ipay:
+  configId: newicar
+  key: C9BBA926-F1C1-4D0A-A73C-C4D53995252E
+
+huitong:
+  needOrderNotify: false
+  secretKey: 02d4c190b2b97b4e489006bcc289ce22  # 慧通商旅测试环境key
+  authId: ipath
+  keyPass: 123456
+  address: https://openapi-fbeta.hwht.com # 这个域名在慧通内网解析，必须配hosts IP: 103.218.217.134 来访问，证书绑定了域名
+  certFilePath: /etc/ht_public_test.cert     # 对方测试环境公钥
+  pemFilePath: /etc/private_dev.pem          # 我们的dev私钥
+
+ipath:
+  specialCustomer: 302269344182469
+  carLevelName: 舒适
+
+
+
+mobileUrl: "https://devmobilev2.imtpath.net"
+sendMsg:
+  mail:
+    to: yantao.sun@imtpath.com;zhen.hu@imtpath.com
+    enabled: false
+
+serviceMessage:
+  # 腾讯云推文模板id
+  tencent:
+    companyId: 248100731020642053
+    # 流程操作通知
+    processOperationNotificationTemplateId: uFBNefzbq03q5nfs0urgCxYo16TWwHb3QGApUBHVZds
+  wpp:
+    companyId: 258207578547291909
+    # 流程操作通知
+    processOperationNotificationTemplateId: uFBNefzbq03q5nfs0urgCxYo16TWwHb3QGApUBHVZds
+
+company:
+  merk: 269674041313330949

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ipath.orderflowservice.order.dao.CostCenterMapper" >
+  <resultMap id="BaseResultMap" type="com.ipath.orderflowservice.order.dao.bean.CostCenter" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="company_id" property="companyId" jdbcType="BIGINT" />
+    <result column="costcenter_name" property="costcenterName" jdbcType="VARCHAR" />
+    <result column="costcenter_code" property="costcenterCode" jdbcType="VARCHAR" />
+    <result column="is_delete" property="isDelete" jdbcType="BIT" />
+    <result column="activity_state" property="activityState" jdbcType="INTEGER" />
+    <result column="createor" property="createor" jdbcType="BIGINT" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="updater" property="updater" jdbcType="BIGINT" />
+    <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, company_id, costcenter_name, costcenter_code, is_delete, activity_state, createor, 
+    created_time, updater, updated_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from public.costcenter
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from public.costcenter
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ipath.orderflowservice.order.dao.bean.CostCenter" >
+    insert into public.costcenter (id, company_id, costcenter_name, 
+      costcenter_code, is_delete, activity_state, 
+      createor, created_time, updater, 
+      updated_time)
+    values (#{id,jdbcType=BIGINT}, #{companyId,jdbcType=BIGINT}, #{costcenterName,jdbcType=VARCHAR}, 
+      #{costcenterCode,jdbcType=VARCHAR}, #{isDelete,jdbcType=BIT}, #{activityState,jdbcType=INTEGER}, 
+      #{createor,jdbcType=BIGINT}, #{createdTime,jdbcType=TIMESTAMP}, #{updater,jdbcType=BIGINT}, 
+      #{updatedTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ipath.orderflowservice.order.dao.bean.CostCenter" >
+    insert into public.costcenter
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+      <if test="costcenterName != null" >
+        costcenter_name,
+      </if>
+      <if test="costcenterCode != null" >
+        costcenter_code,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="activityState != null" >
+        activity_state,
+      </if>
+      <if test="createor != null" >
+        createor,
+      </if>
+      <if test="createdTime != null" >
+        created_time,
+      </if>
+      <if test="updater != null" >
+        updater,
+      </if>
+      <if test="updatedTime != null" >
+        updated_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="costcenterName != null" >
+        #{costcenterName,jdbcType=VARCHAR},
+      </if>
+      <if test="costcenterCode != null" >
+        #{costcenterCode,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="activityState != null" >
+        #{activityState,jdbcType=INTEGER},
+      </if>
+      <if test="createor != null" >
+        #{createor,jdbcType=BIGINT},
+      </if>
+      <if test="createdTime != null" >
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updater != null" >
+        #{updater,jdbcType=BIGINT},
+      </if>
+      <if test="updatedTime != null" >
+        #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ipath.orderflowservice.order.dao.bean.CostCenter" >
+    update public.costcenter
+    <set >
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="costcenterName != null" >
+        costcenter_name = #{costcenterName,jdbcType=VARCHAR},
+      </if>
+      <if test="costcenterCode != null" >
+        costcenter_code = #{costcenterCode,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="activityState != null" >
+        activity_state = #{activityState,jdbcType=INTEGER},
+      </if>
+      <if test="createor != null" >
+        createor = #{createor,jdbcType=BIGINT},
+      </if>
+      <if test="createdTime != null" >
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updater != null" >
+        updater = #{updater,jdbcType=BIGINT},
+      </if>
+      <if test="updatedTime != null" >
+        updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ipath.orderflowservice.order.dao.bean.CostCenter" >
+    update public.costcenter
+    set company_id = #{companyId,jdbcType=BIGINT},
+      costcenter_name = #{costcenterName,jdbcType=VARCHAR},
+      costcenter_code = #{costcenterCode,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=BIT},
+      activity_state = #{activityState,jdbcType=INTEGER},
+      createor = #{createor,jdbcType=BIGINT},
+      created_time = #{createdTime,jdbcType=TIMESTAMP},
+      updater = #{updater,jdbcType=BIGINT},
+      updated_time = #{updatedTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ipath.orderflowservice.order.dao.AmgenPoMapper" >
+  <resultMap id="BaseResultMap" type="com.ipath.orderflowservice.order.dao.bean.AmgenPo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="company_id" property="companyId" jdbcType="BIGINT" />
+    <result column="po_code" property="poCode" jdbcType="VARCHAR" />
+    <result column="valid_from" property="validFrom" jdbcType="TIMESTAMP" />
+    <result column="valid_to" property="validTo" jdbcType="TIMESTAMP" />
+    <result column="po_budget" property="poBudget" jdbcType="NUMERIC" />
+    <result column="po_remain_quota" property="poRemainQuota" jdbcType="NUMERIC" />
+    <result column="send_email" property="sendEmail" jdbcType="INTEGER" />
+    <result column="is_delete" property="isDelete" jdbcType="BIT" />
+    <result column="delete_user_id" property="deleteUserId" jdbcType="BIGINT" />
+    <result column="delete_time" property="deleteTime" jdbcType="TIMESTAMP" />
+    <result column="createor" property="createor" jdbcType="BIGINT" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="updater" property="updater" jdbcType="BIGINT" />
+    <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, company_id, po_code, valid_from, valid_to, po_budget, po_remain_quota, send_email, 
+    is_delete, delete_user_id, delete_time, createor, created_time, updater, updated_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from amgen_po
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from amgen_po
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ipath.orderflowservice.order.dao.bean.AmgenPo" >
+    insert into amgen_po (id, company_id, po_code,
+      valid_from, valid_to, po_budget, 
+      po_remain_quota, send_email, is_delete, 
+      delete_user_id, delete_time, createor, 
+      created_time, updater, updated_time
+      )
+    values (#{id,jdbcType=BIGINT}, #{companyId,jdbcType=BIGINT}, #{poCode,jdbcType=VARCHAR}, 
+      #{validFrom,jdbcType=TIMESTAMP}, #{validTo,jdbcType=TIMESTAMP}, #{poBudget,jdbcType=NUMERIC}, 
+      #{poRemainQuota,jdbcType=NUMERIC}, #{sendEmail,jdbcType=INTEGER}, #{isDelete,jdbcType=BIT}, 
+      #{deleteUserId,jdbcType=BIGINT}, #{deleteTime,jdbcType=TIMESTAMP}, #{createor,jdbcType=BIGINT}, 
+      #{createdTime,jdbcType=TIMESTAMP}, #{updater,jdbcType=BIGINT}, #{updatedTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ipath.orderflowservice.order.dao.bean.AmgenPo" >
+    insert into amgen_po
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+      <if test="poCode != null" >
+        po_code,
+      </if>
+      <if test="validFrom != null" >
+        valid_from,
+      </if>
+      <if test="validTo != null" >
+        valid_to,
+      </if>
+      <if test="poBudget != null" >
+        po_budget,
+      </if>
+      <if test="poRemainQuota != null" >
+        po_remain_quota,
+      </if>
+      <if test="sendEmail != null" >
+        send_email,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="deleteUserId != null" >
+        delete_user_id,
+      </if>
+      <if test="deleteTime != null" >
+        delete_time,
+      </if>
+      <if test="createor != null" >
+        createor,
+      </if>
+      <if test="createdTime != null" >
+        created_time,
+      </if>
+      <if test="updater != null" >
+        updater,
+      </if>
+      <if test="updatedTime != null" >
+        updated_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="poCode != null" >
+        #{poCode,jdbcType=VARCHAR},
+      </if>
+      <if test="validFrom != null" >
+        #{validFrom,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validTo != null" >
+        #{validTo,jdbcType=TIMESTAMP},
+      </if>
+      <if test="poBudget != null" >
+        #{poBudget,jdbcType=NUMERIC},
+      </if>
+      <if test="poRemainQuota != null" >
+        #{poRemainQuota,jdbcType=NUMERIC},
+      </if>
+      <if test="sendEmail != null" >
+        #{sendEmail,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="deleteUserId != null" >
+        #{deleteUserId,jdbcType=BIGINT},
+      </if>
+      <if test="deleteTime != null" >
+        #{deleteTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createor != null" >
+        #{createor,jdbcType=BIGINT},
+      </if>
+      <if test="createdTime != null" >
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updater != null" >
+        #{updater,jdbcType=BIGINT},
+      </if>
+      <if test="updatedTime != null" >
+        #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ipath.orderflowservice.order.dao.bean.AmgenPo" >
+    update amgen_po
+    <set >
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="poCode != null" >
+        po_code = #{poCode,jdbcType=VARCHAR},
+      </if>
+      <if test="validFrom != null" >
+        valid_from = #{validFrom,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validTo != null" >
+        valid_to = #{validTo,jdbcType=TIMESTAMP},
+      </if>
+      <if test="poBudget != null" >
+        po_budget = #{poBudget,jdbcType=NUMERIC},
+      </if>
+      <if test="poRemainQuota != null" >
+        po_remain_quota = #{poRemainQuota,jdbcType=NUMERIC},
+      </if>
+      <if test="sendEmail != null" >
+        send_email = #{sendEmail,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="deleteUserId != null" >
+        delete_user_id = #{deleteUserId,jdbcType=BIGINT},
+      </if>
+      <if test="deleteTime != null" >
+        delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createor != null" >
+        createor = #{createor,jdbcType=BIGINT},
+      </if>
+      <if test="createdTime != null" >
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updater != null" >
+        updater = #{updater,jdbcType=BIGINT},
+      </if>
+      <if test="updatedTime != null" >
+        updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ipath.orderflowservice.order.dao.bean.AmgenPo" >
+    update amgen_po
+    set company_id = #{companyId,jdbcType=BIGINT},
+      po_code = #{poCode,jdbcType=VARCHAR},
+      valid_from = #{validFrom,jdbcType=TIMESTAMP},
+      valid_to = #{validTo,jdbcType=TIMESTAMP},
+      po_budget = #{poBudget,jdbcType=NUMERIC},
+      po_remain_quota = #{poRemainQuota,jdbcType=NUMERIC},
+      send_email = #{sendEmail,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=BIT},
+      delete_user_id = #{deleteUserId,jdbcType=BIGINT},
+      delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+      createor = #{createor,jdbcType=BIGINT},
+      created_time = #{createdTime,jdbcType=TIMESTAMP},
+      updater = #{updater,jdbcType=BIGINT},
+      updated_time = #{updatedTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

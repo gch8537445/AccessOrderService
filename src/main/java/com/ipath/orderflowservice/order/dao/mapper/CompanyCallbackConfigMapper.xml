@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ipath.orderflowservice.order.dao.CompanyCallbackConfigMapper" >
+  <resultMap id="BaseResultMap" type="com.ipath.orderflowservice.order.dao.bean.CompanyCallbackConfig" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="company_id" property="companyId" jdbcType="BIGINT" />
+    <result column="company_code" property="companyCode" jdbcType="VARCHAR" />
+    <result column="need_back" property="needBack" jdbcType="BIT" />
+    <result column="callback_path" property="callbackPath" jdbcType="VARCHAR" />
+    <result column="callback_type" property="callbackType" jdbcType="VARCHAR" />
+    <result column="app_id" property="appId" jdbcType="VARCHAR" />
+    <result column="additional_value" property="additionalValue" jdbcType="VARCHAR" />
+    <result column="column_mapping" property="columnMapping" jdbcType="VARCHAR" />
+    <result column="service_name" property="serviceName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, company_id,company_code, need_back, callback_path, callback_type, app_id, additional_value,
+    column_mapping,service_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from public.company_callback_config
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from public.company_callback_config
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ipath.orderflowservice.order.dao.bean.CompanyCallbackConfig" >
+    insert into public.company_callback_config (id, company_id, need_back, 
+      callback_path, callback_type, app_id, 
+      additional_value, column_mapping)
+    values (#{id,jdbcType=BIGINT}, #{companyId,jdbcType=BIGINT}, #{needBack,jdbcType=BIT}, 
+      #{callbackPath,jdbcType=VARCHAR}, #{callbackType,jdbcType=VARCHAR}, #{appId,jdbcType=VARCHAR}, 
+      #{additionalValue,jdbcType=VARCHAR}, #{columnMapping,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ipath.orderflowservice.order.dao.bean.CompanyCallbackConfig" >
+    insert into public.company_callback_config
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+      <if test="needBack != null" >
+        need_back,
+      </if>
+      <if test="callbackPath != null" >
+        callback_path,
+      </if>
+      <if test="callbackType != null" >
+        callback_type,
+      </if>
+      <if test="appId != null" >
+        app_id,
+      </if>
+      <if test="additionalValue != null" >
+        additional_value,
+      </if>
+      <if test="columnMapping != null" >
+        column_mapping,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="needBack != null" >
+        #{needBack,jdbcType=BIT},
+      </if>
+      <if test="callbackPath != null" >
+        #{callbackPath,jdbcType=VARCHAR},
+      </if>
+      <if test="callbackType != null" >
+        #{callbackType,jdbcType=VARCHAR},
+      </if>
+      <if test="appId != null" >
+        #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="additionalValue != null" >
+        #{additionalValue,jdbcType=VARCHAR},
+      </if>
+      <if test="columnMapping != null" >
+        #{columnMapping,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ipath.orderflowservice.order.dao.bean.CompanyCallbackConfig" >
+    update public.company_callback_config
+    <set >
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="needBack != null" >
+        need_back = #{needBack,jdbcType=BIT},
+      </if>
+      <if test="callbackPath != null" >
+        callback_path = #{callbackPath,jdbcType=VARCHAR},
+      </if>
+      <if test="callbackType != null" >
+        callback_type = #{callbackType,jdbcType=VARCHAR},
+      </if>
+      <if test="appId != null" >
+        app_id = #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="additionalValue != null" >
+        additional_value = #{additionalValue,jdbcType=VARCHAR},
+      </if>
+      <if test="columnMapping != null" >
+        column_mapping = #{columnMapping,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ipath.orderflowservice.order.dao.bean.CompanyCallbackConfig" >
+    update public.company_callback_config
+    set company_id = #{companyId,jdbcType=BIGINT},
+      need_back = #{needBack,jdbcType=BIT},
+      callback_path = #{callbackPath,jdbcType=VARCHAR},
+      callback_type = #{callbackType,jdbcType=VARCHAR},
+      app_id = #{appId,jdbcType=VARCHAR},
+      additional_value = #{additionalValue,jdbcType=VARCHAR},
+      column_mapping = #{columnMapping,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+<!--  以下手工添加-->
+  <select id="selectCompanyCallbackConfigMappingByCompanyId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from  public.company_callback_config ccc
+    where  ccc.company_id = #{companyId,jdbcType=BIGINT}
+  </select>
+</mapper>

@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ipath.orderflowservice.order.dao.ProjectMapper">
+    <resultMap id="BaseResultMap" type="com.ipath.orderflowservice.order.dao.bean.Project">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="company_id" jdbcType="BIGINT" property="companyId"/>
+        <result column="name_cn" jdbcType="VARCHAR" property="nameCn"/>
+        <result column="code" jdbcType="VARCHAR" property="code"/>
+        <result column="financial_code" jdbcType="VARCHAR" property="financialCode"/>
+        <result column="effective_start" jdbcType="TIMESTAMP" property="effectiveStart"/>
+        <result column="effective_end" jdbcType="TIMESTAMP" property="effectiveEnd"/>
+        <result column="remarks" jdbcType="VARCHAR" property="remarks"/>
+        <result column="state" jdbcType="INTEGER" property="state"/>
+        <result column="is_delete" jdbcType="BIT" property="isDelete"/>
+        <result column="activity_state" jdbcType="INTEGER" property="activityState"/>
+        <result column="createor" jdbcType="BIGINT" property="createor"/>
+        <result column="created_time" jdbcType="TIMESTAMP" property="createdTime"/>
+        <result column="updater" jdbcType="BIGINT" property="updater"/>
+        <result column="updated_time" jdbcType="TIMESTAMP" property="updatedTime"/>
+        <result column="name_en" jdbcType="VARCHAR" property="nameEn"/>
+        <result column="backup_field_1" jdbcType="VARCHAR" property="backupField1"/>
+        <result column="backup_field_2" jdbcType="VARCHAR" property="backupField2"/>
+        <result column="backup_field_3" jdbcType="VARCHAR" property="backupField3"/>
+        <result column="backup_field_4" jdbcType="VARCHAR" property="backupField4"/>
+        <result column="backup_field_5" jdbcType="VARCHAR" property="backupField5"/>
+        <result column="backup_field_6" jdbcType="VARCHAR" property="backupField6"/>
+        <result column="backup_field_7" jdbcType="VARCHAR" property="backupField7"/>
+        <result column="backup_field_8" jdbcType="VARCHAR" property="backupField8"/>
+        <result column="backup_field_9" jdbcType="VARCHAR" property="backupField9"/>
+        <result column="backup_field_10" jdbcType="VARCHAR" property="backupField10"/>
+        <result column="custom_info" jdbcType="VARCHAR" property="customInfo"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id
+        , company_id, name_cn, code, financial_code, effective_start, effective_end, remarks,
+    state, is_delete, activity_state, createor, created_time, updater, updated_time, 
+    name_en, backup_field_1, backup_field_2, backup_field_3, backup_field_4, backup_field_5,
+    backup_field_6, backup_field_7, backup_field_8, backup_field_9, backup_field_10, custom_info
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from public.project
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete
+        from public.project
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" parameterType="com.ipath.orderflowservice.order.dao.bean.Project">
+        insert into public.project (id, company_id, name_cn,
+                                    code, financial_code, effective_start,
+                                    effective_end, remarks, state,
+                                    is_delete, activity_state, createor,
+                                    created_time, updater, updated_time,
+                                    name_en)
+        values (#{id,jdbcType=BIGINT}, #{companyId,jdbcType=BIGINT}, #{nameCn,jdbcType=VARCHAR},
+                #{code,jdbcType=VARCHAR}, #{financialCode,jdbcType=VARCHAR}, #{effectiveStart,jdbcType=TIMESTAMP},
+                #{effectiveEnd,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER},
+                #{isDelete,jdbcType=BIT}, #{activityState,jdbcType=INTEGER}, #{createor,jdbcType=BIGINT},
+                #{createdTime,jdbcType=TIMESTAMP}, #{updater,jdbcType=BIGINT}, #{updatedTime,jdbcType=TIMESTAMP},
+                #{nameEn,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.ipath.orderflowservice.order.dao.bean.Project">
+        insert into public.project
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="companyId != null">
+                company_id,
+            </if>
+            <if test="nameCn != null">
+                name_cn,
+            </if>
+            <if test="code != null">
+                code,
+            </if>
+            <if test="financialCode != null">
+                financial_code,
+            </if>
+            <if test="effectiveStart != null">
+                effective_start,
+            </if>
+            <if test="effectiveEnd != null">
+                effective_end,
+            </if>
+            <if test="remarks != null">
+                remarks,
+            </if>
+            <if test="state != null">
+                state,
+            </if>
+            <if test="isDelete != null">
+                is_delete,
+            </if>
+            <if test="activityState != null">
+                activity_state,
+            </if>
+            <if test="createor != null">
+                createor,
+            </if>
+            <if test="createdTime != null">
+                created_time,
+            </if>
+            <if test="updater != null">
+                updater,
+            </if>
+            <if test="updatedTime != null">
+                updated_time,
+            </if>
+            <if test="nameEn != null">
+                name_en,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="companyId != null">
+                #{companyId,jdbcType=BIGINT},
+            </if>
+            <if test="nameCn != null">
+                #{nameCn,jdbcType=VARCHAR},
+            </if>
+            <if test="code != null">
+                #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="financialCode != null">
+                #{financialCode,jdbcType=VARCHAR},
+            </if>
+            <if test="effectiveStart != null">
+                #{effectiveStart,jdbcType=TIMESTAMP},
+            </if>
+            <if test="effectiveEnd != null">
+                #{effectiveEnd,jdbcType=TIMESTAMP},
+            </if>
+            <if test="remarks != null">
+                #{remarks,jdbcType=VARCHAR},
+            </if>
+            <if test="state != null">
+                #{state,jdbcType=INTEGER},
+            </if>
+            <if test="isDelete != null">
+                #{isDelete,jdbcType=BIT},
+            </if>
+            <if test="activityState != null">
+                #{activityState,jdbcType=INTEGER},
+            </if>
+            <if test="createor != null">
+                #{createor,jdbcType=BIGINT},
+            </if>
+            <if test="createdTime != null">
+                #{createdTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updater != null">
+                #{updater,jdbcType=BIGINT},
+            </if>
+            <if test="updatedTime != null">
+                #{updatedTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="nameEn != null">
+                #{nameEn,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.ipath.orderflowservice.order.dao.bean.Project">
+        update public.project
+        <set>
+            <if test="companyId != null">
+                company_id = #{companyId,jdbcType=BIGINT},
+            </if>
+            <if test="nameCn != null">
+                name_cn = #{nameCn,jdbcType=VARCHAR},
+            </if>
+            <if test="code != null">
+                code = #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="financialCode != null">
+                financial_code = #{financialCode,jdbcType=VARCHAR},
+            </if>
+            <if test="effectiveStart != null">
+                effective_start = #{effectiveStart,jdbcType=TIMESTAMP},
+            </if>
+            <if test="effectiveEnd != null">
+                effective_end = #{effectiveEnd,jdbcType=TIMESTAMP},
+            </if>
+            <if test="remarks != null">
+                remarks = #{remarks,jdbcType=VARCHAR},
+            </if>
+            <if test="state != null">
+                state = #{state,jdbcType=INTEGER},
+            </if>
+            <if test="isDelete != null">
+                is_delete = #{isDelete,jdbcType=BIT},
+            </if>
+            <if test="activityState != null">
+                activity_state = #{activityState,jdbcType=INTEGER},
+            </if>
+            <if test="createor != null">
+                createor = #{createor,jdbcType=BIGINT},
+            </if>
+            <if test="createdTime != null">
+                created_time = #{createdTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updater != null">
+                updater = #{updater,jdbcType=BIGINT},
+            </if>
+            <if test="updatedTime != null">
+                updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="nameEn != null">
+                name_en = #{nameEn,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.ipath.orderflowservice.order.dao.bean.Project">
+        update public.project
+        set company_id      = #{companyId,jdbcType=BIGINT},
+            name_cn         = #{nameCn,jdbcType=VARCHAR},
+            code            = #{code,jdbcType=VARCHAR},
+            financial_code  = #{financialCode,jdbcType=VARCHAR},
+            effective_start = #{effectiveStart,jdbcType=TIMESTAMP},
+            effective_end   = #{effectiveEnd,jdbcType=TIMESTAMP},
+            remarks         = #{remarks,jdbcType=VARCHAR},
+            state           = #{state,jdbcType=INTEGER},
+            is_delete       = #{isDelete,jdbcType=BIT},
+            activity_state  = #{activityState,jdbcType=INTEGER},
+            createor        = #{createor,jdbcType=BIGINT},
+            created_time    = #{createdTime,jdbcType=TIMESTAMP},
+            updater         = #{updater,jdbcType=BIGINT},
+            updated_time    = #{updatedTime,jdbcType=TIMESTAMP},
+            name_en         = #{nameEn,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--以下为手动添加-->
+    <select id="selectProjects" parameterType="com.ipath.orderflowservice.order.dao.bean.Project"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from public.project
+        where 1=1
+        <if test="code != null">
+            and code like concat('%',#{code},'%')
+        </if>
+        <if test="companyId != null">
+            and company_id = #{companyId,jdbcType=BIGINT}
+        </if>
+        order by code
+        limit 50
+    </select>
+
+    <select id="selectJinduCostCenter" resultType="com.ipath.orderflowservice.order.bean.vo.JinduCostCenterVo">
+        SELECT
+        p.ID,
+        p.name_cn as name,
+        p.code,
+        p.backup_field_1 companyCode,
+        CASE
+        p.code
+        WHEN '77' THEN
+        2
+        ELSE 1 end state
+        FROM
+        project p
+        left join project_range pr
+        on p.id = pr.project_id
+        where
+        p.company_id = #{companyId,jdbcType=BIGINT}
+        and pr.target_id = #{userId,jdbcType=BIGINT}
+        <!-- project_range.join_mode = 1, 代表 人员成本中心对应关系 -->
+        and pr.join_mode = 1
+        <!-- project.backup_field_8 = 1, 代表 成本中心 -->
+        and p.backup_field_8 = '1'
+        and p.is_delete = false
+    </select>
+
+    <select id="getJinduCostCenter" resultType="com.ipath.orderflowservice.order.bean.vo.JinduCostCenterVo">
+        SELECT
+        ID,
+        name_cn as name,
+        code,
+        backup_field_1 companyCode,
+        CASE
+        code
+        WHEN '77' THEN
+        2
+        ELSE 1 end state
+        FROM
+        PUBLIC.project
+        <where>
+            <if test="companyId != null">
+                and company_id = #{companyId,jdbcType=BIGINT}
+            </if>
+            <if test="code != null and code != ''">
+                and code = #{code,jdbcType=VARCHAR}
+            </if>
+            <if test="companyCode != null and companyCode != ''">
+                and backup_field_1 = #{companyCode,jdbcType=VARCHAR}
+            </if>
+            <!-- 类型1.成本中心2.案件 -->
+            and backup_field_8 = '1'
+            and is_delete = false
+        </where>
+        order by id
+    </select>
+
+
+    <select id="getJinduCase" resultType="com.ipath.orderflowservice.order.bean.vo.JinduCostCenterVo">
+        SELECT
+        ID,
+        name_cn as name,
+        code,
+        backup_field_1 companyCode
+                FROM
+        PUBLIC.project
+        <where>
+            <if test="companyId != null">
+                and company_id = #{companyId,jdbcType=BIGINT}
+            </if>
+            <if test="companyCode != null and companyCode != ''">
+                and backup_field_1 = #{companyCode,jdbcType=VARCHAR}
+            </if>
+            <!-- 类型1.成本中心2.案件 -->
+            and backup_field_8 = '2'
+            and is_delete = false
+        </where>
+        order by id
+    </select>
+
+    <select id="getJinduApprover" resultType="com.ipath.orderflowservice.order.bean.vo.UserBaseInfoVo">
+        SELECT
+            user_base.id,
+            user_base.staff_code,
+            user_base.name_cn,
+            user_base.name_en,
+            user_base."language"
+        FROM
+            project_range
+                LEFT JOIN user_base ON project_range.target_id = user_base.ID
+                LEFT JOIN project ON project_range.project_id = project."id"
+        <where>
+            and project_range.join_mode = 10
+            <if test="companyId != null">
+                AND project.company_id = #{companyId,jdbcType=BIGINT}
+            </if>
+            <if test="code != null and code !=''">
+                AND project.code = #{code,jdbcType=VARCHAR}
+            </if>
+            <if test="companyCode != null and companyCode !=''">
+                AND project.backup_field_1 = #{companyCode,jdbcType=VARCHAR}
+            </if>
+        </where>
+
+
+
+    </select>
+
+</mapper>

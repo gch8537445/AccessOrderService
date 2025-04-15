@@ -1,0 +1,192 @@
+server:
+  port: 8052
+
+spring:
+  application:
+    name: order-flow-service
+  profiles:
+    active: "test"
+    include: "common, dao"
+    group:
+      "dev": "common-access-dev, dao-access-dev"
+      "test": "common-access-test, dao-access-test"
+      "test-gray": "common-access-test-gray, dao-access-test"
+      "uat": "common-access-uat, dao-access-uat"
+      "qa": "common-access-qa, dao-access-qa"
+      "prod": "common-access-prod, dao-access-prod"
+      "prod-api": "common-access-prod-api, dao-access-prod-api1"
+      "prod-gray": "common-access-prod-gray, dao-access-prod"
+      "santentest": "common-access-test, dao-access-santentest"
+      "santenprod": "common-access-santenprod, dao-access-santenprod"
+      "anjinprod": "common-access-anjinprod, dao-access-anjinprod"
+      "anjintest": "common-access-anjintest, dao-access-anjintest"
+      "jnjdev": "common-access-local, dao-access-jnjdev"
+      "jnjtest": "common-access-jnjtest, dao-access-jnjtest"
+      "jnjprod": "common-access-jnjprod, dao-access-jnjprod"
+
+rocketmq:
+  topic:
+    socket-order-info: socket-order-info-v20
+    order-info: order-info
+    order-notify: order-notify
+    cds-notify: cds-notify   # 通知客户服务
+    workflow-notify: workflow-notify
+    order-status-chg: order-status-chg # 订单状态变更通知
+  tags:
+    socket-order-info: order-info
+    location-request: location-request
+    location-result: location-result
+    detail-request: detail-request
+    detail-result: detail-result
+    order-notify: order-notify  # 通知configure服务
+    order-notify-cnpc: order-notify-cnpc  # 通知石油商旅
+    order-notify-h5: order-callback  # H5订单回传
+    after-approval-notify: after-approval-notify # 行后审批提交
+    approval-result-notify: approval-result-notify # 接收审批结果
+    pay-refund-notify: pay-refund-notify # 退款通知
+    pay-result-notify: pay-result-notify # 接收个人支付结果
+    coupon-consume-notify: coupon-consume-notify # 通知coupon相关服务
+    extra-notify: extra-notify # 通知extra相关服务
+    bill-notify: bill-notify # 通知bill相关服务
+    order-notify-third: order-notify-third  # 通知第三方
+    report-order: report-order
+    report-approval: report-approval
+    report-bill: report-bill
+    process-notify: process-notify # 通知bill服务
+    complaint-notify: complaint-notify
+    report-appendplaceorder: report-appendplaceorder
+    order-reject-pay: pay-success
+    abnormal-rule: abnormal-rule  # 合规预警
+    workflow-order: order
+    process: order-process-tag
+  producer:
+    group: order-group
+    send-message-timeout: 10000
+  consumer:
+    group: order-group-ka
+  report:
+    topic: order-chg-to-report
+    tag: order-status-chg-info
+  settle:
+    topic: order-chg-to-report
+    tag: order-settle-info
+  cancel:
+    topic: order-chg-to-report
+    tag: order-cancel-info
+  append:
+    topic: order-chg-to-report
+    tag: order-append-info
+  paid:
+    topic: order-chg-to-report
+    tag: order-paid-info
+  changeDest:
+    topic: order-chg-to-report
+    tag: order-change-dest-info
+  complaint:
+    topic: order-chg-to-report
+    tag: order-complaint-info
+  completion:
+    topic: order-chg-to-report
+    tag: order-completion-info
+  booking:
+    topic: order-chg-to-report
+    tag: order-booking-info
+  log: # 日志服务
+    topic: log-notify
+    tag: log-info-standard
+    consumer-group: log-group-standard
+  orderService: # 自产自消
+    topicDispatch: topic-dispatch # 极速派单
+    tagPlaceOrder: tag-place-order # 延时下单
+    group: order-servcie-group
+  orderStatusChg:
+    topic: order-status-notify
+    tag: order-status-info-standard
+    group: mq-group-standard
+notifyUrl:
+  notifyPay: https://gatewayv2.imtpath.net/api/v2/partner/order/notifyPay
+  notifyPayRefund: https://gatewayv2.imtpath.net/api/v2/partner/order/notifyRefund
+
+#平台/司机取消重新派单 开关
+rePlaceOrderAfterCoreCancelSwitch: false
+
+sendMsg:
+  mail:
+    to: yantao.sun@imtpath.com;zhen.hu@imtpath.com
+    enabled: true
+
+jingDong:
+  url: https://api.jd.com/routerjson
+#  app_key: C1D67809E0A2191B56CC0DC084185F5A
+#  app_secret: b4abb049aef147f49760ac10a92a3c7c
+  app_key: 906235CB607873B471D28180011812FC
+  app_secret: 93d4413c4e2944f6b66c2e749266f9ba
+
+aes:
+  address-key: 02d4c190b2b97b4e489006bcc289ce22
+
+customer:
+  service:
+    phone: 400-0757-666
+
+scene:
+  overtime: S001
+
+#支付  uat环境  其他环境需要找张占喜配置，两个回调地址也需要让他在各个环境配置一下
+pay:
+  url: https://ipay.imtpath.net/
+  appId: wx194fac2cf4f0db91
+  configId: newyqcxuat
+  templeteId: 140998
+  key: 63A98453-D18F-4E0F-A653-18E54195A149
+
+serviceMessage:
+  # 腾讯云推文模板id
+  tencent:
+    companyId: 248100731020642053
+    # 流程操作通知
+    processOperationNotificationTemplateId: uFBNefzbq03q5nfs0urgCxYo16TWwHb3QGApUBHVZds
+  wpp:
+    companyId: 258207578547291909
+    # 流程操作通知
+    processOperationNotificationTemplateId: uFBNefzbq03q5nfs0urgCxYo16TWwHb3QGApUBHVZds
+
+# 赛诺菲 同步个人会议的企业id
+sync:
+  meeting:
+    companyId: 12521830270
+
+#是否开启灰度测试
+grayTestSwitch: 
+  settle: false #结算
+
+log:
+  enabled: false
+  level: 2
+  url: https://devop.imtpath.net/stage-api/log/interface/save
+  serviceCode: ${spring.application.name}
+  serviceName: ${spring.profiles.active}:下单服务
+
+company:
+  merk: 269674041313330949
+
+# 灰度标识
+pre:
+  env:
+    isGray: false
+    key: pre-env
+    value: grayscale_environment
+
+
+# 环境控制
+envConfig:
+  # 对外请求环境
+  request:
+    remoteCall:
+      isGray: false
+      key: pre-env
+      value: grayscale_environment
+  # 接收外部请求环境
+  receive:
+    isGray: false
+    code: meituan

@@ -1,0 +1,45 @@
+# 中台生产环境
+icar:
+  url: https://ipathcar.imtpath.net
+  appid: app7291118000
+  secret: BP7A4BaDv4HplTL3u3eT9Ho7tyVrNjvU09F4vcB7T2x971C5bMwIGO0D3gu3FRuI
+
+# 支付中心
+ipay:
+  configId: prodnewicar
+  key: 039759C0-DD49-4D4E-B94F-00018A413E4C
+
+huitong:
+  needOrderNotify: false
+  secretKey: 02d4c190b2b97b4e489006bcc289ce22  # 慧通商旅测试环境key
+  authId: ipath
+  keyPass: 123456
+  address: https://openapi-cnpc-uat.hwht.com
+  certFilePath: /etc/ht_public_test.cert     # 对方测试环境公钥
+  pemFilePath: /etc/private_dev.pem          # 我们的dev私钥
+
+ipath:
+  specialCustomer: 302269344182469
+  carLevelName: 舒适
+
+log:
+  enabled: true
+  level: 0
+  url: https://prd-admin-api.imtpath.net/stage-api/log/interface/save
+
+mobileUrl: "https://camgenicar.amgenwechat.com"
+
+serviceMessage:
+  # 腾讯云推文模板id
+  tencent:
+    companyId: 248100731020642053
+    # 流程操作通知
+    processOperationNotificationTemplateId: uFBNefzbq03q5nfs0urgCxYo16TWwHb3QGApUBHVZds
+  wpp:
+    companyId: 258207578547291909
+    # 流程操作通知
+    processOperationNotificationTemplateId: uFBNefzbq03q5nfs0urgCxYo16TWwHb3QGApUBHVZds
+
+company:
+  merk: 269674041313330949
+

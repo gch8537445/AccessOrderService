@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ipath.orderflowservice.order.dao.MeetingMapper">
+    <resultMap id="BaseResultMap" type="com.ipath.orderflowservice.order.dao.bean.Meeting">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="event_name" jdbcType="VARCHAR" property="eventName"/>
+        <result column="event_code" jdbcType="VARCHAR" property="eventCode"/>
+        <result column="io_title" jdbcType="VARCHAR" property="ioTitle"/>
+        <result column="io_code" jdbcType="VARCHAR" property="ioCode"/>
+        <result column="valid_to" jdbcType="TIMESTAMP" property="validTo"/>
+        <result column="department_name_en" jdbcType="VARCHAR" property="departmentNameEn"/>
+        <result column="area_name_en" jdbcType="VARCHAR" property="areaNameEn"/>
+        <result column="event_type" jdbcType="VARCHAR" property="eventType"/>
+        <result column="start_date" jdbcType="TIMESTAMP" property="startDate"/>
+        <result column="end_date" jdbcType="TIMESTAMP" property="endDate"/>
+        <result column="event_status" jdbcType="VARCHAR" property="eventStatus"/>
+        <result column="io_status" jdbcType="VARCHAR" property="ioStatus"/>
+        <result column="employee_code" jdbcType="VARCHAR" property="employeeCode"/>
+        <result column="employee_name" jdbcType="VARCHAR" property="employeeName"/>
+        <result column="company_id" jdbcType="BIGINT" property="companyId"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, company_id
+        , event_name, event_code, io_title, io_code, valid_to, department_name_en, area_name_en,
+    event_type, start_date, end_date, event_status, io_status, employee_code, employee_name
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from meeting
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete
+        from meeting
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" parameterType="com.ipath.orderflowservice.order.dao.bean.Meeting">
+        insert into meeting (id,company_id, event_name, event_code,
+                             io_title, io_code, valid_to,
+                             department_name_en, area_name_en, event_type,
+                             start_date, end_date, event_status,
+                             io_status, employee_code, employee_name)
+        values (#{id,jdbcType=BIGINT},#{companyId,jdbcType=BIGINT} #{eventName,jdbcType=VARCHAR}, #{eventCode,jdbcType=VARCHAR},
+                #{ioTitle,jdbcType=VARCHAR}, #{ioCode,jdbcType=VARCHAR}, #{validTo,jdbcType=TIMESTAMP},
+                #{departmentNameEn,jdbcType=VARCHAR}, #{areaNameEn,jdbcType=VARCHAR}, #{eventType,jdbcType=VARCHAR},
+                #{startDate,jdbcType=TIMESTAMP}, #{endDate,jdbcType=TIMESTAMP}, #{eventStatus,jdbcType=VARCHAR},
+                #{ioStatus,jdbcType=VARCHAR}, #{employeeCode,jdbcType=VARCHAR}, #{employeeName,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.ipath.orderflowservice.order.dao.bean.Meeting">
+        insert into meeting
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="companyId != null">
+                company_id,
+            </if>
+            <if test="eventName != null">
+                event_name,
+            </if>
+            <if test="eventCode != null">
+                event_code,
+            </if>
+            <if test="ioTitle != null">
+                io_title,
+            </if>
+            <if test="ioCode != null">
+                io_code,
+            </if>
+            <if test="validTo != null">
+                valid_to,
+            </if>
+            <if test="departmentNameEn != null">
+                department_name_en,
+            </if>
+            <if test="areaNameEn != null">
+                area_name_en,
+            </if>
+            <if test="eventType != null">
+                event_type,
+            </if>
+            <if test="startDate != null">
+                start_date,
+            </if>
+            <if test="endDate != null">
+                end_date,
+            </if>
+            <if test="eventStatus != null">
+                event_status,
+            </if>
+            <if test="ioStatus != null">
+                io_status,
+            </if>
+            <if test="employeeCode != null">
+                employee_code,
+            </if>
+            <if test="employeeName != null">
+                employee_name,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="companyId != null">
+                #{companyId,jdbcType=BIGINT},
+            </if>
+            <if test="eventName != null">
+                #{eventName,jdbcType=VARCHAR},
+            </if>
+            <if test="eventCode != null">
+                #{eventCode,jdbcType=VARCHAR},
+            </if>
+            <if test="ioTitle != null">
+                #{ioTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="ioCode != null">
+                #{ioCode,jdbcType=VARCHAR},
+            </if>
+            <if test="validTo != null">
+                #{validTo,jdbcType=TIMESTAMP},
+            </if>
+            <if test="departmentNameEn != null">
+                #{departmentNameEn,jdbcType=VARCHAR},
+            </if>
+            <if test="areaNameEn != null">
+                #{areaNameEn,jdbcType=VARCHAR},
+            </if>
+            <if test="eventType != null">
+                #{eventType,jdbcType=VARCHAR},
+            </if>
+            <if test="startDate != null">
+                #{startDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="endDate != null">
+                #{endDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="eventStatus != null">
+                #{eventStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="ioStatus != null">
+                #{ioStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="employeeCode != null">
+                #{employeeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="employeeName != null">
+                #{employeeName,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.ipath.orderflowservice.order.dao.bean.Meeting">
+        update meeting
+        <set>
+            <if test="companyId != null">
+                company_id = #{companyId,jdbcType=BIGINT}
+            </if>
+            <if test="eventName != null">
+                event_name = #{eventName,jdbcType=VARCHAR},
+            </if>
+            <if test="eventCode != null">
+                event_code = #{eventCode,jdbcType=VARCHAR},
+            </if>
+            <if test="ioTitle != null">
+                io_title = #{ioTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="ioCode != null">
+                io_code = #{ioCode,jdbcType=VARCHAR},
+            </if>
+            <if test="validTo != null">
+                valid_to = #{validTo,jdbcType=TIMESTAMP},
+            </if>
+            <if test="departmentNameEn != null">
+                department_name_en = #{departmentNameEn,jdbcType=VARCHAR},
+            </if>
+            <if test="areaNameEn != null">
+                area_name_en = #{areaNameEn,jdbcType=VARCHAR},
+            </if>
+            <if test="eventType != null">
+                event_type = #{eventType,jdbcType=VARCHAR},
+            </if>
+            <if test="startDate != null">
+                start_date = #{startDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="endDate != null">
+                end_date = #{endDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="eventStatus != null">
+                event_status = #{eventStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="ioStatus != null">
+                io_status = #{ioStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="employeeCode != null">
+                employee_code = #{employeeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="employeeName != null">
+                employee_name = #{employeeName,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.ipath.orderflowservice.order.dao.bean.Meeting">
+        update meeting
+        set company_id         = #{companyId,jdbcType=BIGINT},
+            event_name         = #{eventName,jdbcType=VARCHAR},
+            event_code         = #{eventCode,jdbcType=VARCHAR},
+            io_title           = #{ioTitle,jdbcType=VARCHAR},
+            io_code            = #{ioCode,jdbcType=VARCHAR},
+            valid_to           = #{validTo,jdbcType=TIMESTAMP},
+            department_name_en = #{departmentNameEn,jdbcType=VARCHAR},
+            area_name_en       = #{areaNameEn,jdbcType=VARCHAR},
+            event_type         = #{eventType,jdbcType=VARCHAR},
+            start_date         = #{startDate,jdbcType=TIMESTAMP},
+            end_date           = #{endDate,jdbcType=TIMESTAMP},
+            event_status       = #{eventStatus,jdbcType=VARCHAR},
+            io_status          = #{ioStatus,jdbcType=VARCHAR},
+            employee_code      = #{employeeCode,jdbcType=VARCHAR},
+            employee_name      = #{employeeName,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <select id="meetingList" resultType="com.ipath.orderflowservice.order.bean.vo.MeetingVo">
+        select
+        top 50
+        id, event_name eventName, event_code eventCode, io_title ioTitle, io_code ioCode, employee_name employeeName , 1 as type
+        from meeting
+        <where>
+            <!--        4.	判断会议是否可用：iostatus（为Closed、TECO时不可用）-->
+            and io_status not in ('Closed' , 'TECO')
+            <if test="param != null and param != ''">
+                and (
+                event_name like concat('%',#{param,jdbcType=VARCHAR},'%')
+                or
+                event_code like concat('%',#{param,jdbcType=VARCHAR},'%')
+                or
+                io_title like concat('%',#{param,jdbcType=VARCHAR},'%')
+                or
+                io_code like concat('%',#{param,jdbcType=VARCHAR},'%')
+                )
+            </if>
+            <if test="companyId != null">
+               and company_id =#{companyId,jdbcType=BIGINT}
+            </if>
+        </where>
+        order by valid_to asc ;
+    </select>
+
+    <select id="getSyncMeeting" resultType="com.ipath.orderflowservice.order.dao.vo.SyncMeetingVo">
+        SELECT *
+        FROM (
+        select
+        user_base.id  userid,
+        meeting.employee_code empCode,
+        meeting.ID meetingId,
+        meeting.io_status ioStatus,
+        CASE
+
+        WHEN meeting_personal.meeting_id IS NULL THEN
+        0
+        WHEN meeting.io_status != meeting_personal.io_status THEN 1
+        ELSE 2
+        END AS TYPE
+        FROM meeting
+        LEFT JOIN user_base on meeting.employee_code = user_base.backup_field_4
+        LEFT JOIN meeting_personal ON meeting.ID = meeting_personal.meeting_id
+        AND cast(user_base.id as varchar) = cast(meeting_personal.userid as varchar)
+        <where>
+            and meeting.valid_to > DATEADD(day, 30, GETDATE())
+            and meeting.company_id = #{syncMeetingCompanyId}
+            AND user_base.company_id = #{syncMeetingCompanyId}
+            and user_base.id is not null
+        </where>
+        ) _temp
+        WHERE _temp.TYPE != 2
+    </select>
+
+    <select id="getCommonlyUsedMeeting" resultType="com.ipath.orderflowservice.order.bean.vo.MeetingVo">
+        SELECT meeting.id id,
+        meeting.event_name eventName,
+        meeting.event_code eventCode,
+        meeting.io_title ioTitle,
+        meeting.io_code ioCode,
+        meeting.employee_name employeeName,
+        0 as type
+        FROM meeting
+        WHERE ID IN (SELECT
+        top 3 meeting.ID
+        FROM order_meeting
+        LEFT JOIN meeting ON meeting.ID = order_meeting.meeting_id
+        LEFT JOIN order_base ON order_base.ID = order_meeting.order_id
+        WHERE order_base.user_id = #{userid}
+        <if test="param != null and param != ''">
+            and (
+            meeting.event_name like concat('%',#{param,jdbcType=VARCHAR},'%')
+            or
+            meeting.event_code like concat('%',#{param,jdbcType=VARCHAR},'%')
+            or
+            meeting.io_title like concat('%',#{param,jdbcType=VARCHAR},'%')
+            or
+            meeting.io_code like concat('%',#{param,jdbcType=VARCHAR},'%')
+            )
+        </if>
+        AND order_base.create_time BETWEEN DATEADD(day, -7, GETDATE()) AND GETDATE()
+        and meeting.io_status not in ('Closed', 'TECO')
+        GROUP BY meeting.ID
+        ORDER BY COUNT(1) DESC
+        , MAX(order_base.create_time) DESC
+
+        )
+    </select>
+
+    <select id="getByCompanyIdAndIoTitle" resultType="com.ipath.orderflowservice.order.bean.vo.EventVo">
+        select io_title   as projectCode,
+               event_code as eventCode,
+               event_name as eventName,
+               department_name_en as departmentNameEn
+        from meeting
+        where company_id = #{companyId,jdbcType=BIGINT}
+          and area_name_en = #{ioTitle,jdbcType=VARCHAR}
+          and io_status = #{ioStatus,jdbcType=VARCHAR}
+        group by area_name_en,event_code,event_name,department_name_en,io_title;
+    </select>
+</mapper>

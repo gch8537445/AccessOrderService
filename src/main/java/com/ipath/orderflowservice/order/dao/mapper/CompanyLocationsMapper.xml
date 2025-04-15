@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ipath.orderflowservice.order.dao.CompanyLocationsMapper" >
+  <resultMap id="BaseResultMap" type="com.ipath.orderflowservice.order.dao.bean.CompanyLocations" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="company_id" property="companyId" jdbcType="BIGINT" />
+    <result column="city_code" property="cityCode" jdbcType="VARCHAR" />
+    <result column="city_name" property="cityName" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="gcj02_lat" property="gcj02Lat" jdbcType="NUMERIC" />
+    <result column="gcj02_lng" property="gcj02Lng" jdbcType="NUMERIC" />
+    <result column="gps_lat" property="gpsLat" jdbcType="NUMERIC" />
+    <result column="gps_lng" property="gpsLng" jdbcType="NUMERIC" />
+    <result column="createor" property="createor" jdbcType="BIGINT" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="account_id" property="accountId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, company_id, city_code, city_name, address, name, gcj02_lat, gcj02_lng, gps_lat, 
+    gps_lng, createor, created_time, account_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from public.company_locations
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from public.company_locations
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ipath.orderflowservice.order.dao.bean.CompanyLocations" >
+    insert into public.company_locations (id, company_id, city_code, 
+      city_name, address, name, 
+      gcj02_lat, gcj02_lng, gps_lat, 
+      gps_lng, createor, created_time, 
+      account_id)
+    values (#{id,jdbcType=BIGINT}, #{companyId,jdbcType=BIGINT}, #{cityCode,jdbcType=VARCHAR}, 
+      #{cityName,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{gcj02Lat,jdbcType=NUMERIC}, #{gcj02Lng,jdbcType=NUMERIC}, #{gpsLat,jdbcType=NUMERIC}, 
+      #{gpsLng,jdbcType=NUMERIC}, #{createor,jdbcType=BIGINT}, #{createdTime,jdbcType=TIMESTAMP}, 
+      #{accountId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ipath.orderflowservice.order.dao.bean.CompanyLocations" >
+    insert into public.company_locations
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+      <if test="cityCode != null" >
+        city_code,
+      </if>
+      <if test="cityName != null" >
+        city_name,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="gcj02Lat != null" >
+        gcj02_lat,
+      </if>
+      <if test="gcj02Lng != null" >
+        gcj02_lng,
+      </if>
+      <if test="gpsLat != null" >
+        gps_lat,
+      </if>
+      <if test="gpsLng != null" >
+        gps_lng,
+      </if>
+      <if test="createor != null" >
+        createor,
+      </if>
+      <if test="createdTime != null" >
+        created_time,
+      </if>
+      <if test="accountId != null" >
+        account_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="cityCode != null" >
+        #{cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cityName != null" >
+        #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gcj02Lat != null" >
+        #{gcj02Lat,jdbcType=NUMERIC},
+      </if>
+      <if test="gcj02Lng != null" >
+        #{gcj02Lng,jdbcType=NUMERIC},
+      </if>
+      <if test="gpsLat != null" >
+        #{gpsLat,jdbcType=NUMERIC},
+      </if>
+      <if test="gpsLng != null" >
+        #{gpsLng,jdbcType=NUMERIC},
+      </if>
+      <if test="createor != null" >
+        #{createor,jdbcType=BIGINT},
+      </if>
+      <if test="createdTime != null" >
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accountId != null" >
+        #{accountId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ipath.orderflowservice.order.dao.bean.CompanyLocations" >
+    update public.company_locations
+    <set >
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="cityCode != null" >
+        city_code = #{cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cityName != null" >
+        city_name = #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gcj02Lat != null" >
+        gcj02_lat = #{gcj02Lat,jdbcType=NUMERIC},
+      </if>
+      <if test="gcj02Lng != null" >
+        gcj02_lng = #{gcj02Lng,jdbcType=NUMERIC},
+      </if>
+      <if test="gpsLat != null" >
+        gps_lat = #{gpsLat,jdbcType=NUMERIC},
+      </if>
+      <if test="gpsLng != null" >
+        gps_lng = #{gpsLng,jdbcType=NUMERIC},
+      </if>
+      <if test="createor != null" >
+        createor = #{createor,jdbcType=BIGINT},
+      </if>
+      <if test="createdTime != null" >
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accountId != null" >
+        account_id = #{accountId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ipath.orderflowservice.order.dao.bean.CompanyLocations" >
+    update public.company_locations
+    set company_id = #{companyId,jdbcType=BIGINT},
+      city_code = #{cityCode,jdbcType=VARCHAR},
+      city_name = #{cityName,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      gcj02_lat = #{gcj02Lat,jdbcType=NUMERIC},
+      gcj02_lng = #{gcj02Lng,jdbcType=NUMERIC},
+      gps_lat = #{gpsLat,jdbcType=NUMERIC},
+      gps_lng = #{gpsLng,jdbcType=NUMERIC},
+      createor = #{createor,jdbcType=BIGINT},
+      created_time = #{createdTime,jdbcType=TIMESTAMP},
+      account_id = #{accountId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByCompanyId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from public.company_locations
+    where company_id = #{companyId,jdbcType=BIGINT}
+  </select>
+</mapper>

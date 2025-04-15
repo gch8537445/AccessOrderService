@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ipath.orderflowservice.order.dao.ComSceneParaMapper" >
+  <resultMap id="BaseResultMap" type="com.ipath.orderflowservice.order.dao.bean.ComScenePara" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="company_id" property="companyId" jdbcType="BIGINT" />
+    <result column="scene_id" property="sceneId" jdbcType="BIGINT" />
+    <result column="publish_id" property="publishId" jdbcType="BIGINT" />
+    <result column="para_id" property="paraId" jdbcType="BIGINT" />
+    <result column="para_code" property="paraCode" jdbcType="VARCHAR" />
+    <result column="para_name" property="paraName" jdbcType="VARCHAR" />
+    <result column="para_value" property="paraValue" jdbcType="VARCHAR" />
+    <result column="para_jsonb_value" property="paraJsonbValue" jdbcType="OTHER" />
+    <result column="sort" property="sort" jdbcType="SMALLINT" />
+    <result column="group_id" property="groupId" jdbcType="BIGINT" />
+    <result column="group_name" property="groupName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, company_id, scene_id, publish_id, para_id, para_code, para_name, para_value, 
+    para_jsonb_value, sort, group_id, group_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from public.com_scene_para
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from public.com_scene_para
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ipath.orderflowservice.order.dao.bean.ComScenePara" >
+    insert into public.com_scene_para (id, company_id, scene_id, 
+      publish_id, para_id, para_code, 
+      para_name, para_value, para_jsonb_value, 
+      sort, group_id, group_name
+      )
+    values (#{id,jdbcType=BIGINT}, #{companyId,jdbcType=BIGINT}, #{sceneId,jdbcType=BIGINT}, 
+      #{publishId,jdbcType=BIGINT}, #{paraId,jdbcType=BIGINT}, #{paraCode,jdbcType=VARCHAR}, 
+      #{paraName,jdbcType=VARCHAR}, #{paraValue,jdbcType=VARCHAR}, #{paraJsonbValue,jdbcType=OTHER}, 
+      #{sort,jdbcType=SMALLINT}, #{groupId,jdbcType=BIGINT}, #{groupName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ipath.orderflowservice.order.dao.bean.ComScenePara" >
+    insert into public.com_scene_para
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+      <if test="sceneId != null" >
+        scene_id,
+      </if>
+      <if test="publishId != null" >
+        publish_id,
+      </if>
+      <if test="paraId != null" >
+        para_id,
+      </if>
+      <if test="paraCode != null" >
+        para_code,
+      </if>
+      <if test="paraName != null" >
+        para_name,
+      </if>
+      <if test="paraValue != null" >
+        para_value,
+      </if>
+      <if test="paraJsonbValue != null" >
+        para_jsonb_value,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+      <if test="groupId != null" >
+        group_id,
+      </if>
+      <if test="groupName != null" >
+        group_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="sceneId != null" >
+        #{sceneId,jdbcType=BIGINT},
+      </if>
+      <if test="publishId != null" >
+        #{publishId,jdbcType=BIGINT},
+      </if>
+      <if test="paraId != null" >
+        #{paraId,jdbcType=BIGINT},
+      </if>
+      <if test="paraCode != null" >
+        #{paraCode,jdbcType=VARCHAR},
+      </if>
+      <if test="paraName != null" >
+        #{paraName,jdbcType=VARCHAR},
+      </if>
+      <if test="paraValue != null" >
+        #{paraValue,jdbcType=VARCHAR},
+      </if>
+      <if test="paraJsonbValue != null" >
+        #{paraJsonbValue,jdbcType=OTHER},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=SMALLINT},
+      </if>
+      <if test="groupId != null" >
+        #{groupId,jdbcType=BIGINT},
+      </if>
+      <if test="groupName != null" >
+        #{groupName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ipath.orderflowservice.order.dao.bean.ComScenePara" >
+    update public.com_scene_para
+    <set >
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="sceneId != null" >
+        scene_id = #{sceneId,jdbcType=BIGINT},
+      </if>
+      <if test="publishId != null" >
+        publish_id = #{publishId,jdbcType=BIGINT},
+      </if>
+      <if test="paraId != null" >
+        para_id = #{paraId,jdbcType=BIGINT},
+      </if>
+      <if test="paraCode != null" >
+        para_code = #{paraCode,jdbcType=VARCHAR},
+      </if>
+      <if test="paraName != null" >
+        para_name = #{paraName,jdbcType=VARCHAR},
+      </if>
+      <if test="paraValue != null" >
+        para_value = #{paraValue,jdbcType=VARCHAR},
+      </if>
+      <if test="paraJsonbValue != null" >
+        para_jsonb_value = #{paraJsonbValue,jdbcType=OTHER},
+      </if>
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=SMALLINT},
+      </if>
+      <if test="groupId != null" >
+        group_id = #{groupId,jdbcType=BIGINT},
+      </if>
+      <if test="groupName != null" >
+        group_name = #{groupName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ipath.orderflowservice.order.dao.bean.ComScenePara" >
+    update public.com_scene_para
+    set company_id = #{companyId,jdbcType=BIGINT},
+      scene_id = #{sceneId,jdbcType=BIGINT},
+      publish_id = #{publishId,jdbcType=BIGINT},
+      para_id = #{paraId,jdbcType=BIGINT},
+      para_code = #{paraCode,jdbcType=VARCHAR},
+      para_name = #{paraName,jdbcType=VARCHAR},
+      para_value = #{paraValue,jdbcType=VARCHAR},
+      para_jsonb_value = #{paraJsonbValue,jdbcType=OTHER},
+      sort = #{sort,jdbcType=SMALLINT},
+      group_id = #{groupId,jdbcType=BIGINT},
+      group_name = #{groupName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <!--以下手动添加-->
+  <select id="selectByParaCodes" resultMap="BaseResultMap" parameterType="com.ipath.orderflowservice.order.dao.param.QuerySceneParam" >
+    select
+    <include refid="Base_Column_List" />
+    from public.com_scene_para csp
+    where 1=1
+    <if test="paraCodes != null" >
+      and csp.para_code in
+      <foreach collection="paraCodes" item="paraCode" open="(" separator="," close=")">
+        #{paraCode}
+      </foreach>
+    </if>
+  </select>
+</mapper>

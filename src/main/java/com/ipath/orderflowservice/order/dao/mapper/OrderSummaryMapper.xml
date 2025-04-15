@@ -1,0 +1,1585 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ipath.orderflowservice.order.dao.OrderSummaryMapper" >
+  <resultMap id="BaseResultMap" type="com.ipath.orderflowservice.order.dao.bean.OrderSummary" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="core_order_id" property="coreOrderId" jdbcType="BIGINT" />
+    <result column="env_id" property="envId" jdbcType="VARCHAR" />
+    <result column="platform_order_id" property="platformOrderId" jdbcType="VARCHAR" />
+    <result column="trans_order_id" property="transOrderId" jdbcType="VARCHAR" />
+    <result column="sub_trans_order_id" property="subTransOrderId" jdbcType="VARCHAR" />
+    <result column="company_id" property="companyId" jdbcType="BIGINT" />
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="order_type" property="orderType" jdbcType="SMALLINT" />
+    <result column="actual_car_source_code" property="actualCarSourceCode" jdbcType="SMALLINT" />
+    <result column="actual_car_source_name" property="actualCarSourceName" jdbcType="VARCHAR" />
+    <result column="actual_car_level" property="actualCarLevel" jdbcType="SMALLINT" />
+    <result column="actual_car_level_name" property="actualCarLevelName" jdbcType="VARCHAR" />
+    <result column="city_code" property="cityCode" jdbcType="VARCHAR" />
+    <result column="city_name" property="cityName" jdbcType="VARCHAR" />
+    <result column="mapping_city_code" property="mappingCityCode" jdbcType="VARCHAR" />
+    <result column="mapping_city_name" property="mappingCityName" jdbcType="VARCHAR" />
+    <result column="dest_city_code" property="destCityCode" jdbcType="VARCHAR" />
+    <result column="dest_city_name" property="destCityName" jdbcType="VARCHAR" />
+    <result column="pickup_location" property="pickupLocation" jdbcType="VARCHAR" />
+    <result column="pickup_location_name" property="pickupLocationName" jdbcType="VARCHAR" />
+    <result column="pickup_lat" property="pickupLat" jdbcType="VARCHAR" />
+    <result column="pickup_lng" property="pickupLng" jdbcType="VARCHAR" />
+    <result column="dest_location" property="destLocation" jdbcType="VARCHAR" />
+    <result column="dest_location_name" property="destLocationName" jdbcType="VARCHAR" />
+    <result column="dest_lat" property="destLat" jdbcType="VARCHAR" />
+    <result column="dest_lng" property="destLng" jdbcType="VARCHAR" />
+    <result column="is_change_dest" property="isChangeDest" jdbcType="BIT" />
+    <result column="change_dest_time" property="changeDestTime" jdbcType="VARCHAR" />
+    <result column="change_dest_location" property="changeDestLocation" jdbcType="VARCHAR" />
+    <result column="change_dest_lat" property="changeDestLat" jdbcType="VARCHAR" />
+    <result column="change_dest_lng" property="changeDestLng" jdbcType="VARCHAR" />
+    <result column="actual_pickup_location" property="actualPickupLocation" jdbcType="VARCHAR" />
+    <result column="actual_pickup_location_name" property="actualPickupLocationName" jdbcType="VARCHAR" />
+    <result column="actual_pickup_lat" property="actualPickupLat" jdbcType="VARCHAR" />
+    <result column="actual_pickup_lng" property="actualPickupLng" jdbcType="VARCHAR" />
+    <result column="actual_dest_location" property="actualDestLocation" jdbcType="VARCHAR" />
+    <result column="actual_dest_location_name" property="actualDestLocationName" jdbcType="VARCHAR" />
+    <result column="actual_dest_lat" property="actualDestLat" jdbcType="VARCHAR" />
+    <result column="actual_dest_lng" property="actualDestLng" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="user_phone" property="userPhone" jdbcType="VARCHAR" />
+    <result column="user_emergency_phone" property="userEmergencyPhone" jdbcType="VARCHAR" />
+    <result column="passenger" property="passenger" jdbcType="VARCHAR" />
+    <result column="passenger_phone" property="passengerPhone" jdbcType="VARCHAR" />
+    <result column="estimate_price" property="estimatePrice" jdbcType="NUMERIC" />
+    <result column="total_amount" property="totalAmount" jdbcType="NUMERIC" />
+    <result column="extral_amount" property="extralAmount" jdbcType="NUMERIC" />
+    <result column="coupon_amount" property="couponAmount" jdbcType="NUMERIC" />
+    <result column="prepay_amount" property="prepayAmount" jdbcType="NUMERIC" />
+    <result column="prepay_refund_amount" property="prepayRefundAmount" jdbcType="NUMERIC" />
+    <result column="allow_invoice_amount" property="allowInvoiceAmount" jdbcType="NUMERIC" />
+    <result column="personal_payable_amount" property="personalPayableAmount" jdbcType="NUMERIC" />
+    <result column="personal_paid_amount" property="personalPaidAmount" jdbcType="NUMERIC" />
+    <result column="company_amount" property="companyAmount" jdbcType="NUMERIC" />
+    <result column="personal_amount" property="personalAmount" jdbcType="NUMERIC" />
+    <result column="actual_amount" property="actualAmount" jdbcType="NUMERIC" />
+    <result column="other_refund_amount" property="otherRefundAmount" jdbcType="NUMERIC" />
+    <result column="other_refund_reason" property="otherRefundReason" jdbcType="VARCHAR" />
+    <result column="other_refund_admin_id" property="otherRefundAdminId" jdbcType="BIGINT" />
+    <result column="other_refund_admin_name" property="otherRefundAdminName" jdbcType="VARCHAR" />
+    <result column="other_refund_time" property="otherRefundTime" jdbcType="TIMESTAMP" />
+    <result column="fee_detail" property="feeDetail" jdbcType="VARCHAR" />
+    <result column="order_time" property="orderTime" jdbcType="TIMESTAMP" />
+    <result column="driver_taking_time" property="driverTakingTime" jdbcType="TIMESTAMP" />
+    <result column="driver_arrival_time" property="driverArrivalTime" jdbcType="TIMESTAMP" />
+    <result column="travel_begin_time" property="travelBeginTime" jdbcType="TIMESTAMP" />
+    <result column="travel_end_time" property="travelEndTime" jdbcType="TIMESTAMP" />
+    <result column="settle_time" property="settleTime" jdbcType="TIMESTAMP" />
+    <result column="travel_duration" property="travelDuration" jdbcType="NUMERIC" />
+    <result column="travel_distance" property="travelDistance" jdbcType="NUMERIC" />
+    <result column="take_order_duration_s" property="takeOrderDurationS" jdbcType="INTEGER" />
+    <result column="take_order_duration_m" property="takeOrderDurationM" jdbcType="NUMERIC" />
+    <result column="pay_time" property="payTime" jdbcType="TIMESTAMP" />
+    <result column="personal_pay_status" property="personalPayStatus" jdbcType="SMALLINT" />
+    <result column="status" property="status" jdbcType="SMALLINT" />
+    <result column="cancel_time" property="cancelTime" jdbcType="TIMESTAMP" />
+    <result column="cancel_type" property="cancelType" jdbcType="SMALLINT" />
+    <result column="cancel_reason" property="cancelReason" jdbcType="VARCHAR" />
+    <result column="department_id" property="departmentId" jdbcType="BIGINT" />
+    <result column="department_name" property="departmentName" jdbcType="VARCHAR" />
+    <result column="scene_id" property="sceneId" jdbcType="BIGINT" />
+    <result column="scene_name" property="sceneName" jdbcType="VARCHAR" />
+    <result column="scene_publish_id" property="scenePublishId" jdbcType="BIGINT" />
+    <result column="project_id" property="projectId" jdbcType="BIGINT" />
+    <result column="project_name" property="projectName" jdbcType="VARCHAR" />
+    <result column="account_id" property="accountId" jdbcType="BIGINT" />
+    <result column="account_name" property="accountName" jdbcType="VARCHAR" />
+    <result column="pay_type" property="payType" jdbcType="SMALLINT" />
+    <result column="use_car_reason" property="useCarReason" jdbcType="VARCHAR" />
+    <result column="driver_name" property="driverName" jdbcType="VARCHAR" />
+    <result column="driver_level" property="driverLevel" jdbcType="VARCHAR" />
+    <result column="driver_phone" property="driverPhone" jdbcType="VARCHAR" />
+    <result column="driver_phone_virtual" property="driverPhoneVirtual" jdbcType="VARCHAR" />
+    <result column="vehicle_model" property="vehicleModel" jdbcType="VARCHAR" />
+    <result column="vehicle_color" property="vehicleColor" jdbcType="VARCHAR" />
+    <result column="vehicle_no" property="vehicleNo" jdbcType="VARCHAR" />
+    <result column="is_energy_vehicle" property="isEnergyVehicle" jdbcType="BIT" />
+    <result column="in_bill" property="inBill" jdbcType="BIT" />
+    <result column="bill_time" property="billTime" jdbcType="TIMESTAMP" />
+    <result column="is_invoice" property="isInvoice" jdbcType="BIT" />
+    <result column="invoice_time" property="invoiceTime" jdbcType="TIMESTAMP" />
+    <result column="invoice_no" property="invoiceNo" jdbcType="VARCHAR" />
+    <result column="custom_info" property="customInfo" jdbcType="VARCHAR" />
+    <result column="is_upgrade" property="isUpgrade" jdbcType="BIT" />
+    <result column="is_prepay" property="isPrepay" jdbcType="BIT" />
+    <result column="approver_id" property="approverId" jdbcType="BIGINT" />
+    <result column="approver" property="approver" jdbcType="VARCHAR" />
+    <result column="approval_time" property="approvalTime" jdbcType="TIMESTAMP" />
+    <result column="approval_status" property="approvalStatus" jdbcType="SMALLINT" />
+    <result column="personal_rate" property="personalRate" jdbcType="NUMERIC" />
+    <result column="personal_service_fee" property="personalServiceFee" jdbcType="NUMERIC" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+    <result column="comment" property="comment" jdbcType="VARCHAR" />
+    <result column="is_auto_approval" property="isAutoApproval" jdbcType="BIT" />
+    <result column="prepay_refund_reason" property="prepayRefundReason" jdbcType="VARCHAR" />
+    <result column="prepay_refund_time" property="prepayRefundTime" jdbcType="TIMESTAMP" />
+    <result column="invoice_custom_info" property="invoiceCustomInfo" jdbcType="VARCHAR" />
+    <result column="department_manager" property="departmentManager" jdbcType="VARCHAR" />
+    <result column="trans_no" property="transNo" jdbcType="VARCHAR" />
+    <result column="cfg_fee_amount" property="cfgFeeAmount" jdbcType="NUMERIC" />
+    <result column="scene_code" property="sceneCode" jdbcType="VARCHAR" />
+    <result column="estimate_distance" property="estimateDistance" jdbcType="INTEGER" />
+    <result column="is_abnormal" property="isAbnormal" jdbcType="BIT" />
+    <result column="ipath_remark" property="ipathRemark" jdbcType="VARCHAR" />
+    <result column="is_proxy" property="isProxy" jdbcType="BIT" />
+    <result column="is_relay" property="isRelay" jdbcType="BIT" />
+    <result column="partner_order_id" property="partnerOrderId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, core_order_id, env_id, platform_order_id, trans_order_id, sub_trans_order_id, 
+    company_id, company_name, order_type, actual_car_source_code, actual_car_source_name, 
+    actual_car_level, actual_car_level_name, city_code, city_name, mapping_city_code, 
+    mapping_city_name, dest_city_code, dest_city_name, pickup_location, pickup_location_name, 
+    pickup_lat, pickup_lng, dest_location, dest_location_name, dest_lat, dest_lng, is_change_dest, 
+    change_dest_time, change_dest_location, change_dest_lat, change_dest_lng, actual_pickup_location, 
+    actual_pickup_location_name, actual_pickup_lat, actual_pickup_lng, actual_dest_location, 
+    actual_dest_location_name, actual_dest_lat, actual_dest_lng, user_id, user_name, 
+    user_phone, user_emergency_phone, passenger, passenger_phone, estimate_price, total_amount, 
+    extral_amount, coupon_amount, prepay_amount, prepay_refund_amount, allow_invoice_amount, 
+    personal_payable_amount, personal_paid_amount, company_amount,
+    personal_amount, actual_amount, other_refund_amount, other_refund_reason, other_refund_admin_id, 
+    other_refund_admin_name, other_refund_time, fee_detail, order_time, driver_taking_time, 
+    driver_arrival_time, travel_begin_time, travel_end_time, settle_time, travel_duration, 
+    travel_distance, take_order_duration_s, take_order_duration_m, pay_time, personal_pay_status, 
+    status, cancel_time, cancel_type, cancel_reason, department_id, department_name, 
+    scene_id, scene_name, scene_publish_id, project_id, project_name, account_id, account_name, 
+    pay_type, use_car_reason, driver_name, driver_level, driver_phone, driver_phone_virtual, 
+    vehicle_model, vehicle_color, vehicle_no, is_energy_vehicle, in_bill, bill_time, 
+    is_invoice, invoice_time, invoice_no, custom_info, is_upgrade, is_prepay, approver_id, 
+    approver, approval_time, approval_status, personal_rate, personal_service_fee,
+    created_time, updated_time, comment, is_auto_approval, prepay_refund_reason,
+    prepay_refund_time, invoice_custom_info, department_manager, trans_no, cfg_fee_amount, 
+    scene_code, estimate_distance, is_abnormal, ipath_remark, is_proxy, is_relay, partner_order_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from public.order_summary
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from public.order_summary
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ipath.orderflowservice.order.dao.bean.OrderSummary" >
+    insert into public.order_summary (id, core_order_id, env_id, 
+      platform_order_id, trans_order_id, sub_trans_order_id, 
+      company_id, company_name, order_type, 
+      actual_car_source_code, actual_car_source_name, 
+      actual_car_level, actual_car_level_name, city_code, 
+      city_name, mapping_city_code, mapping_city_name, 
+      dest_city_code, dest_city_name, pickup_location, 
+      pickup_location_name, pickup_lat, pickup_lng, 
+      dest_location, dest_location_name, dest_lat, 
+      dest_lng, is_change_dest, change_dest_time, 
+      change_dest_location, change_dest_lat, change_dest_lng, 
+      actual_pickup_location, actual_pickup_location_name, 
+      actual_pickup_lat, actual_pickup_lng, actual_dest_location, 
+      actual_dest_location_name, actual_dest_lat, 
+      actual_dest_lng, user_id, user_name, 
+      user_phone, user_emergency_phone, passenger, 
+      passenger_phone, estimate_price, total_amount, 
+      extral_amount, coupon_amount, prepay_amount, 
+      prepay_refund_amount, allow_invoice_amount, 
+      personal_payable_amount,
+      personal_paid_amount, company_amount, personal_amount, 
+      actual_amount, other_refund_amount, other_refund_reason, 
+      other_refund_admin_id, other_refund_admin_name, 
+      other_refund_time, fee_detail, order_time, 
+      driver_taking_time, driver_arrival_time, 
+      travel_begin_time, travel_end_time, settle_time, 
+      travel_duration, travel_distance, take_order_duration_s, 
+      take_order_duration_m, pay_time, personal_pay_status, 
+      status, cancel_time, cancel_type, 
+      cancel_reason, department_id, department_name, 
+      scene_id, scene_name, scene_publish_id, 
+      project_id, project_name, account_id, 
+      account_name, pay_type, use_car_reason, 
+      driver_name, driver_level, driver_phone, 
+      driver_phone_virtual, vehicle_model, vehicle_color, 
+      vehicle_no, is_energy_vehicle, in_bill, 
+      bill_time, is_invoice, invoice_time, 
+      invoice_no, custom_info, is_upgrade, 
+      is_prepay, approver_id, approver, 
+      approval_time, approval_status, personal_rate, 
+      personal_service_fee, created_time,
+      updated_time, comment,
+      is_auto_approval, prepay_refund_reason, prepay_refund_time, 
+      invoice_custom_info, department_manager, trans_no, 
+      cfg_fee_amount, scene_code, estimate_distance, 
+      is_abnormal, ipath_remark, is_proxy, 
+      is_relay, partner_order_id)
+    values (#{id,jdbcType=BIGINT}, #{coreOrderId,jdbcType=BIGINT}, #{envId,jdbcType=VARCHAR}, 
+      #{platformOrderId,jdbcType=VARCHAR}, #{transOrderId,jdbcType=VARCHAR}, #{subTransOrderId,jdbcType=VARCHAR}, 
+      #{companyId,jdbcType=BIGINT}, #{companyName,jdbcType=VARCHAR}, #{orderType,jdbcType=SMALLINT}, 
+      #{actualCarSourceCode,jdbcType=SMALLINT}, #{actualCarSourceName,jdbcType=VARCHAR}, 
+      #{actualCarLevel,jdbcType=SMALLINT}, #{actualCarLevelName,jdbcType=VARCHAR}, #{cityCode,jdbcType=VARCHAR}, 
+      #{cityName,jdbcType=VARCHAR}, #{mappingCityCode,jdbcType=VARCHAR}, #{mappingCityName,jdbcType=VARCHAR}, 
+      #{destCityCode,jdbcType=VARCHAR}, #{destCityName,jdbcType=VARCHAR}, #{pickupLocation,jdbcType=VARCHAR}, 
+      #{pickupLocationName,jdbcType=VARCHAR}, #{pickupLat,jdbcType=VARCHAR}, #{pickupLng,jdbcType=VARCHAR}, 
+      #{destLocation,jdbcType=VARCHAR}, #{destLocationName,jdbcType=VARCHAR}, #{destLat,jdbcType=VARCHAR}, 
+      #{destLng,jdbcType=VARCHAR}, #{isChangeDest,jdbcType=BIT}, #{changeDestTime,jdbcType=VARCHAR}, 
+      #{changeDestLocation,jdbcType=VARCHAR}, #{changeDestLat,jdbcType=VARCHAR}, #{changeDestLng,jdbcType=VARCHAR}, 
+      #{actualPickupLocation,jdbcType=VARCHAR}, #{actualPickupLocationName,jdbcType=VARCHAR}, 
+      #{actualPickupLat,jdbcType=VARCHAR}, #{actualPickupLng,jdbcType=VARCHAR}, #{actualDestLocation,jdbcType=VARCHAR}, 
+      #{actualDestLocationName,jdbcType=VARCHAR}, #{actualDestLat,jdbcType=VARCHAR}, 
+      #{actualDestLng,jdbcType=VARCHAR}, #{userId,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, 
+      #{userPhone,jdbcType=VARCHAR}, #{userEmergencyPhone,jdbcType=VARCHAR}, #{passenger,jdbcType=VARCHAR}, 
+      #{passengerPhone,jdbcType=VARCHAR}, #{estimatePrice,jdbcType=NUMERIC}, #{totalAmount,jdbcType=NUMERIC}, 
+      #{extralAmount,jdbcType=NUMERIC}, #{couponAmount,jdbcType=NUMERIC}, #{prepayAmount,jdbcType=NUMERIC}, 
+      #{prepayRefundAmount,jdbcType=NUMERIC}, #{allowInvoiceAmount,jdbcType=NUMERIC}, 
+      #{personalPayableAmount,jdbcType=NUMERIC}, #{personalPayingAmount,jdbcType=NUMERIC}, 
+      #{personalPaidAmount,jdbcType=NUMERIC}, #{companyAmount,jdbcType=NUMERIC}, #{personalAmount,jdbcType=NUMERIC}, 
+      #{actualAmount,jdbcType=NUMERIC}, #{otherRefundAmount,jdbcType=NUMERIC}, #{otherRefundReason,jdbcType=VARCHAR}, 
+      #{otherRefundAdminId,jdbcType=BIGINT}, #{otherRefundAdminName,jdbcType=VARCHAR}, 
+      #{otherRefundTime,jdbcType=TIMESTAMP}, #{feeDetail,jdbcType=VARCHAR}, #{orderTime,jdbcType=TIMESTAMP}, 
+      #{driverTakingTime,jdbcType=TIMESTAMP}, #{driverArrivalTime,jdbcType=TIMESTAMP}, 
+      #{travelBeginTime,jdbcType=TIMESTAMP}, #{travelEndTime,jdbcType=TIMESTAMP}, #{settleTime,jdbcType=TIMESTAMP}, 
+      #{travelDuration,jdbcType=NUMERIC}, #{travelDistance,jdbcType=NUMERIC}, #{takeOrderDurationS,jdbcType=SMALLINT}, 
+      #{takeOrderDurationM,jdbcType=NUMERIC}, #{payTime,jdbcType=TIMESTAMP}, #{personalPayStatus,jdbcType=SMALLINT}, 
+      #{status,jdbcType=SMALLINT}, #{cancelTime,jdbcType=TIMESTAMP}, #{cancelType,jdbcType=SMALLINT}, 
+      #{cancelReason,jdbcType=VARCHAR}, #{departmentId,jdbcType=BIGINT}, #{departmentName,jdbcType=VARCHAR}, 
+      #{sceneId,jdbcType=BIGINT}, #{sceneName,jdbcType=VARCHAR}, #{scenePublishId,jdbcType=BIGINT}, 
+      #{projectId,jdbcType=BIGINT}, #{projectName,jdbcType=VARCHAR}, #{accountId,jdbcType=BIGINT}, 
+      #{accountName,jdbcType=VARCHAR}, #{payType,jdbcType=SMALLINT}, #{useCarReason,jdbcType=VARCHAR}, 
+      #{driverName,jdbcType=VARCHAR}, #{driverLevel,jdbcType=VARCHAR}, #{driverPhone,jdbcType=VARCHAR}, 
+      #{driverPhoneVirtual,jdbcType=VARCHAR}, #{vehicleModel,jdbcType=VARCHAR}, #{vehicleColor,jdbcType=VARCHAR}, 
+      #{vehicleNo,jdbcType=VARCHAR}, #{isEnergyVehicle,jdbcType=BIT}, #{inBill,jdbcType=BIT}, 
+      #{billTime,jdbcType=TIMESTAMP}, #{isInvoice,jdbcType=BIT}, #{invoiceTime,jdbcType=TIMESTAMP}, 
+      #{invoiceNo,jdbcType=VARCHAR}, #{customInfo,jdbcType=VARCHAR}, #{isUpgrade,jdbcType=BIT}, 
+      #{isPrepay,jdbcType=BIT}, #{approverId,jdbcType=BIGINT}, #{approver,jdbcType=VARCHAR}, 
+      #{approvalTime,jdbcType=TIMESTAMP}, #{approvalStatus,jdbcType=SMALLINT}, #{personalRate,jdbcType=NUMERIC}, 
+      #{personalServiceFee,jdbcType=NUMERIC},  #{createdTime,jdbcType=TIMESTAMP},
+      #{updatedTime,jdbcType=TIMESTAMP}, #{comment,jdbcType=VARCHAR},
+      #{isAutoApproval,jdbcType=BIT}, #{prepayRefundReason,jdbcType=VARCHAR}, #{prepayRefundTime,jdbcType=TIMESTAMP}, 
+      #{invoiceCustomInfo,jdbcType=VARCHAR}, #{departmentManager,jdbcType=VARCHAR}, #{transNo,jdbcType=VARCHAR}, 
+      #{cfgFeeAmount,jdbcType=NUMERIC}, #{sceneCode,jdbcType=VARCHAR}, #{estimateDistance,jdbcType=INTEGER}, 
+      #{isAbnormal,jdbcType=BIT}, #{ipathRemark,jdbcType=VARCHAR}, #{isProxy,jdbcType=BIT}, 
+      #{isRelay,jdbcType=BIT}, #{partnerOrderId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ipath.orderflowservice.order.dao.bean.OrderSummary" >
+    insert into public.order_summary
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="coreOrderId != null" >
+        core_order_id,
+      </if>
+      <if test="envId != null" >
+        env_id,
+      </if>
+      <if test="platformOrderId != null" >
+        platform_order_id,
+      </if>
+      <if test="transOrderId != null" >
+        trans_order_id,
+      </if>
+      <if test="subTransOrderId != null" >
+        sub_trans_order_id,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+      <if test="companyName != null" >
+        company_name,
+      </if>
+      <if test="orderType != null" >
+        order_type,
+      </if>
+      <if test="actualCarSourceCode != null" >
+        actual_car_source_code,
+      </if>
+      <if test="actualCarSourceName != null" >
+        actual_car_source_name,
+      </if>
+      <if test="actualCarLevel != null" >
+        actual_car_level,
+      </if>
+      <if test="actualCarLevelName != null" >
+        actual_car_level_name,
+      </if>
+      <if test="cityCode != null" >
+        city_code,
+      </if>
+      <if test="cityName != null" >
+        city_name,
+      </if>
+      <if test="mappingCityCode != null" >
+        mapping_city_code,
+      </if>
+      <if test="mappingCityName != null" >
+        mapping_city_name,
+      </if>
+      <if test="destCityCode != null" >
+        dest_city_code,
+      </if>
+      <if test="destCityName != null" >
+        dest_city_name,
+      </if>
+      <if test="pickupLocation != null" >
+        pickup_location,
+      </if>
+      <if test="pickupLocationName != null" >
+        pickup_location_name,
+      </if>
+      <if test="pickupLat != null" >
+        pickup_lat,
+      </if>
+      <if test="pickupLng != null" >
+        pickup_lng,
+      </if>
+      <if test="destLocation != null" >
+        dest_location,
+      </if>
+      <if test="destLocationName != null" >
+        dest_location_name,
+      </if>
+      <if test="destLat != null" >
+        dest_lat,
+      </if>
+      <if test="destLng != null" >
+        dest_lng,
+      </if>
+      <if test="isChangeDest != null" >
+        is_change_dest,
+      </if>
+      <if test="changeDestTime != null" >
+        change_dest_time,
+      </if>
+      <if test="changeDestLocation != null" >
+        change_dest_location,
+      </if>
+      <if test="changeDestLat != null" >
+        change_dest_lat,
+      </if>
+      <if test="changeDestLng != null" >
+        change_dest_lng,
+      </if>
+      <if test="actualPickupLocation != null" >
+        actual_pickup_location,
+      </if>
+      <if test="actualPickupLocationName != null" >
+        actual_pickup_location_name,
+      </if>
+      <if test="actualPickupLat != null" >
+        actual_pickup_lat,
+      </if>
+      <if test="actualPickupLng != null" >
+        actual_pickup_lng,
+      </if>
+      <if test="actualDestLocation != null" >
+        actual_dest_location,
+      </if>
+      <if test="actualDestLocationName != null" >
+        actual_dest_location_name,
+      </if>
+      <if test="actualDestLat != null" >
+        actual_dest_lat,
+      </if>
+      <if test="actualDestLng != null" >
+        actual_dest_lng,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="userPhone != null" >
+        user_phone,
+      </if>
+      <if test="userEmergencyPhone != null" >
+        user_emergency_phone,
+      </if>
+      <if test="passenger != null" >
+        passenger,
+      </if>
+      <if test="passengerPhone != null" >
+        passenger_phone,
+      </if>
+      <if test="estimatePrice != null" >
+        estimate_price,
+      </if>
+      <if test="totalAmount != null" >
+        total_amount,
+      </if>
+      <if test="extralAmount != null" >
+        extral_amount,
+      </if>
+      <if test="couponAmount != null" >
+        coupon_amount,
+      </if>
+      <if test="prepayAmount != null" >
+        prepay_amount,
+      </if>
+      <if test="prepayRefundAmount != null" >
+        prepay_refund_amount,
+      </if>
+      <if test="allowInvoiceAmount != null" >
+        allow_invoice_amount,
+      </if>
+      <if test="personalPayableAmount != null" >
+        personal_payable_amount,
+      </if>
+      <if test="personalPaidAmount != null" >
+        personal_paid_amount,
+      </if>
+      <if test="companyAmount != null" >
+        company_amount,
+      </if>
+      <if test="personalAmount != null" >
+        personal_amount,
+      </if>
+      <if test="actualAmount != null" >
+        actual_amount,
+      </if>
+      <if test="otherRefundAmount != null" >
+        other_refund_amount,
+      </if>
+      <if test="otherRefundReason != null" >
+        other_refund_reason,
+      </if>
+      <if test="otherRefundAdminId != null" >
+        other_refund_admin_id,
+      </if>
+      <if test="otherRefundAdminName != null" >
+        other_refund_admin_name,
+      </if>
+      <if test="otherRefundTime != null" >
+        other_refund_time,
+      </if>
+      <if test="feeDetail != null" >
+        fee_detail,
+      </if>
+      <if test="orderTime != null" >
+        order_time,
+      </if>
+      <if test="driverTakingTime != null" >
+        driver_taking_time,
+      </if>
+      <if test="driverArrivalTime != null" >
+        driver_arrival_time,
+      </if>
+      <if test="travelBeginTime != null" >
+        travel_begin_time,
+      </if>
+      <if test="travelEndTime != null" >
+        travel_end_time,
+      </if>
+      <if test="settleTime != null" >
+        settle_time,
+      </if>
+      <if test="travelDuration != null" >
+        travel_duration,
+      </if>
+      <if test="travelDistance != null" >
+        travel_distance,
+      </if>
+      <if test="takeOrderDurationS != null" >
+        take_order_duration_s,
+      </if>
+      <if test="takeOrderDurationM != null" >
+        take_order_duration_m,
+      </if>
+      <if test="payTime != null" >
+        pay_time,
+      </if>
+      <if test="personalPayStatus != null" >
+        personal_pay_status,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="cancelTime != null" >
+        cancel_time,
+      </if>
+      <if test="cancelType != null" >
+        cancel_type,
+      </if>
+      <if test="cancelReason != null" >
+        cancel_reason,
+      </if>
+      <if test="departmentId != null" >
+        department_id,
+      </if>
+      <if test="departmentName != null" >
+        department_name,
+      </if>
+      <if test="sceneId != null" >
+        scene_id,
+      </if>
+      <if test="sceneName != null" >
+        scene_name,
+      </if>
+      <if test="scenePublishId != null" >
+        scene_publish_id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="projectName != null" >
+        project_name,
+      </if>
+      <if test="accountId != null" >
+        account_id,
+      </if>
+      <if test="accountName != null" >
+        account_name,
+      </if>
+      <if test="payType != null" >
+        pay_type,
+      </if>
+      <if test="useCarReason != null" >
+        use_car_reason,
+      </if>
+      <if test="driverName != null" >
+        driver_name,
+      </if>
+      <if test="driverLevel != null" >
+        driver_level,
+      </if>
+      <if test="driverPhone != null" >
+        driver_phone,
+      </if>
+      <if test="driverPhoneVirtual != null" >
+        driver_phone_virtual,
+      </if>
+      <if test="vehicleModel != null" >
+        vehicle_model,
+      </if>
+      <if test="vehicleColor != null" >
+        vehicle_color,
+      </if>
+      <if test="vehicleNo != null" >
+        vehicle_no,
+      </if>
+      <if test="isEnergyVehicle != null" >
+        is_energy_vehicle,
+      </if>
+      <if test="inBill != null" >
+        in_bill,
+      </if>
+      <if test="billTime != null" >
+        bill_time,
+      </if>
+      <if test="isInvoice != null" >
+        is_invoice,
+      </if>
+      <if test="invoiceTime != null" >
+        invoice_time,
+      </if>
+      <if test="invoiceNo != null" >
+        invoice_no,
+      </if>
+      <if test="customInfo != null" >
+        custom_info,
+      </if>
+      <if test="isUpgrade != null" >
+        is_upgrade,
+      </if>
+      <if test="isPrepay != null" >
+        is_prepay,
+      </if>
+      <if test="approverId != null" >
+        approver_id,
+      </if>
+      <if test="approver != null" >
+        approver,
+      </if>
+      <if test="approvalTime != null" >
+        approval_time,
+      </if>
+      <if test="approvalStatus != null" >
+        approval_status,
+      </if>
+      <if test="personalRate != null" >
+        personal_rate,
+      </if>
+      <if test="personalServiceFee != null" >
+        personal_service_fee,
+      </if>
+
+      <if test="createdTime != null" >
+        created_time,
+      </if>
+      <if test="updatedTime != null" >
+        updated_time,
+      </if>
+      <if test="comment != null" >
+        comment,
+      </if>
+      <if test="isAutoApproval != null" >
+        is_auto_approval,
+      </if>
+      <if test="prepayRefundReason != null" >
+        prepay_refund_reason,
+      </if>
+      <if test="prepayRefundTime != null" >
+        prepay_refund_time,
+      </if>
+      <if test="invoiceCustomInfo != null" >
+        invoice_custom_info,
+      </if>
+      <if test="departmentManager != null" >
+        department_manager,
+      </if>
+      <if test="transNo != null" >
+        trans_no,
+      </if>
+      <if test="cfgFeeAmount != null" >
+        cfg_fee_amount,
+      </if>
+      <if test="sceneCode != null" >
+        scene_code,
+      </if>
+      <if test="estimateDistance != null" >
+        estimate_distance,
+      </if>
+      <if test="isAbnormal != null" >
+        is_abnormal,
+      </if>
+      <if test="ipathRemark != null" >
+        ipath_remark,
+      </if>
+      <if test="isProxy != null" >
+        is_proxy,
+      </if>
+      <if test="isRelay != null" >
+        is_relay,
+      </if>
+      <if test="partnerOrderId != null" >
+        partner_order_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="coreOrderId != null" >
+        #{coreOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="envId != null" >
+        #{envId,jdbcType=VARCHAR},
+      </if>
+      <if test="platformOrderId != null" >
+        #{platformOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="transOrderId != null" >
+        #{transOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="subTransOrderId != null" >
+        #{subTransOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderType != null" >
+        #{orderType,jdbcType=SMALLINT},
+      </if>
+      <if test="actualCarSourceCode != null" >
+        #{actualCarSourceCode,jdbcType=SMALLINT},
+      </if>
+      <if test="actualCarSourceName != null" >
+        #{actualCarSourceName,jdbcType=VARCHAR},
+      </if>
+      <if test="actualCarLevel != null" >
+        #{actualCarLevel,jdbcType=SMALLINT},
+      </if>
+      <if test="actualCarLevelName != null" >
+        #{actualCarLevelName,jdbcType=VARCHAR},
+      </if>
+      <if test="cityCode != null" >
+        #{cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cityName != null" >
+        #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="mappingCityCode != null" >
+        #{mappingCityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="mappingCityName != null" >
+        #{mappingCityName,jdbcType=VARCHAR},
+      </if>
+      <if test="destCityCode != null" >
+        #{destCityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="destCityName != null" >
+        #{destCityName,jdbcType=VARCHAR},
+      </if>
+      <if test="pickupLocation != null" >
+        #{pickupLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="pickupLocationName != null" >
+        #{pickupLocationName,jdbcType=VARCHAR},
+      </if>
+      <if test="pickupLat != null" >
+        #{pickupLat,jdbcType=VARCHAR},
+      </if>
+      <if test="pickupLng != null" >
+        #{pickupLng,jdbcType=VARCHAR},
+      </if>
+      <if test="destLocation != null" >
+        #{destLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="destLocationName != null" >
+        #{destLocationName,jdbcType=VARCHAR},
+      </if>
+      <if test="destLat != null" >
+        #{destLat,jdbcType=VARCHAR},
+      </if>
+      <if test="destLng != null" >
+        #{destLng,jdbcType=VARCHAR},
+      </if>
+      <if test="isChangeDest != null" >
+        #{isChangeDest,jdbcType=BIT},
+      </if>
+      <if test="changeDestTime != null" >
+        #{changeDestTime,jdbcType=VARCHAR},
+      </if>
+      <if test="changeDestLocation != null" >
+        #{changeDestLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="changeDestLat != null" >
+        #{changeDestLat,jdbcType=VARCHAR},
+      </if>
+      <if test="changeDestLng != null" >
+        #{changeDestLng,jdbcType=VARCHAR},
+      </if>
+      <if test="actualPickupLocation != null" >
+        #{actualPickupLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="actualPickupLocationName != null" >
+        #{actualPickupLocationName,jdbcType=VARCHAR},
+      </if>
+      <if test="actualPickupLat != null" >
+        #{actualPickupLat,jdbcType=VARCHAR},
+      </if>
+      <if test="actualPickupLng != null" >
+        #{actualPickupLng,jdbcType=VARCHAR},
+      </if>
+      <if test="actualDestLocation != null" >
+        #{actualDestLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="actualDestLocationName != null" >
+        #{actualDestLocationName,jdbcType=VARCHAR},
+      </if>
+      <if test="actualDestLat != null" >
+        #{actualDestLat,jdbcType=VARCHAR},
+      </if>
+      <if test="actualDestLng != null" >
+        #{actualDestLng,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhone != null" >
+        #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="userEmergencyPhone != null" >
+        #{userEmergencyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="passenger != null" >
+        #{passenger,jdbcType=VARCHAR},
+      </if>
+      <if test="passengerPhone != null" >
+        #{passengerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="estimatePrice != null" >
+        #{estimatePrice,jdbcType=NUMERIC},
+      </if>
+      <if test="totalAmount != null" >
+        #{totalAmount,jdbcType=NUMERIC},
+      </if>
+      <if test="extralAmount != null" >
+        #{extralAmount,jdbcType=NUMERIC},
+      </if>
+      <if test="couponAmount != null" >
+        #{couponAmount,jdbcType=NUMERIC},
+      </if>
+      <if test="prepayAmount != null" >
+        #{prepayAmount,jdbcType=NUMERIC},
+      </if>
+      <if test="prepayRefundAmount != null" >
+        #{prepayRefundAmount,jdbcType=NUMERIC},
+      </if>
+      <if test="allowInvoiceAmount != null" >
+        #{allowInvoiceAmount,jdbcType=NUMERIC},
+      </if>
+      <if test="personalPayableAmount != null" >
+        #{personalPayableAmount,jdbcType=NUMERIC},
+      </if>
+      <if test="personalPayingAmount != null" >
+        #{personalPayingAmount,jdbcType=NUMERIC},
+      </if>
+      <if test="personalPaidAmount != null" >
+        #{personalPaidAmount,jdbcType=NUMERIC},
+      </if>
+      <if test="companyAmount != null" >
+        #{companyAmount,jdbcType=NUMERIC},
+      </if>
+      <if test="personalAmount != null" >
+        #{personalAmount,jdbcType=NUMERIC},
+      </if>
+      <if test="actualAmount != null" >
+        #{actualAmount,jdbcType=NUMERIC},
+      </if>
+      <if test="otherRefundAmount != null" >
+        #{otherRefundAmount,jdbcType=NUMERIC},
+      </if>
+      <if test="otherRefundReason != null" >
+        #{otherRefundReason,jdbcType=VARCHAR},
+      </if>
+      <if test="otherRefundAdminId != null" >
+        #{otherRefundAdminId,jdbcType=BIGINT},
+      </if>
+      <if test="otherRefundAdminName != null" >
+        #{otherRefundAdminName,jdbcType=VARCHAR},
+      </if>
+      <if test="otherRefundTime != null" >
+        #{otherRefundTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="feeDetail != null" >
+        #{feeDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTime != null" >
+        #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="driverTakingTime != null" >
+        #{driverTakingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="driverArrivalTime != null" >
+        #{driverArrivalTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="travelBeginTime != null" >
+        #{travelBeginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="travelEndTime != null" >
+        #{travelEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="settleTime != null" >
+        #{settleTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="travelDuration != null" >
+        #{travelDuration,jdbcType=NUMERIC},
+      </if>
+      <if test="travelDistance != null" >
+        #{travelDistance,jdbcType=NUMERIC},
+      </if>
+      <if test="takeOrderDurationS != null" >
+        #{takeOrderDurationS,jdbcType=SMALLINT},
+      </if>
+      <if test="takeOrderDurationM != null" >
+        #{takeOrderDurationM,jdbcType=NUMERIC},
+      </if>
+      <if test="payTime != null" >
+        #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="personalPayStatus != null" >
+        #{personalPayStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="cancelTime != null" >
+        #{cancelTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cancelType != null" >
+        #{cancelType,jdbcType=SMALLINT},
+      </if>
+      <if test="cancelReason != null" >
+        #{cancelReason,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentId != null" >
+        #{departmentId,jdbcType=BIGINT},
+      </if>
+      <if test="departmentName != null" >
+        #{departmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="sceneId != null" >
+        #{sceneId,jdbcType=BIGINT},
+      </if>
+      <if test="sceneName != null" >
+        #{sceneName,jdbcType=VARCHAR},
+      </if>
+      <if test="scenePublishId != null" >
+        #{scenePublishId,jdbcType=BIGINT},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=BIGINT},
+      </if>
+      <if test="projectName != null" >
+        #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null" >
+        #{accountId,jdbcType=BIGINT},
+      </if>
+      <if test="accountName != null" >
+        #{accountName,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null" >
+        #{payType,jdbcType=SMALLINT},
+      </if>
+      <if test="useCarReason != null" >
+        #{useCarReason,jdbcType=VARCHAR},
+      </if>
+      <if test="driverName != null" >
+        #{driverName,jdbcType=VARCHAR},
+      </if>
+      <if test="driverLevel != null" >
+        #{driverLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="driverPhone != null" >
+        #{driverPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="driverPhoneVirtual != null" >
+        #{driverPhoneVirtual,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleModel != null" >
+        #{vehicleModel,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleColor != null" >
+        #{vehicleColor,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleNo != null" >
+        #{vehicleNo,jdbcType=VARCHAR},
+      </if>
+      <if test="isEnergyVehicle != null" >
+        #{isEnergyVehicle,jdbcType=BIT},
+      </if>
+      <if test="inBill != null" >
+        #{inBill,jdbcType=BIT},
+      </if>
+      <if test="billTime != null" >
+        #{billTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isInvoice != null" >
+        #{isInvoice,jdbcType=BIT},
+      </if>
+      <if test="invoiceTime != null" >
+        #{invoiceTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="invoiceNo != null" >
+        #{invoiceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="customInfo != null" >
+        #{customInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="isUpgrade != null" >
+        #{isUpgrade,jdbcType=BIT},
+      </if>
+      <if test="isPrepay != null" >
+        #{isPrepay,jdbcType=BIT},
+      </if>
+      <if test="approverId != null" >
+        #{approverId,jdbcType=BIGINT},
+      </if>
+      <if test="approver != null" >
+        #{approver,jdbcType=VARCHAR},
+      </if>
+      <if test="approvalTime != null" >
+        #{approvalTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approvalStatus != null" >
+        #{approvalStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="personalRate != null" >
+        #{personalRate,jdbcType=NUMERIC},
+      </if>
+      <if test="personalServiceFee != null" >
+        #{personalServiceFee,jdbcType=NUMERIC},
+      </if>
+      <if test="createdTime != null" >
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedTime != null" >
+        #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="comment != null" >
+        #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="isAutoApproval != null" >
+        #{isAutoApproval,jdbcType=BIT},
+      </if>
+      <if test="prepayRefundReason != null" >
+        #{prepayRefundReason,jdbcType=VARCHAR},
+      </if>
+      <if test="prepayRefundTime != null" >
+        #{prepayRefundTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="invoiceCustomInfo != null" >
+        #{invoiceCustomInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentManager != null" >
+        #{departmentManager,jdbcType=VARCHAR},
+      </if>
+      <if test="transNo != null" >
+        #{transNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cfgFeeAmount != null" >
+        #{cfgFeeAmount,jdbcType=NUMERIC},
+      </if>
+      <if test="sceneCode != null" >
+        #{sceneCode,jdbcType=VARCHAR},
+      </if>
+      <if test="estimateDistance != null" >
+        #{estimateDistance,jdbcType=INTEGER},
+      </if>
+      <if test="isAbnormal != null" >
+        #{isAbnormal,jdbcType=BIT},
+      </if>
+      <if test="ipathRemark != null" >
+        #{ipathRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="isProxy != null" >
+        #{isProxy,jdbcType=BIT},
+      </if>
+      <if test="isRelay != null" >
+        #{isRelay,jdbcType=BIT},
+      </if>
+      <if test="partnerOrderId != null" >
+        #{partnerOrderId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ipath.orderflowservice.order.dao.bean.OrderSummary" >
+    update public.order_summary
+    <set >
+      <if test="coreOrderId != null" >
+        core_order_id = #{coreOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="envId != null" >
+        env_id = #{envId,jdbcType=VARCHAR},
+      </if>
+      <if test="platformOrderId != null" >
+        platform_order_id = #{platformOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="transOrderId != null" >
+        trans_order_id = #{transOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="subTransOrderId != null" >
+        sub_trans_order_id = #{subTransOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="companyName != null" >
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderType != null" >
+        order_type = #{orderType,jdbcType=SMALLINT},
+      </if>
+      <if test="actualCarSourceCode != null" >
+        actual_car_source_code = #{actualCarSourceCode,jdbcType=SMALLINT},
+      </if>
+      <if test="actualCarSourceName != null" >
+        actual_car_source_name = #{actualCarSourceName,jdbcType=VARCHAR},
+      </if>
+      <if test="actualCarLevel != null" >
+        actual_car_level = #{actualCarLevel,jdbcType=SMALLINT},
+      </if>
+      <if test="actualCarLevelName != null" >
+        actual_car_level_name = #{actualCarLevelName,jdbcType=VARCHAR},
+      </if>
+      <if test="cityCode != null" >
+        city_code = #{cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cityName != null" >
+        city_name = #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="mappingCityCode != null" >
+        mapping_city_code = #{mappingCityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="mappingCityName != null" >
+        mapping_city_name = #{mappingCityName,jdbcType=VARCHAR},
+      </if>
+      <if test="destCityCode != null" >
+        dest_city_code = #{destCityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="destCityName != null" >
+        dest_city_name = #{destCityName,jdbcType=VARCHAR},
+      </if>
+      <if test="pickupLocation != null" >
+        pickup_location = #{pickupLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="pickupLocationName != null" >
+        pickup_location_name = #{pickupLocationName,jdbcType=VARCHAR},
+      </if>
+      <if test="pickupLat != null" >
+        pickup_lat = #{pickupLat,jdbcType=VARCHAR},
+      </if>
+      <if test="pickupLng != null" >
+        pickup_lng = #{pickupLng,jdbcType=VARCHAR},
+      </if>
+      <if test="destLocation != null" >
+        dest_location = #{destLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="destLocationName != null" >
+        dest_location_name = #{destLocationName,jdbcType=VARCHAR},
+      </if>
+      <if test="destLat != null" >
+        dest_lat = #{destLat,jdbcType=VARCHAR},
+      </if>
+      <if test="destLng != null" >
+        dest_lng = #{destLng,jdbcType=VARCHAR},
+      </if>
+      <if test="isChangeDest != null" >
+        is_change_dest = #{isChangeDest,jdbcType=BIT},
+      </if>
+      <if test="changeDestTime != null" >
+        change_dest_time = #{changeDestTime,jdbcType=VARCHAR},
+      </if>
+      <if test="changeDestLocation != null" >
+        change_dest_location = #{changeDestLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="changeDestLat != null" >
+        change_dest_lat = #{changeDestLat,jdbcType=VARCHAR},
+      </if>
+      <if test="changeDestLng != null" >
+        change_dest_lng = #{changeDestLng,jdbcType=VARCHAR},
+      </if>
+      <if test="actualPickupLocation != null" >
+        actual_pickup_location = #{actualPickupLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="actualPickupLocationName != null" >
+        actual_pickup_location_name = #{actualPickupLocationName,jdbcType=VARCHAR},
+      </if>
+      <if test="actualPickupLat != null" >
+        actual_pickup_lat = #{actualPickupLat,jdbcType=VARCHAR},
+      </if>
+      <if test="actualPickupLng != null" >
+        actual_pickup_lng = #{actualPickupLng,jdbcType=VARCHAR},
+      </if>
+      <if test="actualDestLocation != null" >
+        actual_dest_location = #{actualDestLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="actualDestLocationName != null" >
+        actual_dest_location_name = #{actualDestLocationName,jdbcType=VARCHAR},
+      </if>
+      <if test="actualDestLat != null" >
+        actual_dest_lat = #{actualDestLat,jdbcType=VARCHAR},
+      </if>
+      <if test="actualDestLng != null" >
+        actual_dest_lng = #{actualDestLng,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhone != null" >
+        user_phone = #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="userEmergencyPhone != null" >
+        user_emergency_phone = #{userEmergencyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="passenger != null" >
+        passenger = #{passenger,jdbcType=VARCHAR},
+      </if>
+      <if test="passengerPhone != null" >
+        passenger_phone = #{passengerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="estimatePrice != null" >
+        estimate_price = #{estimatePrice,jdbcType=NUMERIC},
+      </if>
+      <if test="totalAmount != null" >
+        total_amount = #{totalAmount,jdbcType=NUMERIC},
+      </if>
+      <if test="extralAmount != null" >
+        extral_amount = #{extralAmount,jdbcType=NUMERIC},
+      </if>
+      <if test="couponAmount != null" >
+        coupon_amount = #{couponAmount,jdbcType=NUMERIC},
+      </if>
+      <if test="prepayAmount != null" >
+        prepay_amount = #{prepayAmount,jdbcType=NUMERIC},
+      </if>
+      <if test="prepayRefundAmount != null" >
+        prepay_refund_amount = #{prepayRefundAmount,jdbcType=NUMERIC},
+      </if>
+      <if test="allowInvoiceAmount != null" >
+        allow_invoice_amount = #{allowInvoiceAmount,jdbcType=NUMERIC},
+      </if>
+      <if test="personalPayableAmount != null" >
+        personal_payable_amount = #{personalPayableAmount,jdbcType=NUMERIC},
+      </if>
+      <if test="personalPaidAmount != null" >
+        personal_paid_amount = #{personalPaidAmount,jdbcType=NUMERIC},
+      </if>
+      <if test="companyAmount != null" >
+        company_amount = #{companyAmount,jdbcType=NUMERIC},
+      </if>
+      <if test="personalAmount != null" >
+        personal_amount = #{personalAmount,jdbcType=NUMERIC},
+      </if>
+      <if test="actualAmount != null" >
+        actual_amount = #{actualAmount,jdbcType=NUMERIC},
+      </if>
+      <if test="otherRefundAmount != null" >
+        other_refund_amount = #{otherRefundAmount,jdbcType=NUMERIC},
+      </if>
+      <if test="otherRefundReason != null" >
+        other_refund_reason = #{otherRefundReason,jdbcType=VARCHAR},
+      </if>
+      <if test="otherRefundAdminId != null" >
+        other_refund_admin_id = #{otherRefundAdminId,jdbcType=BIGINT},
+      </if>
+      <if test="otherRefundAdminName != null" >
+        other_refund_admin_name = #{otherRefundAdminName,jdbcType=VARCHAR},
+      </if>
+      <if test="otherRefundTime != null" >
+        other_refund_time = #{otherRefundTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="feeDetail != null" >
+        fee_detail = #{feeDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTime != null" >
+        order_time = #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="driverTakingTime != null" >
+        driver_taking_time = #{driverTakingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="driverArrivalTime != null" >
+        driver_arrival_time = #{driverArrivalTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="travelBeginTime != null" >
+        travel_begin_time = #{travelBeginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="travelEndTime != null" >
+        travel_end_time = #{travelEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="settleTime != null" >
+        settle_time = #{settleTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="travelDuration != null" >
+        travel_duration = #{travelDuration,jdbcType=NUMERIC},
+      </if>
+      <if test="travelDistance != null" >
+        travel_distance = #{travelDistance,jdbcType=NUMERIC},
+      </if>
+      <if test="takeOrderDurationS != null" >
+        take_order_duration_s = #{takeOrderDurationS,jdbcType=INTEGER},
+      </if>
+      <if test="takeOrderDurationM != null" >
+        take_order_duration_m = #{takeOrderDurationM,jdbcType=NUMERIC},
+      </if>
+      <if test="payTime != null" >
+        pay_time = #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="personalPayStatus != null" >
+        personal_pay_status = #{personalPayStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="cancelTime != null" >
+        cancel_time = #{cancelTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cancelType != null" >
+        cancel_type = #{cancelType,jdbcType=SMALLINT},
+      </if>
+      <if test="cancelReason != null" >
+        cancel_reason = #{cancelReason,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentId != null" >
+        department_id = #{departmentId,jdbcType=BIGINT},
+      </if>
+      <if test="departmentName != null" >
+        department_name = #{departmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="sceneId != null" >
+        scene_id = #{sceneId,jdbcType=BIGINT},
+      </if>
+      <if test="sceneName != null" >
+        scene_name = #{sceneName,jdbcType=VARCHAR},
+      </if>
+      <if test="scenePublishId != null" >
+        scene_publish_id = #{scenePublishId,jdbcType=BIGINT},
+      </if>
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=BIGINT},
+      </if>
+      <if test="projectName != null" >
+        project_name = #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null" >
+        account_id = #{accountId,jdbcType=BIGINT},
+      </if>
+      <if test="accountName != null" >
+        account_name = #{accountName,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null" >
+        pay_type = #{payType,jdbcType=SMALLINT},
+      </if>
+      <if test="useCarReason != null" >
+        use_car_reason = #{useCarReason,jdbcType=VARCHAR},
+      </if>
+      <if test="driverName != null" >
+        driver_name = #{driverName,jdbcType=VARCHAR},
+      </if>
+      <if test="driverLevel != null" >
+        driver_level = #{driverLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="driverPhone != null" >
+        driver_phone = #{driverPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="driverPhoneVirtual != null" >
+        driver_phone_virtual = #{driverPhoneVirtual,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleModel != null" >
+        vehicle_model = #{vehicleModel,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleColor != null" >
+        vehicle_color = #{vehicleColor,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleNo != null" >
+        vehicle_no = #{vehicleNo,jdbcType=VARCHAR},
+      </if>
+      <if test="isEnergyVehicle != null" >
+        is_energy_vehicle = #{isEnergyVehicle,jdbcType=BIT},
+      </if>
+      <if test="inBill != null" >
+        in_bill = #{inBill,jdbcType=BIT},
+      </if>
+      <if test="billTime != null" >
+        bill_time = #{billTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isInvoice != null" >
+        is_invoice = #{isInvoice,jdbcType=BIT},
+      </if>
+      <if test="invoiceTime != null" >
+        invoice_time = #{invoiceTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="invoiceNo != null" >
+        invoice_no = #{invoiceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="customInfo != null" >
+        custom_info = #{customInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="isUpgrade != null" >
+        is_upgrade = #{isUpgrade,jdbcType=BIT},
+      </if>
+      <if test="isPrepay != null" >
+        is_prepay = #{isPrepay,jdbcType=BIT},
+      </if>
+      <if test="approverId != null" >
+        approver_id = #{approverId,jdbcType=BIGINT},
+      </if>
+      <if test="approver != null" >
+        approver = #{approver,jdbcType=VARCHAR},
+      </if>
+      <if test="approvalTime != null" >
+        approval_time = #{approvalTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approvalStatus != null" >
+        approval_status = #{approvalStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="personalRate != null" >
+        personal_rate = #{personalRate,jdbcType=NUMERIC},
+      </if>
+      <if test="personalServiceFee != null" >
+        personal_service_fee = #{personalServiceFee,jdbcType=NUMERIC},
+      </if>
+      <if test="createdTime != null" >
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedTime != null" >
+        updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="comment != null" >
+        comment = #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="isAutoApproval != null" >
+        is_auto_approval = #{isAutoApproval,jdbcType=BIT},
+      </if>
+      <if test="prepayRefundReason != null" >
+        prepay_refund_reason = #{prepayRefundReason,jdbcType=VARCHAR},
+      </if>
+      <if test="prepayRefundTime != null" >
+        prepay_refund_time = #{prepayRefundTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="invoiceCustomInfo != null" >
+        invoice_custom_info = #{invoiceCustomInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentManager != null" >
+        department_manager = #{departmentManager,jdbcType=VARCHAR},
+      </if>
+      <if test="transNo != null" >
+        trans_no = #{transNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cfgFeeAmount != null" >
+        cfg_fee_amount = #{cfgFeeAmount,jdbcType=NUMERIC},
+      </if>
+      <if test="sceneCode != null" >
+        scene_code = #{sceneCode,jdbcType=VARCHAR},
+      </if>
+      <if test="estimateDistance != null" >
+        estimate_distance = #{estimateDistance,jdbcType=INTEGER},
+      </if>
+      <if test="isAbnormal != null" >
+        is_abnormal = #{isAbnormal,jdbcType=BIT},
+      </if>
+      <if test="ipathRemark != null" >
+        ipath_remark = #{ipathRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="isProxy != null" >
+        is_proxy = #{isProxy,jdbcType=BIT},
+      </if>
+      <if test="isRelay != null" >
+        is_relay = #{isRelay,jdbcType=BIT},
+      </if>
+      <if test="partnerOrderId != null" >
+        partner_order_id = #{partnerOrderId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ipath.orderflowservice.order.dao.bean.OrderSummary" >
+    update public.order_summary
+    set core_order_id = #{coreOrderId,jdbcType=BIGINT},
+      env_id = #{envId,jdbcType=VARCHAR},
+      platform_order_id = #{platformOrderId,jdbcType=VARCHAR},
+      trans_order_id = #{transOrderId,jdbcType=VARCHAR},
+      sub_trans_order_id = #{subTransOrderId,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=BIGINT},
+      company_name = #{companyName,jdbcType=VARCHAR},
+      order_type = #{orderType,jdbcType=SMALLINT},
+      actual_car_source_code = #{actualCarSourceCode,jdbcType=SMALLINT},
+      actual_car_source_name = #{actualCarSourceName,jdbcType=VARCHAR},
+      actual_car_level = #{actualCarLevel,jdbcType=SMALLINT},
+      actual_car_level_name = #{actualCarLevelName,jdbcType=VARCHAR},
+      city_code = #{cityCode,jdbcType=VARCHAR},
+      city_name = #{cityName,jdbcType=VARCHAR},
+      mapping_city_code = #{mappingCityCode,jdbcType=VARCHAR},
+      mapping_city_name = #{mappingCityName,jdbcType=VARCHAR},
+      dest_city_code = #{destCityCode,jdbcType=VARCHAR},
+      dest_city_name = #{destCityName,jdbcType=VARCHAR},
+      pickup_location = #{pickupLocation,jdbcType=VARCHAR},
+      pickup_location_name = #{pickupLocationName,jdbcType=VARCHAR},
+      pickup_lat = #{pickupLat,jdbcType=VARCHAR},
+      pickup_lng = #{pickupLng,jdbcType=VARCHAR},
+      dest_location = #{destLocation,jdbcType=VARCHAR},
+      dest_location_name = #{destLocationName,jdbcType=VARCHAR},
+      dest_lat = #{destLat,jdbcType=VARCHAR},
+      dest_lng = #{destLng,jdbcType=VARCHAR},
+      is_change_dest = #{isChangeDest,jdbcType=BIT},
+      change_dest_time = #{changeDestTime,jdbcType=VARCHAR},
+      change_dest_location = #{changeDestLocation,jdbcType=VARCHAR},
+      change_dest_lat = #{changeDestLat,jdbcType=VARCHAR},
+      change_dest_lng = #{changeDestLng,jdbcType=VARCHAR},
+      actual_pickup_location = #{actualPickupLocation,jdbcType=VARCHAR},
+      actual_pickup_location_name = #{actualPickupLocationName,jdbcType=VARCHAR},
+      actual_pickup_lat = #{actualPickupLat,jdbcType=VARCHAR},
+      actual_pickup_lng = #{actualPickupLng,jdbcType=VARCHAR},
+      actual_dest_location = #{actualDestLocation,jdbcType=VARCHAR},
+      actual_dest_location_name = #{actualDestLocationName,jdbcType=VARCHAR},
+      actual_dest_lat = #{actualDestLat,jdbcType=VARCHAR},
+      actual_dest_lng = #{actualDestLng,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=BIGINT},
+      user_name = #{userName,jdbcType=VARCHAR},
+      user_phone = #{userPhone,jdbcType=VARCHAR},
+      user_emergency_phone = #{userEmergencyPhone,jdbcType=VARCHAR},
+      passenger = #{passenger,jdbcType=VARCHAR},
+      passenger_phone = #{passengerPhone,jdbcType=VARCHAR},
+      estimate_price = #{estimatePrice,jdbcType=NUMERIC},
+      total_amount = #{totalAmount,jdbcType=NUMERIC},
+      extral_amount = #{extralAmount,jdbcType=NUMERIC},
+      coupon_amount = #{couponAmount,jdbcType=NUMERIC},
+      prepay_amount = #{prepayAmount,jdbcType=NUMERIC},
+      prepay_refund_amount = #{prepayRefundAmount,jdbcType=NUMERIC},
+      allow_invoice_amount = #{allowInvoiceAmount,jdbcType=NUMERIC},
+      personal_payable_amount = #{personalPayableAmount,jdbcType=NUMERIC},
+      personal_paid_amount = #{personalPaidAmount,jdbcType=NUMERIC},
+      company_amount = #{companyAmount,jdbcType=NUMERIC},
+      personal_amount = #{personalAmount,jdbcType=NUMERIC},
+      actual_amount = #{actualAmount,jdbcType=NUMERIC},
+      other_refund_amount = #{otherRefundAmount,jdbcType=NUMERIC},
+      other_refund_reason = #{otherRefundReason,jdbcType=VARCHAR},
+      other_refund_admin_id = #{otherRefundAdminId,jdbcType=BIGINT},
+      other_refund_admin_name = #{otherRefundAdminName,jdbcType=VARCHAR},
+      other_refund_time = #{otherRefundTime,jdbcType=TIMESTAMP},
+      fee_detail = #{feeDetail,jdbcType=VARCHAR},
+      order_time = #{orderTime,jdbcType=TIMESTAMP},
+      driver_taking_time = #{driverTakingTime,jdbcType=TIMESTAMP},
+      driver_arrival_time = #{driverArrivalTime,jdbcType=TIMESTAMP},
+      travel_begin_time = #{travelBeginTime,jdbcType=TIMESTAMP},
+      travel_end_time = #{travelEndTime,jdbcType=TIMESTAMP},
+      settle_time = #{settleTime,jdbcType=TIMESTAMP},
+      travel_duration = #{travelDuration,jdbcType=NUMERIC},
+      travel_distance = #{travelDistance,jdbcType=NUMERIC},
+      take_order_duration_s = #{takeOrderDurationS,jdbcType=INTEGER},
+      take_order_duration_m = #{takeOrderDurationM,jdbcType=NUMERIC},
+      pay_time = #{payTime,jdbcType=TIMESTAMP},
+      personal_pay_status = #{personalPayStatus,jdbcType=SMALLINT},
+      status = #{status,jdbcType=SMALLINT},
+      cancel_time = #{cancelTime,jdbcType=TIMESTAMP},
+      cancel_type = #{cancelType,jdbcType=SMALLINT},
+      cancel_reason = #{cancelReason,jdbcType=VARCHAR},
+      department_id = #{departmentId,jdbcType=BIGINT},
+      department_name = #{departmentName,jdbcType=VARCHAR},
+      scene_id = #{sceneId,jdbcType=BIGINT},
+      scene_name = #{sceneName,jdbcType=VARCHAR},
+      scene_publish_id = #{scenePublishId,jdbcType=BIGINT},
+      project_id = #{projectId,jdbcType=BIGINT},
+      project_name = #{projectName,jdbcType=VARCHAR},
+      account_id = #{accountId,jdbcType=BIGINT},
+      account_name = #{accountName,jdbcType=VARCHAR},
+      pay_type = #{payType,jdbcType=SMALLINT},
+      use_car_reason = #{useCarReason,jdbcType=VARCHAR},
+      driver_name = #{driverName,jdbcType=VARCHAR},
+      driver_level = #{driverLevel,jdbcType=VARCHAR},
+      driver_phone = #{driverPhone,jdbcType=VARCHAR},
+      driver_phone_virtual = #{driverPhoneVirtual,jdbcType=VARCHAR},
+      vehicle_model = #{vehicleModel,jdbcType=VARCHAR},
+      vehicle_color = #{vehicleColor,jdbcType=VARCHAR},
+      vehicle_no = #{vehicleNo,jdbcType=VARCHAR},
+      is_energy_vehicle = #{isEnergyVehicle,jdbcType=BIT},
+      in_bill = #{inBill,jdbcType=BIT},
+      bill_time = #{billTime,jdbcType=TIMESTAMP},
+      is_invoice = #{isInvoice,jdbcType=BIT},
+      invoice_time = #{invoiceTime,jdbcType=TIMESTAMP},
+      invoice_no = #{invoiceNo,jdbcType=VARCHAR},
+      custom_info = #{customInfo,jdbcType=VARCHAR},
+      is_upgrade = #{isUpgrade,jdbcType=BIT},
+      is_prepay = #{isPrepay,jdbcType=BIT},
+      approver_id = #{approverId,jdbcType=BIGINT},
+      approver = #{approver,jdbcType=VARCHAR},
+      approval_time = #{approvalTime,jdbcType=TIMESTAMP},
+      approval_status = #{approvalStatus,jdbcType=SMALLINT},
+      personal_rate = #{personalRate,jdbcType=NUMERIC},
+      personal_service_fee = #{personalServiceFee,jdbcType=NUMERIC},
+      created_time = #{createdTime,jdbcType=TIMESTAMP},
+      updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+      comment = #{comment,jdbcType=VARCHAR},
+      is_auto_approval = #{isAutoApproval,jdbcType=BIT},
+      prepay_refund_reason = #{prepayRefundReason,jdbcType=VARCHAR},
+      prepay_refund_time = #{prepayRefundTime,jdbcType=TIMESTAMP},
+      invoice_custom_info = #{invoiceCustomInfo,jdbcType=VARCHAR},
+      department_manager = #{departmentManager,jdbcType=VARCHAR},
+      trans_no = #{transNo,jdbcType=VARCHAR},
+      cfg_fee_amount = #{cfgFeeAmount,jdbcType=NUMERIC},
+      scene_code = #{sceneCode,jdbcType=VARCHAR},
+      estimate_distance = #{estimateDistance,jdbcType=INTEGER},
+      is_abnormal = #{isAbnormal,jdbcType=BIT},
+      ipath_remark = #{ipathRemark,jdbcType=VARCHAR},
+      is_proxy = #{isProxy,jdbcType=BIT},
+      is_relay = #{isRelay,jdbcType=BIT},
+      partner_order_id = #{partnerOrderId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

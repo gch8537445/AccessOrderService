@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ipath.orderflowservice.order.dao.UserCouponMapper" >
+  <resultMap id="BaseResultMap" type="com.ipath.orderflowservice.order.dao.bean.UserCoupon" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="company_coupon_id" property="companyCouponId" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="par_value" property="parValue" jdbcType="NUMERIC" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="begin_date" property="beginDate" jdbcType="TIMESTAMP" />
+    <result column="end_date" property="endDate" jdbcType="TIMESTAMP" />
+    <result column="allow_cities" property="allowCities" jdbcType="VARCHAR" />
+    <result column="threshold" property="threshold" jdbcType="NUMERIC" />
+    <result column="allow_car_levels" property="allowCarLevels" jdbcType="VARCHAR" />
+    <result column="allow_car_source" property="allowCarSource" jdbcType="VARCHAR" />
+    <result column="source" property="source" jdbcType="INTEGER" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="allow_citys_available" property="allowCitysAvailable" jdbcType="BIT" />
+    <result column="allow_citys_qty" property="allowCitysQty" jdbcType="INTEGER" />
+    <result column="allow_car_available" property="allowCarAvailable" jdbcType="BIT" />
+    <result column="allow_car_qty" property="allowCarQty" jdbcType="INTEGER" />
+    <result column="allow_cities_text" property="allowCitiesText" jdbcType="VARCHAR" />
+    <result column="allow_car_levels_text" property="allowCarLevelsText" jdbcType="VARCHAR" />
+    <result column="allow_car_source_text" property="allowCarSourceText" jdbcType="VARCHAR" />
+    <result column="createor" property="createor" jdbcType="BIGINT" />
+    <result column="updater" property="updater" jdbcType="BIGINT" />
+    <result column="order_id" property="orderId" jdbcType="BIGINT" />
+    <result column="company_id" property="companyId" jdbcType="BIGINT" />
+    <result column="coupon_num" property="couponNum" jdbcType="VARCHAR" />
+    <result column="used_date" property="usedDate" jdbcType="TIMESTAMP" />
+    <result column="used_money" property="usedMoney" jdbcType="NUMERIC" />
+    <result column="coupon_sign" property="couponSign" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, company_coupon_id, user_id, par_value, title, description, begin_date, end_date, 
+    allow_cities, threshold, allow_car_levels, allow_car_source, source, state, create_time, 
+    update_time, allow_citys_available, allow_citys_qty, allow_car_available, allow_car_qty, 
+    allow_cities_text, allow_car_levels_text, allow_car_source_text, createor, updater, 
+    order_id, company_id, coupon_num, used_date, used_money, coupon_sign
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_coupon
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from user_coupon
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ipath.orderflowservice.order.dao.bean.UserCoupon" >
+    insert into user_coupon (id, company_coupon_id, user_id,
+      par_value, title, description, 
+      begin_date, end_date, allow_cities, 
+      threshold, allow_car_levels, allow_car_source, 
+      source, state, create_time, 
+      update_time, allow_citys_available, allow_citys_qty, 
+      allow_car_available, allow_car_qty, allow_cities_text, 
+      allow_car_levels_text, allow_car_source_text, 
+      createor, updater, order_id, 
+      company_id, coupon_num, used_date, 
+      used_money, coupon_sign)
+    values (#{id,jdbcType=BIGINT}, #{companyCouponId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
+      #{parValue,jdbcType=NUMERIC}, #{title,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{beginDate,jdbcType=TIMESTAMP}, #{endDate,jdbcType=TIMESTAMP}, #{allowCities,jdbcType=VARCHAR}, 
+      #{threshold,jdbcType=NUMERIC}, #{allowCarLevels,jdbcType=VARCHAR}, #{allowCarSource,jdbcType=VARCHAR}, 
+      #{source,jdbcType=INTEGER}, #{state,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{allowCitysAvailable,jdbcType=BIT}, #{allowCitysQty,jdbcType=INTEGER}, 
+      #{allowCarAvailable,jdbcType=BIT}, #{allowCarQty,jdbcType=INTEGER}, #{allowCitiesText,jdbcType=VARCHAR}, 
+      #{allowCarLevelsText,jdbcType=VARCHAR}, #{allowCarSourceText,jdbcType=VARCHAR}, 
+      #{createor,jdbcType=BIGINT}, #{updater,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, 
+      #{companyId,jdbcType=BIGINT}, #{couponNum,jdbcType=VARCHAR}, #{usedDate,jdbcType=TIMESTAMP}, 
+      #{usedMoney,jdbcType=NUMERIC}, #{couponSign,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ipath.orderflowservice.order.dao.bean.UserCoupon" >
+    insert into user_coupon
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="companyCouponId != null" >
+        company_coupon_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="parValue != null" >
+        par_value,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="beginDate != null" >
+        begin_date,
+      </if>
+      <if test="endDate != null" >
+        end_date,
+      </if>
+      <if test="allowCities != null" >
+        allow_cities,
+      </if>
+      <if test="threshold != null" >
+        threshold,
+      </if>
+      <if test="allowCarLevels != null" >
+        allow_car_levels,
+      </if>
+      <if test="allowCarSource != null" >
+        allow_car_source,
+      </if>
+      <if test="source != null" >
+        source,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="allowCitysAvailable != null" >
+        allow_citys_available,
+      </if>
+      <if test="allowCitysQty != null" >
+        allow_citys_qty,
+      </if>
+      <if test="allowCarAvailable != null" >
+        allow_car_available,
+      </if>
+      <if test="allowCarQty != null" >
+        allow_car_qty,
+      </if>
+      <if test="allowCitiesText != null" >
+        allow_cities_text,
+      </if>
+      <if test="allowCarLevelsText != null" >
+        allow_car_levels_text,
+      </if>
+      <if test="allowCarSourceText != null" >
+        allow_car_source_text,
+      </if>
+      <if test="createor != null" >
+        createor,
+      </if>
+      <if test="updater != null" >
+        updater,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+      <if test="couponNum != null" >
+        coupon_num,
+      </if>
+      <if test="usedDate != null" >
+        used_date,
+      </if>
+      <if test="usedMoney != null" >
+        used_money,
+      </if>
+      <if test="couponSign != null" >
+        coupon_sign,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="companyCouponId != null" >
+        #{companyCouponId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="parValue != null" >
+        #{parValue,jdbcType=NUMERIC},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="beginDate != null" >
+        #{beginDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="allowCities != null" >
+        #{allowCities,jdbcType=VARCHAR},
+      </if>
+      <if test="threshold != null" >
+        #{threshold,jdbcType=NUMERIC},
+      </if>
+      <if test="allowCarLevels != null" >
+        #{allowCarLevels,jdbcType=VARCHAR},
+      </if>
+      <if test="allowCarSource != null" >
+        #{allowCarSource,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null" >
+        #{source,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="allowCitysAvailable != null" >
+        #{allowCitysAvailable,jdbcType=BIT},
+      </if>
+      <if test="allowCitysQty != null" >
+        #{allowCitysQty,jdbcType=INTEGER},
+      </if>
+      <if test="allowCarAvailable != null" >
+        #{allowCarAvailable,jdbcType=BIT},
+      </if>
+      <if test="allowCarQty != null" >
+        #{allowCarQty,jdbcType=INTEGER},
+      </if>
+      <if test="allowCitiesText != null" >
+        #{allowCitiesText,jdbcType=VARCHAR},
+      </if>
+      <if test="allowCarLevelsText != null" >
+        #{allowCarLevelsText,jdbcType=VARCHAR},
+      </if>
+      <if test="allowCarSourceText != null" >
+        #{allowCarSourceText,jdbcType=VARCHAR},
+      </if>
+      <if test="createor != null" >
+        #{createor,jdbcType=BIGINT},
+      </if>
+      <if test="updater != null" >
+        #{updater,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="couponNum != null" >
+        #{couponNum,jdbcType=VARCHAR},
+      </if>
+      <if test="usedDate != null" >
+        #{usedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usedMoney != null" >
+        #{usedMoney,jdbcType=NUMERIC},
+      </if>
+      <if test="couponSign != null" >
+        #{couponSign,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ipath.orderflowservice.order.dao.bean.UserCoupon" >
+    update user_coupon
+    <set >
+      <if test="companyCouponId != null" >
+        company_coupon_id = #{companyCouponId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="parValue != null" >
+        par_value = #{parValue,jdbcType=NUMERIC},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="beginDate != null" >
+        begin_date = #{beginDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        end_date = #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="allowCities != null" >
+        allow_cities = #{allowCities,jdbcType=VARCHAR},
+      </if>
+      <if test="threshold != null" >
+        threshold = #{threshold,jdbcType=NUMERIC},
+      </if>
+      <if test="allowCarLevels != null" >
+        allow_car_levels = #{allowCarLevels,jdbcType=VARCHAR},
+      </if>
+      <if test="allowCarSource != null" >
+        allow_car_source = #{allowCarSource,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null" >
+        source = #{source,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="allowCitysAvailable != null" >
+        allow_citys_available = #{allowCitysAvailable,jdbcType=BIT},
+      </if>
+      <if test="allowCitysQty != null" >
+        allow_citys_qty = #{allowCitysQty,jdbcType=INTEGER},
+      </if>
+      <if test="allowCarAvailable != null" >
+        allow_car_available = #{allowCarAvailable,jdbcType=BIT},
+      </if>
+      <if test="allowCarQty != null" >
+        allow_car_qty = #{allowCarQty,jdbcType=INTEGER},
+      </if>
+      <if test="allowCitiesText != null" >
+        allow_cities_text = #{allowCitiesText,jdbcType=VARCHAR},
+      </if>
+      <if test="allowCarLevelsText != null" >
+        allow_car_levels_text = #{allowCarLevelsText,jdbcType=VARCHAR},
+      </if>
+      <if test="allowCarSourceText != null" >
+        allow_car_source_text = #{allowCarSourceText,jdbcType=VARCHAR},
+      </if>
+      <if test="createor != null" >
+        createor = #{createor,jdbcType=BIGINT},
+      </if>
+      <if test="updater != null" >
+        updater = #{updater,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="couponNum != null" >
+        coupon_num = #{couponNum,jdbcType=VARCHAR},
+      </if>
+      <if test="usedDate != null" >
+        used_date = #{usedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usedMoney != null" >
+        used_money = #{usedMoney,jdbcType=NUMERIC},
+      </if>
+      <if test="couponSign != null" >
+        coupon_sign = #{couponSign,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ipath.orderflowservice.order.dao.bean.UserCoupon" >
+    update user_coupon
+    set company_coupon_id = #{companyCouponId,jdbcType=BIGINT},
+      user_id = #{userId,jdbcType=BIGINT},
+      par_value = #{parValue,jdbcType=NUMERIC},
+      title = #{title,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      begin_date = #{beginDate,jdbcType=TIMESTAMP},
+      end_date = #{endDate,jdbcType=TIMESTAMP},
+      allow_cities = #{allowCities,jdbcType=VARCHAR},
+      threshold = #{threshold,jdbcType=NUMERIC},
+      allow_car_levels = #{allowCarLevels,jdbcType=VARCHAR},
+      allow_car_source = #{allowCarSource,jdbcType=VARCHAR},
+      source = #{source,jdbcType=INTEGER},
+      state = #{state,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      allow_citys_available = #{allowCitysAvailable,jdbcType=BIT},
+      allow_citys_qty = #{allowCitysQty,jdbcType=INTEGER},
+      allow_car_available = #{allowCarAvailable,jdbcType=BIT},
+      allow_car_qty = #{allowCarQty,jdbcType=INTEGER},
+      allow_cities_text = #{allowCitiesText,jdbcType=VARCHAR},
+      allow_car_levels_text = #{allowCarLevelsText,jdbcType=VARCHAR},
+      allow_car_source_text = #{allowCarSourceText,jdbcType=VARCHAR},
+      createor = #{createor,jdbcType=BIGINT},
+      updater = #{updater,jdbcType=BIGINT},
+      order_id = #{orderId,jdbcType=BIGINT},
+      company_id = #{companyId,jdbcType=BIGINT},
+      coupon_num = #{couponNum,jdbcType=VARCHAR},
+      used_date = #{usedDate,jdbcType=TIMESTAMP},
+      used_money = #{usedMoney,jdbcType=NUMERIC},
+      coupon_sign = #{couponSign,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectAvailableCouponCount" parameterType="java.lang.Long" resultType="java.lang.Integer">
+    select
+      count(1)
+    from user_coupon
+    where end_date> GETDATE() and  user_id = #{userId,jdbcType=BIGINT}
+      and state = 1
+  </select>
+</mapper>

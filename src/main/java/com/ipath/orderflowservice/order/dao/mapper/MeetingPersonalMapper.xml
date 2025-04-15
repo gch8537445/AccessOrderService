@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ipath.orderflowservice.order.dao.MeetingPersonalMapper">
+    <resultMap id="BaseResultMap" type="com.ipath.orderflowservice.order.dao.bean.MeetingPersonal">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="userid" jdbcType="BIGINT" property="userid"/>
+        <result column="meeting_id" jdbcType="BIGINT" property="meetingId"/>
+        <result column="type" jdbcType="INTEGER" property="type"/>
+        <result column="io_status" jdbcType="VARCHAR" property="ioStatus"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        id, userid, meeting_id, type, io_status, create_time
+    </sql>
+
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from meeting_personal
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete
+        from meeting_personal
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" parameterType="com.ipath.orderflowservice.order.dao.bean.MeetingPersonal">
+        insert into meeting_personal (id, userid, meeting_id, type, io_status, create_time)
+        values (#{id,jdbcType=BIGINT}, #{userid,jdbcType=VARCHAR}, #{meetingId,jdbcType=BIGINT},
+                #{type,jdbcType=INTEGER}, #{ioStatus,jdbcType=VARCHAR} ,#{createTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.ipath.orderflowservice.order.dao.bean.MeetingPersonal">
+        insert into meeting_personal
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="userid != null">
+                userid,
+            </if>
+            <if test="meetingId != null">
+                meeting_id,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="ioStatus != null">
+                io_status,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="userid != null">
+                #{userid,jdbcType=VARCHAR},
+            </if>
+            <if test="meetingId != null">
+                #{meetingId,jdbcType=BIGINT},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=INTEGER},
+            </if>
+            <if test="ioStatus != null">
+                #{ioStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.ipath.orderflowservice.order.dao.bean.MeetingPersonal">
+        update meeting_personal
+        <set>
+            <if test="userid != null">
+                userid = #{userid,jdbcType=VARCHAR},
+            </if>
+            <if test="meetingId != null">
+                meeting_id = #{meetingId,jdbcType=BIGINT},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=INTEGER},
+            </if>
+            <if test="ioStatus != null">
+                io_status = #{ioStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.ipath.orderflowservice.order.dao.bean.MeetingPersonal">
+        update meeting_personal
+        set userid      = #{userid,jdbcType=VARCHAR},
+            meeting_id  = #{meetingId,jdbcType=BIGINT},
+            type        = #{type,jdbcType=INTEGER},
+            io_status   = #{ioStatus,jdbcType=VARCHAR},
+            create_time = #{createTime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+
+    <resultMap id="MeetingResultMap" type="com.ipath.orderflowservice.order.bean.vo.MeetingPersonalVo">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="meeting_id" jdbcType="BIGINT" property="meetingId"/>
+        <result column="event_name" jdbcType="VARCHAR" property="eventName"/>
+        <result column="event_code" jdbcType="VARCHAR" property="eventCode"/>
+        <result column="io_title" jdbcType="VARCHAR" property="ioTitle"/>
+        <result column="io_code" jdbcType="VARCHAR" property="ioCode"/>
+        <result column="valid_to" jdbcType="TIMESTAMP" property="validTo"/>
+        <result column="department_name_en" jdbcType="VARCHAR" property="departmentNameEn"/>
+        <result column="area_name_en" jdbcType="VARCHAR" property="areaNameEn"/>
+        <result column="event_type" jdbcType="VARCHAR" property="eventType"/>
+        <result column="start_date" jdbcType="TIMESTAMP" property="startDate"/>
+        <result column="end_date" jdbcType="TIMESTAMP" property="endDate"/>
+        <result column="event_status" jdbcType="VARCHAR" property="eventStatus"/>
+        <result column="type" jdbcType="INTEGER" property="type"/>
+    </resultMap>
+
+    <sql id="meeting_column_list">
+        meeting_personal.id,
+        meeting.id meeting_id,
+        meeting.event_name,
+        meeting.event_code,
+        meeting.io_title,
+        meeting.io_code,
+        meeting.valid_to,
+        meeting.department_name_en,
+        meeting.area_name_en,
+        meeting.event_type,
+        meeting.start_date,
+        meeting.end_date,
+        meeting.event_status,
+        meeting.io_status,
+        meeting.employee_code,
+        meeting.employee_name,
+        meeting_personal.type
+    </sql>
+
+
+
+    <select id="getPersonalMeeting" resultMap="MeetingResultMap">
+        select
+        <include refid="meeting_column_list"/>
+        from meeting_personal
+        left join meeting on meeting.id = meeting_personal.meeting_id
+        where
+        meeting_personal.userid = #{userid}
+        and meeting.io_status not in ('Closed','TECO')
+        and valid_to <![CDATA[>]]> (now() - INTERVAL '30 days')
+        order by meeting.valid_to asc;
+    </select>
+
+    <select id="getPersonalMeetingByUseridAndMeeting" resultMap="MeetingResultMap">
+        select
+        <include refid="meeting_column_list"/>
+        from meeting_personal
+        left join meeting on meeting.id = meeting_personal.meeting_id
+        where
+        meeting_personal.userid = #{userid}
+        and meeting.id = #{meetingId}
+        and meeting.io_status not in ('Closed','TECO');
+    </select>
+
+    <delete id="oneClickDeletion">
+        delete
+        from meeting_personal
+        where userid = #{userid}
+          and type = 1;
+    </delete>
+
+    <delete id="batchInsert">
+        insert into meeting_personal (id, userid, meeting_id, type, io_status,create_time)
+        values
+        <foreach collection="list" separator="," item="item">
+            (#{item.id,jdbcType=BIGINT}, #{item.userid,jdbcType=BIGINT}, #{item.meetingId,jdbcType=BIGINT},
+            #{item.type,jdbcType=INTEGER}, #{item.ioStatus,jdbcType=VARCHAR}, #{item.createTime,jdbcType=TIMESTAMP})
+        </foreach>
+    </delete>
+
+    <delete id="batchUpdate">
+        <foreach collection="list" item="item" separator=";">
+            update meeting_personal
+            set
+            io_status = #{item.ioStatus,jdbcType=VARCHAR},
+            create_time = #{item.createTime,jdbcType=TIMESTAMP},
+            type = 0
+            where userid = #{item.userid,jdbcType=VARCHAR} and meeting_id = #{item.meetingId,jdbcType=BIGINT};
+        </foreach>
+    </delete>
+
+    <delete id="syncRemoveMeetingPersonal">
+        delete
+        from meeting_personal
+        where id in (SELECT mp.ID
+                     FROM meeting_personal mp
+                              LEFT JOIN meeting M ON mp.meeting_id = M.ID
+                     where m.valid_to
+                               &lt; (now() - INTERVAL '30 days'))
+    </delete>
+
+
+
+    <select id="getPersonalMeetingByParam" resultType="com.ipath.orderflowservice.order.bean.vo.MeetingVo">
+        select
+        meeting.id id,
+        meeting.event_name eventName,
+        meeting.event_code eventCode,
+        meeting.io_title ioTitle,
+        meeting.io_code ioCode,
+        meeting.employee_name employeeName,
+        1 as type
+        from meeting_personal
+        left join meeting on meeting.id = meeting_personal.meeting_id
+        <where>
+            and meeting.io_status not in ('Closed','TECO')
+            <if test="userid != null">
+                and meeting_personal.userid = #{userid,jdbcType=BIGINT}
+            </if>
+            <if test="excludeIds != null and excludeIds.size > 0">
+                and meeting.id not in
+                <foreach collection="excludeIds" item="item" open="(" close=")" separator=",">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="param != null and param != ''">
+                and (
+                meeting.event_name like concat('%',#{param,jdbcType=VARCHAR},'%')
+                or
+                meeting.event_code like concat('%',#{param,jdbcType=VARCHAR},'%')
+                or
+                meeting.io_title like concat('%',#{param,jdbcType=VARCHAR},'%')
+                or
+                meeting.io_code like concat('%',#{param,jdbcType=VARCHAR},'%')
+                )
+            </if>
+        </where>
+        order by EXTRACT(EPOCH FROM  meeting.valid_to - CURRENT_TIMESTAMP)
+        <if test="size != null">
+            limit #{size,jdbcType=INTEGER}
+        </if>
+    </select>
+
+</mapper>

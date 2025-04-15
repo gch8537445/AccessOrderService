@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ipath.orderflowservice.order.dao.ActivityLogMapper">
+  <resultMap id="BaseResultMap" type="com.ipath.orderflowservice.order.dao.bean.ActivityLog">
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="level_id" jdbcType="INTEGER" property="levelId" />
+    <result column="trace_id" jdbcType="VARCHAR" property="traceId" />
+    <result column="first_category_id" jdbcType="INTEGER" property="firstCategoryId" />
+    <result column="first_category_name" jdbcType="VARCHAR" property="firstCategoryName" />
+    <result column="second_category_id" jdbcType="INTEGER" property="secondCategoryId" />
+    <result column="second_category_name" jdbcType="VARCHAR" property="secondCategoryName" />
+    <result column="third_category_id" jdbcType="INTEGER" property="thirdCategoryId" />
+    <result column="forth_category_id" jdbcType="INTEGER" property="forthCategoryId" />
+    <result column="fifth_category_id" jdbcType="INTEGER" property="fifthCategoryId" />
+    <result column="company_id" jdbcType="BIGINT" property="companyId" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_phone" jdbcType="VARCHAR" property="userPhone" />
+    <result column="order_id" jdbcType="BIGINT" property="orderId" />
+    <result column="record_type" jdbcType="INTEGER" property="recordType" />
+    <result column="record_time" jdbcType="TIMESTAMP" property="recordTime" />
+    <result column="service" jdbcType="VARCHAR" property="service" />
+    <result column="service_name" jdbcType="VARCHAR" property="serviceName" />
+    <result column="responsible_person" jdbcType="VARCHAR" property="responsiblePerson" />
+    <result column="supervisor" jdbcType="VARCHAR" property="supervisor" />
+    <result column="interface_path" jdbcType="VARCHAR" property="interfacePath" />
+    <result column="body" jdbcType="VARCHAR" property="body" />
+    <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="comment" jdbcType="VARCHAR" property="comment" />
+  </resultMap>
+  
+  <insert id="insertSelective" parameterType="com.ipath.orderflowservice.order.dao.bean.ActivityLog">
+    insert into activity_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="levelId != null">
+        level_id,
+      </if>
+      <if test="traceId != null">
+        trace_id,
+      </if>
+      <if test="firstCategoryId != null">
+        first_category_id,
+      </if>
+      <if test="firstCategoryName != null">
+        first_category_name,
+      </if>
+      <if test="secondCategoryId != null">
+        second_category_id,
+      </if>
+      <if test="secondCategoryName != null">
+        second_category_name,
+      </if>
+      <if test="thirdCategoryId != null">
+        third_category_id,
+      </if>
+      <if test="forthCategoryId != null">
+        forth_category_id,
+      </if>
+      <if test="fifthCategoryId != null">
+        fifth_category_id,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="companyName != null">
+        company_name,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="userPhone != null">
+        user_phone,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="recordType != null">
+        record_type,
+      </if>
+      <if test="recordTime != null">
+        record_time,
+      </if>
+      <if test="service != null">
+        service,
+      </if>
+      <if test="serviceName != null">
+        service_name,
+      </if>
+      <if test="responsiblePerson != null">
+        responsible_person,
+      </if>
+      <if test="supervisor != null">
+        supervisor,
+      </if>
+      <if test="interfacePath != null">
+        interface_path,
+      </if>
+      <if test="body != null">
+        body,
+      </if>
+      <if test="createdTime != null">
+        created_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="levelId != null">
+        #{levelId,jdbcType=INTEGER},
+      </if>
+      <if test="traceId != null">
+        #{traceId,jdbcType=VARCHAR},
+      </if>
+      <if test="firstCategoryId != null">
+        #{firstCategoryId,jdbcType=INTEGER},
+      </if>
+      <if test="firstCategoryName != null">
+        #{firstCategoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="secondCategoryId != null">
+        #{secondCategoryId,jdbcType=INTEGER},
+      </if>
+      <if test="secondCategoryName != null">
+        #{secondCategoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdCategoryId != null">
+        #{thirdCategoryId,jdbcType=INTEGER},
+      </if>
+      <if test="forthCategoryId != null">
+        #{forthCategoryId,jdbcType=INTEGER},
+      </if>
+      <if test="fifthCategoryId != null">
+        #{fifthCategoryId,jdbcType=INTEGER},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhone != null">
+        #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="recordType != null">
+        #{recordType,jdbcType=INTEGER},
+      </if>
+      <if test="recordTime != null">
+        #{recordTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="service != null">
+        #{service,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceName != null">
+        #{serviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="responsiblePerson != null">
+        #{responsiblePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="supervisor != null">
+        #{supervisor,jdbcType=VARCHAR},
+      </if>
+      <if test="interfacePath != null">
+        #{interfacePath,jdbcType=VARCHAR},
+      </if>
+      <if test="body != null">
+        #{body,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null">
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <insert id="updateOrderId">
+    update activity_log set order_id =cc.order_id
+    from(select trace_id,order_id from activity_log where order_id is not null and activity_log.record_time &gt;= DATEADD(n, -6, GETDATE()) group by trace_id,order_id) cc
+    where activity_log.order_id is null and activity_log.trace_id =cc.trace_id;
+  </insert>
+</mapper>

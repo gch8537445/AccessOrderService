@@ -1,0 +1,135 @@
+# 中台生产环境
+icar:
+  url: https://ipathcar.imtpath.net
+  appid: app7291118000
+  secret: BP7A4BaDv4HplTL3u3eT9Ho7tyVrNjvU09F4vcB7T2x971C5bMwIGO0D3gu3FRuI
+
+# 支付中心
+ipay:
+  configId: prodnewicar
+  key: 039759C0-DD49-4D4E-B94F-00018A413E4C
+
+huitong:
+  needOrderNotify: false
+  secretKey: 02d4c190b2b97b4e489006bcc289ce22  # 慧通商旅测试环境key
+  authId: ipath
+  keyPass: 123456
+  address: https://openapi-cnpc-uat.hwht.com
+  certFilePath: /etc/ht_public_test.cert     # 对方测试环境公钥
+  pemFilePath: /etc/private_dev.pem          # 我们的dev私钥
+
+ipath:
+  specialCustomer: 302269344182469
+  carLevelName: 舒适
+
+rocketmq:
+  topic:
+    socket-order-info: socket-order-info-v20-gray
+    order-info: order-info-gray
+    order-notify: order-notify-gray
+    cds-notify: cds-notify-gray   # 通知客户服务
+    workflow-notify: workflow-notify-gray
+    order-status-chg: order-status-chg-gray # 订单状态变更通知
+  tags:
+    socket-order-info: order-info
+    location-request: location-request
+    location-result: location-result
+    detail-request: detail-request
+    detail-result: detail-result
+    order-notify: order-notify  # 通知configure服务
+    order-notify-cnpc: order-notify-cnpc  # 通知石油商旅
+    order-notify-h5: order-callback  # H5订单回传
+    after-approval-notify: after-approval-notify # 行后审批提交
+    approval-result-notify: approval-result-notify # 接收审批结果
+    pay-refund-notify: pay-refund-notify # 退款通知
+    pay-result-notify: pay-result-notify # 接收个人支付结果
+    coupon-consume-notify: coupon-consume-notify # 通知coupon相关服务
+    extra-notify: extra-notify # 通知extra相关服务
+    bill-notify: bill-notify # 通知bill相关服务
+    order-notify-third: order-notify-third  # 通知第三方
+    report-order: report-order
+    report-approval: report-approval
+    report-bill: report-bill
+    process-notify: process-notify # 通知bill服务
+    complaint-notify: complaint-notify
+    report-appendplaceorder: report-appendplaceorder
+    order-reject-pay: pay-success
+    abnormal-rule: abnormal-rule  # 合规预警
+    workflow-order: order
+    process: order-process-tag
+  producer:
+    group: order-group-gray
+    send-message-timeout: 10000
+  consumer:
+    group: order-group-gray
+  report:
+    topic: order-chg-to-report-gray
+    tag: order-status-chg-info
+  settle:
+    topic: order-chg-to-report-gray
+    tag: order-settle-info
+  cancel:
+    topic: order-chg-to-report-gray
+    tag: order-cancel-info
+  append:
+    topic: order-chg-to-report-gray
+    tag: order-append-info
+  paid:
+    topic: order-chg-to-report-gray
+    tag: order-paid-info
+  changeDest:
+    topic: order-chg-to-report-gray
+    tag: order-change-dest-info
+  complaint:
+    topic: order-chg-to-report-gray
+    tag: order-complaint-info
+  completion:
+    topic: order-chg-to-report-gray
+    tag: order-completion-info
+  booking:
+    topic: order-chg-to-report-gray
+    tag: order-booking-info
+  log: # 日志服务
+    topic: log-notify-gray-gray
+    tag: log-info
+    consumer-group: log-group-gray
+  orderService: # 自产自消
+    topicDispatch: topic-dispatch-gray # 极速派单
+    tagPlaceOrder: tag-place-order # 延时下单
+    group: order-servcie-group-gray
+  orderStatusChg:
+    topic: order-status-notify-gray
+    tag: order-status-info
+    group: mq-group-gray
+
+mobileUrl: "https://tstmobilev2.imtpath.net"
+notifyUrl:
+  notifyPay: https://tstgatewayv2-gray.imtpath.net/api/v2/partner/order/notifyPay
+  notifyPayRefund: https://tstgatewayv2-gray.imtpath.net/api/v2/partner/order/notifyRefund
+  
+rePlaceOrderAfterCoreCancelSwitch: true
+
+serviceMessage:
+  # 腾讯云推文模板id
+  tencent:
+    companyId: 248100731020642053
+    # 流程操作通知
+    processOperationNotificationTemplateId: uFBNefzbq03q5nfs0urgCxYo16TWwHb3QGApUBHVZds
+  wpp:
+    companyId: 258207578547291909
+    # 流程操作通知
+    processOperationNotificationTemplateId: uFBNefzbq03q5nfs0urgCxYo16TWwHb3QGApUBHVZds
+
+# 赛诺菲 同步个人会议的企业id
+sync:
+  meeting:
+    companyId: 12521830270
+
+log:
+  enabled: true
+  level: 0
+  url: https://devop.imtpath.net/stage-api/log/interface/save
+
+company:
+  merk: 269674041313330949
+

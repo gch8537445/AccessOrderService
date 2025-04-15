@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ipath.orderflowservice.order.dao.OrderAirportPickupMapper" >
+  <resultMap id="BaseResultMap" type="com.ipath.orderflowservice.order.dao.bean.OrderAirportPickup" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="order_id" property="orderId" jdbcType="BIGINT" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="cancel_reason" property="cancelReason" jdbcType="INTEGER" />
+    <result column="concierge_name" property="conciergeName" jdbcType="VARCHAR" />
+    <result column="concierge_code" property="conciergeCode" jdbcType="VARCHAR" />
+    <result column="concierge_phone" property="conciergePhone" jdbcType="VARCHAR" />
+    <result column="concierge_avatar_url" property="conciergeAvatarUrl" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, order_id, state, cancel_reason, concierge_name, concierge_code, concierge_phone, 
+    concierge_avatar_url, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from public.order_airport_pickup
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from public.order_airport_pickup
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ipath.orderflowservice.order.dao.bean.OrderAirportPickup" >
+    insert into public.order_airport_pickup (id, order_id, state, 
+      cancel_reason, concierge_name, concierge_code, 
+      concierge_phone, concierge_avatar_url, create_time, 
+      update_time)
+    values (#{id,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, #{state,jdbcType=INTEGER}, 
+      #{cancelReason,jdbcType=INTEGER}, #{conciergeName,jdbcType=VARCHAR}, #{conciergeCode,jdbcType=VARCHAR}, 
+      #{conciergePhone,jdbcType=VARCHAR}, #{conciergeAvatarUrl,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ipath.orderflowservice.order.dao.bean.OrderAirportPickup" >
+    insert into public.order_airport_pickup
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="cancelReason != null" >
+        cancel_reason,
+      </if>
+      <if test="conciergeName != null" >
+        concierge_name,
+      </if>
+      <if test="conciergeCode != null" >
+        concierge_code,
+      </if>
+      <if test="conciergePhone != null" >
+        concierge_phone,
+      </if>
+      <if test="conciergeAvatarUrl != null" >
+        concierge_avatar_url,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="cancelReason != null" >
+        #{cancelReason,jdbcType=INTEGER},
+      </if>
+      <if test="conciergeName != null" >
+        #{conciergeName,jdbcType=VARCHAR},
+      </if>
+      <if test="conciergeCode != null" >
+        #{conciergeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="conciergePhone != null" >
+        #{conciergePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="conciergeAvatarUrl != null" >
+        #{conciergeAvatarUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ipath.orderflowservice.order.dao.bean.OrderAirportPickup" >
+    update public.order_airport_pickup
+    <set >
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="cancelReason != null" >
+        cancel_reason = #{cancelReason,jdbcType=INTEGER},
+      </if>
+      <if test="conciergeName != null" >
+        concierge_name = #{conciergeName,jdbcType=VARCHAR},
+      </if>
+      <if test="conciergeCode != null" >
+        concierge_code = #{conciergeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="conciergePhone != null" >
+        concierge_phone = #{conciergePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="conciergeAvatarUrl != null" >
+        concierge_avatar_url = #{conciergeAvatarUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ipath.orderflowservice.order.dao.bean.OrderAirportPickup" >
+    update public.order_airport_pickup
+    set order_id = #{orderId,jdbcType=BIGINT},
+      state = #{state,jdbcType=INTEGER},
+      cancel_reason = #{cancelReason,jdbcType=INTEGER},
+      concierge_name = #{conciergeName,jdbcType=VARCHAR},
+      concierge_code = #{conciergeCode,jdbcType=VARCHAR},
+      concierge_phone = #{conciergePhone,jdbcType=VARCHAR},
+      concierge_avatar_url = #{conciergeAvatarUrl,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

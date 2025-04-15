@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ipath.orderflowservice.order.dao.UserBusinessTripMapper" >
+  <resultMap id="BaseResultMap" type="com.ipath.orderflowservice.order.dao.bean.UserBusinessTrip" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="company_id" property="companyId" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="apply_id" property="applyId" jdbcType="VARCHAR" />
+    <result column="apply_no" property="applyNo" jdbcType="VARCHAR" />
+    <result column="apply_time" property="applyTime" jdbcType="TIMESTAMP" />
+    <result column="dept_id" property="deptId" jdbcType="BIGINT" />
+    <result column="project_id" property="projectId" jdbcType="BIGINT" />
+    <result column="time_from" property="timeFrom" jdbcType="TIMESTAMP" />
+    <result column="time_to" property="timeTo" jdbcType="TIMESTAMP" />
+    <result column="city_code" property="cityCode" jdbcType="VARCHAR" />
+    <result column="city_name" property="cityName" jdbcType="VARCHAR" />
+    <result column="deleted" property="deleted" jdbcType="BIT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="desc_" property="desc" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, company_id, user_id, apply_id, apply_no, apply_time, dept_id, project_id, time_from, 
+    time_to, city_code, city_name, deleted, create_time, update_time, desc_
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from public.user_business_trip
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from public.user_business_trip
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ipath.orderflowservice.order.dao.bean.UserBusinessTrip" >
+    insert into public.user_business_trip (id, company_id, user_id, 
+      apply_id, apply_no, apply_time, 
+      dept_id, project_id, time_from, 
+      time_to, city_code, city_name, 
+      deleted, create_time, update_time, 
+      desc_)
+    values (#{id,jdbcType=BIGINT}, #{companyId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
+      #{applyId,jdbcType=VARCHAR}, #{applyNo,jdbcType=VARCHAR}, #{applyTime,jdbcType=TIMESTAMP}, 
+      #{deptId,jdbcType=BIGINT}, #{projectId,jdbcType=BIGINT}, #{timeFrom,jdbcType=TIMESTAMP}, 
+      #{timeTo,jdbcType=TIMESTAMP}, #{cityCode,jdbcType=VARCHAR}, #{cityName,jdbcType=VARCHAR}, 
+      #{deleted,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{desc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ipath.orderflowservice.order.dao.bean.UserBusinessTrip" >
+    insert into public.user_business_trip
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="applyId != null" >
+        apply_id,
+      </if>
+      <if test="applyNo != null" >
+        apply_no,
+      </if>
+      <if test="applyTime != null" >
+        apply_time,
+      </if>
+      <if test="deptId != null" >
+        dept_id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="timeFrom != null" >
+        time_from,
+      </if>
+      <if test="timeTo != null" >
+        time_to,
+      </if>
+      <if test="cityCode != null" >
+        city_code,
+      </if>
+      <if test="cityName != null" >
+        city_name,
+      </if>
+      <if test="deleted != null" >
+        deleted,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="desc != null" >
+        desc_,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="applyId != null" >
+        #{applyId,jdbcType=VARCHAR},
+      </if>
+      <if test="applyNo != null" >
+        #{applyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="applyTime != null" >
+        #{applyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deptId != null" >
+        #{deptId,jdbcType=BIGINT},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=BIGINT},
+      </if>
+      <if test="timeFrom != null" >
+        #{timeFrom,jdbcType=TIMESTAMP},
+      </if>
+      <if test="timeTo != null" >
+        #{timeTo,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cityCode != null" >
+        #{cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cityName != null" >
+        #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null" >
+        #{deleted,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="desc != null" >
+        #{desc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ipath.orderflowservice.order.dao.bean.UserBusinessTrip" >
+    update public.user_business_trip
+    <set >
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="applyId != null" >
+        apply_id = #{applyId,jdbcType=VARCHAR},
+      </if>
+      <if test="applyNo != null" >
+        apply_no = #{applyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="applyTime != null" >
+        apply_time = #{applyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deptId != null" >
+        dept_id = #{deptId,jdbcType=BIGINT},
+      </if>
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=BIGINT},
+      </if>
+      <if test="timeFrom != null" >
+        time_from = #{timeFrom,jdbcType=TIMESTAMP},
+      </if>
+      <if test="timeTo != null" >
+        time_to = #{timeTo,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cityCode != null" >
+        city_code = #{cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cityName != null" >
+        city_name = #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null" >
+        deleted = #{deleted,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="desc != null" >
+        desc_ = #{desc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ipath.orderflowservice.order.dao.bean.UserBusinessTrip" >
+    update public.user_business_trip
+    set company_id = #{companyId,jdbcType=BIGINT},
+      user_id = #{userId,jdbcType=BIGINT},
+      apply_id = #{applyId,jdbcType=VARCHAR},
+      apply_no = #{applyNo,jdbcType=VARCHAR},
+      apply_time = #{applyTime,jdbcType=TIMESTAMP},
+      dept_id = #{deptId,jdbcType=BIGINT},
+      project_id = #{projectId,jdbcType=BIGINT},
+      time_from = #{timeFrom,jdbcType=TIMESTAMP},
+      time_to = #{timeTo,jdbcType=TIMESTAMP},
+      city_code = #{cityCode,jdbcType=VARCHAR},
+      city_name = #{cityName,jdbcType=VARCHAR},
+      deleted = #{deleted,jdbcType=BIT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      desc_ = #{desc,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <!--以下为手动添加-->
+  <select id="selectCnt" parameterType="java.util.Map" resultType="java.lang.Integer">
+    select 
+    count(1)
+    from public.user_business_trip
+    where time_from <![CDATA[<=]]> #{departTime,jdbcType=TIMESTAMP}
+          and time_to <![CDATA[>=]]> #{departTime,jdbcType=TIMESTAMP}
+          and user_id = #{userId,jdbcType=BIGINT}
+  </select>
+</mapper>

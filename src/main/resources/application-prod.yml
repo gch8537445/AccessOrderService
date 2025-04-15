@@ -1,0 +1,55 @@
+# 中台生产环境
+icar:
+  url: https://ipathcar.imtpath.net
+  appid: app2854554918
+  secret: kD3vtexPXvf4OMuhUnFb1A6Es51N5JU0w8Wu0fWUr38s3637dyF54ntXQ554i918
+
+# 支付中心
+ipay:
+  configId: prodsgnewicar
+  key: 56868158-5058-4EF9-BCAE-049CC41D4BE1
+
+huitong:
+  needOrderNotify: false
+  secretKey: 28d0f5c33ce0b31c3f1048aad8a71089  # 慧通商旅生产环境key
+  authId: ipath
+  keyPass: 123456
+  address: https://openapi-cnpc.hwht.com
+  certFilePath: /etc/ht_public_prod.cert     # 对方生产环境公钥
+  pemFilePath: /etc/private_prod.pem         # 我们的prod私钥
+
+ipath:
+  specialCustomer: 302269344182469
+  carLevelName: 舒适
+
+mobileUrl: "https://prd-stdv2-vone.imtpath.net"
+notifyUrl:
+  notifyPay: https://prd-ka-gateway.imtpath.net/api/v2/partner/order/notifyPay
+  notifyPayRefund: https://prd-ka-gateway.imtpath.net/api/v2/partner/order/notifyRefund
+#平台/司机取消重新派单 开关
+rePlaceOrderAfterCoreCancelSwitch: true
+
+log:
+  enabled: true
+  level: 0
+  url: https://prd-admin-api.imtpath.net/stage-api/log/interface/save
+
+serviceMessage:
+  # 腾讯云推文模板id
+  tencent:
+    companyId: 12526820426
+    # 流程操作通知
+    processOperationNotificationTemplateId: 7wnZI-heaG_8vqBKBNRFHmRhgXjmsPuiwI8WtVKiEI0
+  wpp:
+    companyId: 12595850013
+    # 流程操作通知
+    processOperationNotificationTemplateId: b5KFvBQ57aewwbxtlcq-5IwFkaiuSjW0cmLx_9EambU
+
+
+# 赛诺菲 同步个人会议的企业id
+sync:
+  meeting:
+    companyId: 12589855239
+
+company:
+  merk: 12600927080
